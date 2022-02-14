@@ -38,6 +38,7 @@ fetch(data1).then(response => {
         console.log(laskejsondata);
       let lat = jsonData.meta.lat;
       let lon = jsonData.meta.lon;
+<<<<<<< HEAD
       console.log(lat)
       console.log(lon) 
       let latplus = lat *1.00001
@@ -45,6 +46,13 @@ fetch(data1).then(response => {
       let bbox = lon+"," +lat +","+ latplus+"," +lonplus 
       console.log(bbox)
      
+=======
+   
+      let bbox = lat+"," +lon +","+ (lat+1)+"," +(lon+1)
+      
+      console.log(lat)
+      console.log(lon)  
+>>>>>>> 28bab8a0d83f4ce87541df5d80772ddbc458effa
       let paikannimi = jsonData.meta.name;
       let aikajsondata = jsonData.data[laskejsondata].time;
       let vedenlampotiladata = jsonData.data[laskejsondata].temp_water;
@@ -63,7 +71,11 @@ fetch(data1).then(response => {
 
 function nouda(query){
     
+<<<<<<< HEAD
     let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=${query},&meters=t2m&crs=EPSG::4326&`
+=======
+    let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&meters=t2m&bbox=${query},EPSG:4326&`
+>>>>>>> 28bab8a0d83f4ce87541df5d80772ddbc458effa
 console.log(arvo)
     fetch(arvo)
   .then(response => response.text())
