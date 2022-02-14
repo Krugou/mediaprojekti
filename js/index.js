@@ -36,6 +36,13 @@ fetch(data1).then(response => {
   }).then((jsonData) => {
       let laskejsondata = jsonData.data.length - 1
         console.log(laskejsondata);
+      let lat = jsonData.meta.lat;
+      let lon = jsonData.meta.lon;
+   
+      let bbox = lat+"," +lon +","+ (lat+1)+"," +(lon+1)
+      
+      console.log(lat)
+      console.log(lon)  
       let paikannimi = jsonData.meta.name;
       let aikajsondata = jsonData.data[laskejsondata].time;
       let vedenlampotiladata = jsonData.data[laskejsondata].temp_water;
@@ -45,11 +52,37 @@ fetch(data1).then(response => {
       console.log(vedenlampotiladata)
       console.log(ilmalampotiladata)
      let last = document.getElementById("demo").innerHTML  = "<h1>" + paikannimi + "</h1>" +"<p>Vedenlämpötila: "+ vedenlampotiladata+"</p>"+  "<p> Ilmanlämpötila: "+ ilmalampotiladata+"</p>"
-    
+    nouda(bbox)
 
   }).catch((error) => {
    console.log("error")
   });
+}
+
+function nouda(query){
+    
+    let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&meters=t2m&bbox=${query},EPSG:4326&`
+console.log(arvo)
+    fetch(arvo)
+  .then(response => response.text())
+  .then((xml) => {
+    console.log(xml)
+    let parser = new DOMParser();
+    let xmlDOM = parser.parseFromString(xml, "application/xml");
+    let mittaussarja2 = xmlDOM.querySelector('MeasurementTimeseries').querySelectorAll('value'); 
+    let vahenna2 = mittaussarja2.length - 1
+    let aikasarja2 = xmlDOM.querySelector('MeasurementTimeseries').querySelectorAll('time'); 
+    let vahennaaika2 = aikasarja2.length - 1
+    let paikka3 = xmlDOM.querySelectorAll('name');
+    console.log(paikka3[1].childNodes[0])
+    console.log(mittaussarja2)
+    console.log(vahenna2)
+    console.log(mittaussarja2[vahenna2])
+    console.log(aikasarja2[vahennaaika2])
+  
+    let tulos = document.getElementById("tulos").innerText = "sijainnissa: " + paikka3[1].childNodes[0].textContent + " on lämpötila " + mittaussarja2[vahenna2].textContent + " celsiusta" + " kello oli järjestelmän mukaan: " + aikasarja2[vahennaaika2].textContent
+    console.log(tulos)
+})
 }
 window.onload = () => {
 urlrandomizer(data);
