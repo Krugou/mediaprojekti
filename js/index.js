@@ -12,11 +12,12 @@ fetch(data).then(response => {
     }
   }).then((jsonData) => {
       let laskejsondata = jsonData.data.length - 1
-        console.log(laskejsondata)
+        console.log(laskejsondata);
+        let paikannimi = jsonData.meta.name;
       let aikajsondata = jsonData.data[laskejsondata].time;
       let vedenlampotiladata = jsonData.data[laskejsondata].temp_water;
       let ilmalampotiladata = jsonData.data[laskejsondata].temp_air;
-
+      console.log(jsonData.meta.name)
       console.log(aikajsondata)
       console.log(vedenlampotiladata)
       console.log(ilmalampotiladata)
