@@ -22,7 +22,7 @@ fetch(data1).then(response => {
       console.log(aikajsondata)
       console.log(vedenlampotiladata)
       console.log(ilmalampotiladata)
-      
+    document.getElementById("demo").innerHTML  = "<h1>" + paikannimi + "</h1>" +"<p>Vedenlämpötila: "+ vedenlampotiladata+"</p>"+  "<p> Ilmanlämpötila: "+ ilmalampotiladata+"</p>"
     
 
   }).catch((error) => {
