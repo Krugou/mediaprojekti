@@ -47,10 +47,12 @@ fetch(data1).then(response => {
       
       console.log(bbox)
      
+
       let paikannimi = jsonData.meta.name;
       let aikajsondata = jsonData.data[laskejsondata].time;
       let vedenlampotiladata = jsonData.data[laskejsondata].temp_water;
       let ilmalampotiladata = jsonData.data[laskejsondata].temp_air;
+
 
      let last = document.getElementById("demo").innerHTML  = "<h1>" + paikannimi + "</h1>" +"<p>Vedenlämpötila: "+ vedenlampotiladata+"</p>"+  "<p> Ilmanlämpötila: "+ ilmalampotiladata+"</p>"
     nouda(bbox)
@@ -63,6 +65,8 @@ fetch(data1).then(response => {
 function nouda(query){
     
     let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=${query}epsg::4326&parameters=ws_10min,t2m&crs=EPSG::3067&`
+
+
 console.log(arvo)
     fetch(arvo)
   .then(response => response.text())
