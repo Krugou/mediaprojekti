@@ -1,7 +1,29 @@
 
 
 // index.js
-let data="https://iot.fvh.fi/opendata/uiras/70B3D57050004E0E_v1.json";
+let data="./json/rannat.json";
+function urlrandomizer(data1) {
+fetch(data).then(response => {
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw 'HTTP ERROR';
+  }
+}).then((jsonData) => { 
+
+  let datarandomurl = jsonData.data[getRandomIntInclusive(0,29)].url
+  
+  function getRandomIntInclusive(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+  }
+  console.log(datarandomurl)
+  searchf(datarandomurl);
+}).catch((error) => {
+  console.log("error")
+ });
+}
 function searchf(data1) {
 
 
@@ -22,7 +44,7 @@ fetch(data1).then(response => {
       console.log(aikajsondata)
       console.log(vedenlampotiladata)
       console.log(ilmalampotiladata)
-    document.getElementById("demo").innerHTML  = "<h1>" + paikannimi + "</h1>" +"<p>Vedenlämpötila: "+ vedenlampotiladata+"</p>"+  "<p> Ilmanlämpötila: "+ ilmalampotiladata+"</p>"
+     let last = document.getElementById("demo").innerHTML  = "<h1>" + paikannimi + "</h1>" +"<p>Vedenlämpötila: "+ vedenlampotiladata+"</p>"+  "<p> Ilmanlämpötila: "+ ilmalampotiladata+"</p>"
     
 
   }).catch((error) => {
@@ -30,6 +52,6 @@ fetch(data1).then(response => {
   });
 }
 window.onload = () => {
-searchf(data);
+urlrandomizer(data);
 
 }
