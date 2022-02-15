@@ -38,11 +38,11 @@ fetch(data1).then(response => {
        
       let lat = jsonData.meta.lat;
       let lon = jsonData.meta.lon;
-      let minuslat = (lat - 0.08)
-      let minuslon = (lon - 0.08)
+      let minuslat = (lat - 0.09)
+      let minuslon = (lon - 0.09)
      
-      let latplus = (lat + 0.08)
-      let lonplus = (lon + 0.08)
+      let latplus = (lat + 0.09)
+      let lonplus = (lon + 0.09)
       let bbox = minuslon.toFixed(3)+"," +minuslat.toFixed(3) +","+ lonplus.toFixed(3)+"," + latplus.toFixed(3) + ","
       
       console.log(bbox)
