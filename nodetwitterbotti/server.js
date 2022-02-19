@@ -17,6 +17,7 @@ const fetchDataJson = await response.json();
 var mainTempdata = [];
 var mainplacedata = [];
 var mainilmalampotiladata = [];
+var mainaikajsondata = [];
 for (let i = 0; i < 14; i++) {
     const response = await fetch(fetchDataJson.data[i].url);
     const fetchDataJson2 = await response.json();
@@ -28,22 +29,28 @@ for (let i = 0; i < 14; i++) {
     mainTempdata.push(vedenlampotiladata)
     mainplacedata.push(paikannimi)
     mainilmalampotiladata.push(ilmalampotiladata)
-    
+    mainaikajsondata.push(aikajsondata)
+    console.log(paikannimi)
+    console.log(aikajsondata)
+    console.log(vedenlampotiladata)
+    console.log(ilmalampotiladata )
   }
 const max = Math.max(...mainTempdata);
 const index = mainTempdata.indexOf(max);
     let paikka = mainplacedata[index]
     let vedenlampotila = mainTempdata[index]
     let ilmalampotila = mainilmalampotiladata[index]
+    let aika =new Date(mainaikajsondata[index]).valueOf();
     console.log(paikka)
     console.log(vedenlampotila)
     console.log(ilmalampotila)
+    console.log(aika)
     try {
-       await userClient.v2.tweet('Kuumin uimaveden lämpötila on paikassa: ' + paikka + ' asteita on ' + vedenlampotila+ ' \xB0C  ja '+ 'Ilman lämpötila on '+ilmalampotila+ ' \xB0C')
-        console.log("tweettaus onnistui")
+       await userClient.v2.tweet('Kuumin uimaveden lämpötila on paikassa: ' + paikka + ' asteita on ' + vedenlampotila+ ' \xB0C  ja '+ 'Ilman lämpötila on '+ilmalampotila+ ' \xB0C ')
+        console.log('tweettaus onnistui '+ 'twiitti: Kuumin uimaveden lämpötila on paikassa: ' + paikka + ' asteita on ' + vedenlampotila+ ' \xB0C  ja '+ 'Ilman lämpötila on '+ilmalampotila+ ' \xB0C ')
      } catch (e) {
          console.error(e)
      }
 }
 tweet()
-setInterval(tweet,1800000)
+//setInterval(tweet,1800000)
