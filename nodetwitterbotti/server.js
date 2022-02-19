@@ -53,4 +53,4 @@ const index = mainTempdata.indexOf(max);
      }
 }
 tweet()
-//setInterval(tweet,1800000)
+setInterval(tweet,1800000)
