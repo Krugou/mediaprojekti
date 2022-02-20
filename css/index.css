@@ -1,1 +1,7 @@
 /* index.css */
+
+body,header,h1,main, article, aside,nav,footer,p,a {
+    
+    border: 1px solid black;
+}
+

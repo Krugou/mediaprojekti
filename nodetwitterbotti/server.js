@@ -14,10 +14,10 @@ const tweet = async () => {
 
   const response = await fetch(data);
   const fetchDataJson = await response.json();
-  var mainTempdata = [];
-  var mainplacedata = [];
-  var mainilmalampotiladata = [];
-  var mainaikajsondata = [];
+  let mainTempdata = [];
+  let mainplacedata = [];
+  let mainilmalampotiladata = [];
+  let mainaikajsondata = [];
   for (let i = 0; i < 14; i++) {
     const response = await fetch(fetchDataJson.data[i].url);
     const fetchDataJson2 = await response.json();
