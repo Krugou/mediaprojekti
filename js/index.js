@@ -1,6 +1,7 @@
 // index.js
 let data = './json/rannat.json';
-
+let websiteCore = document.getElementsByTagName("BODY")[0].innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav> <main><article ><p id="demo"></p><p id="tulos"></p><p id=twitterbot></p><br></article><aside ></aside></main><footer id="footerid"></footer>'
+let twitterBot = document.getElementById('twitterbot').innerHTML = '<a class="twitter-timeline" data-width="220" data-height="400" data-theme="light" href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a> '
 function urlrandomizer(data1) {
   fetch(data).then(response => {
     if (response.ok) {
