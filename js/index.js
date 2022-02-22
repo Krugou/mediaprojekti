@@ -97,7 +97,7 @@ window.onload = () => {
   urlrandomizer(data);
 
 };
-
+// TORIN KOODI ALKAA //
 //funktio rantojen tietojen hakemiseen.
 async function haeRantalista() {
 
