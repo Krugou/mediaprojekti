@@ -1,7 +1,8 @@
 // index.js
 let data = './json/rannat.json';
-let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav> <main><article ><p id="demo"></p><p id="tulos"></p><p id=twitterbot></p><br></article><aside ></aside></main><footer id="footerid"></footer>'
+let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav> <main><article ><p id="demo"></p><p id="tulos"></p><p id=twitterbot></p><button onclick="getLocation()">Hae sijaintisi</button><p id="sijainti"></p><br></article><aside ></aside></main><footer id="footerid"></footer>'
 let twitterBot = document.getElementById('twitterbot').innerHTML = '<a class="twitter-timeline" data-width="220" data-height="400" data-theme="light" href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a> '
+
 function urlrandomizer(data1) {
   fetch(data).then(response => {
     if (response.ok) {
@@ -93,11 +94,21 @@ function nouda(query) {
     console.log(tulos);
   });
 }
+//käyttäjän sijainnin hakeminen
+let sijainti = document.getElementById("sijainti")
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    sijainti.innerHTML = "Selaimesi ei tue geopaikannusta.";
+  }
+}  
+// Näytä sijaintikoordinaatit 
+function showPosition(position) {
+  sijainti.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude+ ' <a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>';
+} 
 
-window.onload = () => {
-  urlrandomizer(data);
-
-};
 // TORIN KOODI ALKAA //
 //funktio rantojen tietojen hakemiseen.
 async function haeRantalista() {
@@ -228,4 +239,5 @@ async function haeValittuRanta(evt){
 }
 window.onload = () => {
     haeRantalista();
+    
 }
