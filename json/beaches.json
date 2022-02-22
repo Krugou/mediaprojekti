@@ -1,60 +1,74 @@
 {
 	"beaches": [
 	{
-		"beach_name": "Uunisaari",
-		"beach_url": "003C62A8_v1.json"
+		"name": "Uunisaari",
+		"url": "003C62A8_v1",
+		"location": "Helsinki"
 	},
 	{
-		"beach_name": "Kalasatama",
-		"beach_url": "70B3D57050001A97_v1.json"
+		"name":"Kalasatama",
+		"url":"70B3D57050001A97_v1",
+		"location": "Helsinki"
 	},
 	{
-		"beach_name": "Pikkukosken uimaranta",
-		"beach_url": "70B3D57050001AB9_v1.json"
+		"name":"Pikkukosken uimaranta",
+		"url":"70B3D57050001AB9_v1",
+		"location": "Helsinki"
 	},
 	{
-		"beach_name": "Kuusijärvi (Vantaa)",
-		"beach_url": "70B3D57050001ADA_v1.json"
+		"name":"Kuusijärvi (Vantaa)",
+		"url":"70B3D57050001ADA_v1",
+		"location": "Helsinki"
 	},
 	{
-		"beach_name": "Lauttasaari (Vaskiniemi)",
-		"beach_url": "70B3D57050001AF1_v1.json"
+		"name":"Lauttasaari (Vaskiniemi)",
+		"url":"70B3D57050001AF1_v1",
+		"location": "Helsinki"
 	},
 	{
-		"beach_name": "Vetokannas (Vantaa)",
-		"beach_url": "70B3D57050001BA6_v1.json"
+		"name":"Vetokannas (Vantaa)",
+		"url":"70B3D57050001BA6_v1",
+		"location": "Helsinki"
 	},	
 	{
-		"beach_name": "Rastilan Uimaranta",
-		"beach_url": "70B3D57050001BBE_v1.json"
+		"name":"Rastilan Uimaranta",
+		"url":"70B3D57050001BBE_v1",
+		"location": "Helsinki"
 	},	
 	{
-		"beach_name": "Pihlajasaari",
-		"beach_url": "70B3D57050004D86_v1.json"
+		"name":"Pihlajasaari",
+		"url":"70B3D57050004D86_v1",
+		"location": "Helsinki"
 	},			
 	{
-		"beach_name": "Marjaniemen Uimaranta",
-		"beach_url": "70B3D57050004E0E_v1.json"
+		"name":"Marjaniemen Uimaranta",
+		"url":"70B3D57050004E0E_v1",
+		"location": "Helsinki"
 	},
 	{
-		"beach_name": "Hietaniemi (Ourit)",
-		"beach_url": "70B3D57050004FB9_v1.json"
+		"name":"Hietaniemi (Ourit)",
+		"url":"70B3D57050004FB9_v1",
+		"location": "Helsinki"
 	},			
 	{
-		"beach_name": "Lauttasaaren Ulkoilupuisto",
-		"beach_url": "70B3D57050004FC2_v1.json"
+		"name":"Lauttasaaren Ulkoilupuisto",
+		"url":"70B3D57050004FC2_v1",
+		"location": "Helsinki"
 	},	
 	{
-		"beach_name": "Herttoniemi (Tuorinniemen uimalaituri)",
-		"beach_url": "70B3D57050004FE1_v1.json"
+		"name":"Herttoniemi (Tuorinniemen uimalaituri)",
+		"url":"70B3D57050004FE1_v1",
+		"location": "Helsinki"
 	},									
 	{
-		"beach_name": "Hanikan uimaranta (Espoo)",
-		"beach_url": "70B3D5705000504F_v1.json"
+		"name":"Hanikan uimaranta (Espoo)",
+		"url":"70B3D5705000504F_v1",
+		"location": "Helsinki"
 	},
 	{
-		"beach_name": "Kattilajärvi (Espoo)",
-		"beach_url": "70B3D5705000516A_v1.json"
+		"name":"Kattilajärvi (Espoo)",
+		"url":"70B3D5705000516A_v1",
+		"location": "Helsinki"
 	}
 	]
 }
