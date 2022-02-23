@@ -103,8 +103,10 @@ function getLocation() {
     sijainti.innerHTML = "Selaimesi ei tue geopaikannusta.";
   }
 }  
-// Näytä sijaintikoordinaatit 
+// Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle
 function showPosition(position) {
+  let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+  marker.bindPopup('Oma sijainti');
   sijainti.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude+ ' <a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>';
 } 
