@@ -5,17 +5,22 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     border: 1px solid black;
 }
 
-aside {
-    /* border: 3px solid green; */
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color:silver;
+    }
+    #map {
+        height: 100%;
+        width: 100vw;
+    }
 }
-
-body {
-    /* color: blanchedalmond; */
-    /* background-color: yellow; */
+@media only screen and (min-width: 600px) {
+    main {
+        display:flex;
+        justify-content:space-between;
+    }
 }
-
-
-
 button {
     padding: 4px;
     background-color: red;
@@ -37,10 +42,7 @@ footer {
 
 
 }
-main {
-    display:flex;
-    justify-content:space-between;
-}
+
 
 footer p {
     margin: 2px 2px;
