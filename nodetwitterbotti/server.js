@@ -3,7 +3,7 @@ import {TwitterApi} from 'twitter-api-v2';
 
 import fetch from 'node-fetch';
 
-let data = '.json/beaches.json';
+let data = 'https://users.metropolia.fi/~aleksino/mediaprojekti/json/beaches.json';
 const userClient = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
   appSecret: process.env.TWITTER_API_SECRET,
