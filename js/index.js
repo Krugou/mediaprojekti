@@ -1,8 +1,8 @@
 // index.js
 let data = './json/beaches.json';
-let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav><main><article ><p id="demo"></p><p id="tulos"></p><button onclick="getLocation()">Hae sijaintisi</button><p id="sijainti"></p><br><p id=saatulos></p></article><section id=socialmap><p id=twitterbot></p><div id="map"></div></section><aside ></aside></main><footer id="footerid"></footer>'
+let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav><main ><article ><p id="demo"></p><p id="tulos"></p><button onclick="getLocation()">Hae sijaintisi</button><p id="sijainti"></p><br><p id=saatulos></p></article><section id=socialmap><p id=twitterbot></p><div id="map"></div></section><aside ></aside></main><p id="palaute"></p><footer id="footerid"></footer>'
 let twitterBot = document.getElementById('twitterbot').innerHTML = '<a class="twitter-timeline" data-width="220" data-height="400" data-theme="light" href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a> '
-let footerEnd = document.getElementById('footerid').innerHTML = '<div><h3>Tekijät:</h3><p>Tor-Erik</p><p>Joonas</p><p>Aleksi</p></div><div><h3>social</h3><a href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div><div><h3>sivukartta</h3><p>sivu 1</p><p>sivu 2</p><p>sivu 3</p></div>'
+let footerEnd = document.getElementById('footerid').innerHTML = '<div><h3>Tekijät:</h3><p>Tor-Erik</p><p>Joonas</p><p>Aleksi</p></div><div><h3>social</h3><a href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div><div><h3>sivukartta</h3><p>sivu 2</p><p>sivu 3</p><button onclick="palauteLomake()">palautelomake</button></div>'
 /*
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet turpis sed tortor congue euismod. Proin orci leo, rutrum at laoreet vel, finibus at mi. Pellentesque sodales ultrices sem in rutrum. Fusce vel nulla et ipsum pretium sodales vitae nec orci. Nam rhoncus convallis mauris eget efficitur. Aenean vel enim ultrices, pulvinar metus quis, consequat massa.
  Cras varius nulla at varius euismod. Sed ligula arcu, placerat in commodo finibus, 
@@ -11,6 +11,10 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet turpis s
   Maecenas luctus erat ac rutrum dignissim. Nulla a ex libero. Pellentesque vel massa consequat, commodo nisl ut, viverra orci.
 
 */
+function palauteLomake () {
+let palauteLomake = document.getElementById("palaute").innerHTML = '<form action=".php"> <label for="fname">Etunimi:</label><br> <input type="text" id="fname" name="fname" placeholder="Matti"><br>  <label for="lname">Sukunimi:</label><br>  <input type="text" id="lname" name="lname" placeholder="Meikäläinen"><br> <label for="email">Sähköposti:</label><br><input type="email" id="email" name="email" placeholder="mattimeikalainen@hel.fi"> <br><br><label for="feedback">Palaute:</label><br><textarea id="feedback" placeholder="Palautteesi"></textarea><br><input type="submit" value="Submit"><input type="reset"></form>'
+
+}
 function urlrandomizer(data1) {
   fetch(data).then(response => {
     if (response.ok) {
@@ -20,7 +24,7 @@ function urlrandomizer(data1) {
     }
   }).then((jsonData) => {
 
-    let datarandomurl = "https://iot.fvh.fi/opendata/uiras/"+jsonData.beaches[getRandomIntInclusive(0, 14)].url+".json";
+    let datarandomurl = "https://iot.fvh.fi/opendata/uiras/"+jsonData.beaches[getRandomIntInclusive(0, jsonData.length)].url+".json";
 
     function getRandomIntInclusive(min, max) {
       min = Math.ceil(min);
