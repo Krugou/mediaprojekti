@@ -107,7 +107,7 @@ function nouda(query) {
   });
 }
 //käyttäjän sijainnin hakeminen
-let sijainti = document.getElementById("sijainti")
+let sijainti = document.getElementById("sijainti");
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -129,30 +129,42 @@ function showPosition(position) {
   let lonplus = (position.coords.longitude + 0.15);
   let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
         lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
- nouda(bbox)
+ nouda(bbox);
 } 
 
 // TORIN KOODI ALKAA //
-//funktio rantojen tietojen hakemiseen.
-async function haeRantalista() {
 
-    const vastaus = await fetch("./json/beaches.json");
+// Funktio rantojen tietojen hakemiseen
+// Ranta on rannan nimi. Jos ranta on tyhjä, palauttaa beaches.jsonin
+async function haeRanta(ranta){
+    let vastaus;
+    if (ranta === undefined){
+        vastaus = await fetch("./json/beaches.json");
+    } else{
+        vastaus = await fetch("https://iot.fvh.fi/opendata/uiras/"+ranta+".json");
+    }
     // Jos tapahtuu virhe, heitetään ilmoitus
     if (!vastaus.ok) throw new Error("Jokin meni pieleen");
     // Muutetaan ladattu tekstimuotoinen JSON JavaScript-olioksi/taulukoksi.
 
     const data = await vastaus.json();
 
-    // Tallennetaan logiin vastaus vastaus
+    // Logataan vastaus
     // console.log(data);
 
-    //Tarkistetaan onhan rantalista olemassa
+    //Tarkistetaan onhan rannan lämpötiladata varmasti olemassa
     try{
-        let kokeilu = data.beaches[0];
+        let kokeilu = data[0];
     } catch (error) {
-        !alert ("Tiedostoa, josta lista rannoista ja niiden datan sijainnista, ei ole olemassa.");
+        !alert ("Rannan lämpötiladatan hakeminen epäonnistui");
     }
 
+    return data;
+}
+
+async function haeRantalista() {
+
+    let data = await haeRanta();
     //Näistä löytyy rantojen nimi ja datan sijainti
     let rantaNimi = [];
     let rantaData = [];
@@ -165,7 +177,6 @@ async function haeRantalista() {
 
         try {
             rantaNimi.push(data.beaches[i].name);
-            //console.log("lol" + data.beaches[i].name);
         } catch (error){
             console.log("Rannalla " + i + " ei ole nimeä");
         }
@@ -222,15 +233,7 @@ async function haeValittuRanta(evt){
     tyhjenna();
 
     const url = document.getElementById("rannat").value;
-    const vastaus = await fetch("https://iot.fvh.fi/opendata/uiras/"+url+".json");
-    // Jos tapahtuu virhe, heitetään ilmoitus
-    if (!vastaus.ok) throw new Error("Jokin meni pieleen");
-    // Muutetaan ladattu tekstimuotoinen JSON JavaScript-olioksi/taulukoksi.
-
-    const data = await vastaus.json();
-
-    // Logataan vastaus
- //   console.log(data);
+    let data = await haeRanta(document.getElementById("rannat").value);
 
     //Tarkistetaan onhan rannan lämpötiladata varmasti olemassa
     try{
