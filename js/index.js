@@ -1,6 +1,6 @@
 // index.js
 let data = './json/rannat.json';
-let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav><main><article ><p id="demo"></p><p id="tulos"></p><button onclick="getLocation()">Hae sijaintisi</button><p id="sijainti"></p><br></article><section id=socialmap><p id=twitterbot></p><div id="map"></div></section><aside ></aside></main><footer id="footerid"></footer>'
+let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav><main><article ><p id="demo"></p><p id="tulos"></p><button onclick="getLocation()">Hae sijaintisi</button><p id="sijainti"></p><br><p id=saatulos></p></article><section id=socialmap><p id=twitterbot></p><div id="map"></div></section><aside ></aside></main><footer id="footerid"></footer>'
 let twitterBot = document.getElementById('twitterbot').innerHTML = '<a class="twitter-timeline" data-width="220" data-height="400" data-theme="light" href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a> '
 let footerEnd = document.getElementById('footerid').innerHTML = '<div><h3>Tekijät:</h3><p>Tor-Erik</p><p>Joonas</p><p>Aleksi</p></div><div><h3>social</h3><a href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div><div><h3>sivukartta</h3><p>sivu 1</p><p>sivu 2</p><p>sivu 3</p></div>'
 /*
@@ -94,12 +94,12 @@ function nouda(query) {
     console.log(mittaussarja2[vahenna2]);
     console.log(aikasarja2[vahennaaika2]);
 
-    let tulos = document.getElementById('tulos').innerText = 'sijainnissa: ' +
+    let saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
         paikka3[1].childNodes[0].textContent + ' on lämpötila ' +
         mittaussarja2[vahenna2].textContent + ' celsiusta' +
         ' kello oli järjestelmän mukaan: ' +
         aikasarja2[vahennaaika2].textContent;
-    console.log(tulos);
+    console.log(saatulos);
   });
 }
 //käyttäjän sijainnin hakeminen
@@ -111,13 +111,21 @@ function getLocation() {
     sijainti.innerHTML = "Selaimesi ei tue geopaikannusta.";
   }
 }
-// Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle
+// Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle + hakee bounding boxilla lähimmän säähavaintoaseman sen hetken lämpötilan
 function showPosition(position) {
     map.setView([position.coords.latitude, position.coords.longitude], 11);
     let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
     marker.bindPopup('Oma sijainti');
   sijainti.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude+ ' <a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>';
+  let minuslat = (position.coords.latitude - 0.15);
+  let minuslon = (position.coords.longitude - 0.15);
+
+  let latplus = (position.coords.latitude + 0.15);
+  let lonplus = (position.coords.longitude + 0.15);
+  let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
+        lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
+ nouda(bbox)
 } 
 
 // TORIN KOODI ALKAA //
