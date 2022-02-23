@@ -105,6 +105,7 @@ function getLocation() {
 }  
 // Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle
 function showPosition(position) {
+  map.setView([position.coords.latitude, position.coords.longitude], 11);
   let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
   marker.bindPopup('Oma sijainti');
   sijainti.innerHTML = "Latitude: " + position.coords.latitude + 
