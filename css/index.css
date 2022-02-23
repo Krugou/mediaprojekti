@@ -4,10 +4,30 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     
     border: 1px solid black;
 }
+
+body {
+    /* color: blanchedalmond; */
+    /* background-color: yellow; */
+}
+
+
+
+button {
+    padding: 4px;
+    background-color: red;
+    color: white;
+}
+
+
+
+footer a {
+    color: rgba(255, 255, 255, 0.746);;
+}
 footer {
     display:flex;
     justify-content:space-evenly;
-
+    background-color: rgba(0, 0, 0, 0.452);
+    color: rgba(255, 255, 255, 0.746);
     text-align: center;
     padding: 3px;
 
