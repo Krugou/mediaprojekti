@@ -8,18 +8,26 @@ body,header,h1,main, article, aside,nav,footer,p,a {
 
 @media only screen and (max-width: 600px) {
     body {
+        /* media query toimii testausväri */
         background-color:silver;
     }
     #map {
         height: 100%;
         width: 100vw;
     }
-
+    #socialmap { 
+        display:flex;
+        flex-wrap: wrap-reverse;
+        
+    }
 }
 @media only screen and (min-width: 600px) {
     main {
         display:flex;
         justify-content:space-between;
+    }
+    #twitterbot{
+        width:220px;
     }
     #socialmap {
         display:flex;
