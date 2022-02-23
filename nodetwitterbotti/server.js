@@ -18,7 +18,7 @@ const tweet = async () => {
   let mainplacedata = [];
   let mainilmalampotiladata = [];
   let mainaikajsondata = [];
-  for (let i = 0; i < 14; i++) {
+  for (let i = 0; i < fetchDataJson.beaches.length; i++) {
     const response = await fetch("https://iot.fvh.fi/opendata/uiras/"+fetchDataJson.beaches[i].url+".json");
     const fetchDataJson2 = await response.json();
     let laskejsondata = fetchDataJson2.data.length - 1;
