@@ -1,5 +1,5 @@
 // index.js
-let data = './json/rannat.json';
+let data = './json/beaches.json';
 let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav><main><article ><p id="demo"></p><p id="tulos"></p><button onclick="getLocation()">Hae sijaintisi</button><p id="sijainti"></p><br><p id=saatulos></p></article><section id=socialmap><p id=twitterbot></p><div id="map"></div></section><aside ></aside></main><footer id="footerid"></footer>'
 let twitterBot = document.getElementById('twitterbot').innerHTML = '<a class="twitter-timeline" data-width="220" data-height="400" data-theme="light" href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a> '
 let footerEnd = document.getElementById('footerid').innerHTML = '<div><h3>Tekijät:</h3><p>Tor-Erik</p><p>Joonas</p><p>Aleksi</p></div><div><h3>social</h3><a href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div><div><h3>sivukartta</h3><p>sivu 1</p><p>sivu 2</p><p>sivu 3</p></div>'
@@ -20,7 +20,7 @@ function urlrandomizer(data1) {
     }
   }).then((jsonData) => {
 
-    let datarandomurl = jsonData.data[getRandomIntInclusive(0, 14)].url;
+    let datarandomurl = "https://iot.fvh.fi/opendata/uiras/"+jsonData.beaches[getRandomIntInclusive(0, 14)].url+".json";
 
     function getRandomIntInclusive(min, max) {
       min = Math.ceil(min);
@@ -43,7 +43,7 @@ function searchf(data1) {
       throw 'HTTP ERROR';
     }
   }).then((jsonData) => {
-    let laskejsondata = jsonData.data.length - 1;
+    let laskejsondata = jsonData.beaches.length - 1;
 
     let lat = jsonData.meta.lat;
     let lon = jsonData.meta.lon;
@@ -55,7 +55,7 @@ function searchf(data1) {
     let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
         lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
 
-    console.log(bbox);
+ //   console.log(bbox);
 
     let paikannimi = jsonData.meta.name;
     let aikajsondata = jsonData.data[laskejsondata].time;
@@ -76,9 +76,9 @@ function nouda(query) {
 
   let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=${query}epsg::4326&parameters=t2m,ws_10min&crs=EPSG::3067&`;
 
-  console.log(arvo);
+//  console.log(arvo);
   fetch(arvo).then(response => response.text()).then((xml) => {
-    console.log(xml);
+   // console.log(xml);
     let parser = new DOMParser();
     let xmlDOM = parser.parseFromString(xml, 'application/xml');
     let mittaussarja2 = xmlDOM.querySelector('MeasurementTimeseries').
@@ -88,18 +88,18 @@ function nouda(query) {
         querySelectorAll('time');
     let vahennaaika2 = aikasarja2.length - 1;
     let paikka3 = xmlDOM.querySelectorAll('name');
-    console.log(paikka3[1].childNodes[0]);
-    console.log(mittaussarja2);
-    console.log(vahenna2);
-    console.log(mittaussarja2[vahenna2]);
-    console.log(aikasarja2[vahennaaika2]);
+  //  console.log(paikka3[1].childNodes[0]);
+  //  console.log(mittaussarja2);
+  // console.log(vahenna2);
+  // console.log(mittaussarja2[vahenna2]);
+  //  console.log(aikasarja2[vahennaaika2]);
 
     let saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
         paikka3[1].childNodes[0].textContent + ' on lämpötila ' +
         mittaussarja2[vahenna2].textContent + ' celsiusta' +
         ' kello oli järjestelmän mukaan: ' +
         aikasarja2[vahennaaika2].textContent;
-    console.log(saatulos);
+   // console.log(saatulos);
   });
 }
 //käyttäjän sijainnin hakeminen
@@ -226,7 +226,7 @@ async function haeValittuRanta(evt){
     const data = await vastaus.json();
 
     // Logataan vastaus
-    console.log(data);
+ //   console.log(data);
 
     //Tarkistetaan onhan rannan lämpötiladata varmasti olemassa
     try{
