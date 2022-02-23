@@ -5,6 +5,10 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     border: 1px solid black;
 }
 
+aside {
+    /* border: 3px solid green; */
+}
+
 body {
     /* color: blanchedalmond; */
     /* background-color: yellow; */
@@ -55,7 +59,7 @@ footer p {
 
 #socialmap {
     display:flex;
-    flex-direction:row-reverse;
-    
+    flex-direction: row-reverse;
+    /* margin: auto; */
 }
 
