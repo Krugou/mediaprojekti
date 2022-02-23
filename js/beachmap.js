@@ -1,6 +1,13 @@
 let map = L.map('map').setView([60.247757713113934, 24.833770383021534], 10);
 let beachesData =[];
+/*
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet turpis sed tortor congue euismod. Proin orci leo, rutrum at laoreet vel, finibus at mi. Pellentesque sodales ultrices sem in rutrum. Fusce vel nulla et ipsum pretium sodales vitae nec orci. Nam rhoncus convallis mauris eget efficitur. Aenean vel enim ultrices, pulvinar metus quis, consequat massa.
+ Cras varius nulla at varius euismod. Sed ligula arcu, placerat in commodo finibus,
+ tristique id sapien. Nullam lobortis tortor arcu, cursus efficitur magna pharetra eu. Phasellus mollis, libero ac tempus ultrices, diam quam vestibulum nisi,
+ a aliquam augue massa vel elit. Quisque porta justo eleifend ex dapibus ultricies. Duis vestibulum mollis eros ac tristique. In hac habitasse platea dictumst.
+  Maecenas luctus erat ac rutrum dignissim. Nulla a ex libero. Pellentesque vel massa consequat, commodo nisl ut, viverra orci.
 
+*/
 let tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
