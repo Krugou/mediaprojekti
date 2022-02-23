@@ -17,14 +17,14 @@ async function addMarkers() {
         for (let i=0; i<beaches.data.length; i++) { //length =14
             beachesData[i]=beaches.data[i].url;
         }
-        console.log(beaches.data.length);
-        console.log(beaches.data[0].url);
-        console.log(beachesData[7]);
+    //  console.log(beaches.data.length);
+    //  console.log(beaches.data[0].url);
+    //  console.log(beachesData[7]);
         for (let i=0; i<beachesData.length; i++) {
             try {
                 const vastaus2 = await fetch(beachesData[i]);              // Käynnistetään haku
                 const beaches2 = await vastaus2.json();
-                console.log(beaches2.meta.name);
+            //  console.log(beaches2.meta.name);
                 let lat = beaches2.meta.lat
                 let lon = beaches2.meta.lon
                 let marker = L.marker([lat, lon]).addTo(map);
