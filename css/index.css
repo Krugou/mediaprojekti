@@ -5,17 +5,36 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     border: 1px solid black;
 }
 
-aside {
-    /* border: 3px solid green; */
+
+@media only screen and (max-width: 600px) {
+    body {
+        /* media query toimii testausväri */
+        background-color:silver;
+    }
+    #map {
+        height: 100%;
+        width: 100vw;
+    }
+    #socialmap { 
+        display:flex;
+        flex-wrap: wrap-reverse;
+        
+    }
 }
-
-body {
-    /* color: blanchedalmond; */
-    /* background-color: yellow; */
+@media only screen and (min-width: 600px) {
+    main {
+        display:flex;
+        justify-content:space-between;
+    }
+    #twitterbot{
+        width:220px;
+    }
+    #socialmap {
+        display:flex;
+        flex-direction: row-reverse;
+        /* margin: auto; */
+    }
 }
-
-
-
 button {
     padding: 4px;
     background-color: red;
@@ -37,10 +56,7 @@ footer {
 
 
 }
-main {
-    display:flex;
-    justify-content:space-between;
-}
+
 
 footer p {
     margin: 2px 2px;
@@ -57,9 +73,5 @@ footer p {
     max-height: 100%;
 }
 
-#socialmap {
-    display:flex;
-    flex-direction: row-reverse;
-    /* margin: auto; */
-}
+
 
