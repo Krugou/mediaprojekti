@@ -14,10 +14,7 @@ body,header,h1,main, article, aside,nav,footer,p,a {
         height: 100%;
         width: 100vw;
     }
-    #twitter-widget-0 {
-        height: 100%;
-        width: 100vw;
-    }
+
 }
 @media only screen and (min-width: 600px) {
     main {
