@@ -36,10 +36,10 @@ async function addMarkers() {
                 let lon = beaches2.meta.lon
                 let marker = L.marker([lat, lon]).addTo(map);
                 if (beaches2.data[beaches2.data.length-1].temp_water >= -50) {
-                    marker.bindPopup(`<b>${beaches2.meta.name}<b><br><b>Ilman lampotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br><b>Veden lampotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C`);
+                    marker.bindPopup(`<b>${beaches2.meta.name}<b><br><b>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br><b>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C`);
                 }
                 else if (beaches2.data[beaches2.data.length-1].temp_water <= -50) {
-                    marker.bindPopup(`<b>${beaches2.meta.name}<b><br><b>Ilman lampotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br><b>Veden lampotila: Tuntematon`);
+                    marker.bindPopup(`<b>${beaches2.meta.name}<b><br><b>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br><b>Veden lämpotila: Tuntematon`);
                 }
                 }
             catch (error) {                                          // Otetaan heitetty virheilmoitus kiinni
