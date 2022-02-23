@@ -13,6 +13,11 @@ footer {
 
 
 }
+main {
+    display:flex;
+    justify-content:space-between;
+}
+
 footer p {
     margin: 2px 2px;
 
@@ -31,6 +36,6 @@ footer p {
 #socialmap {
     display:flex;
     flex-direction:row-reverse;
-
+    
 }
 
