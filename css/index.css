@@ -4,7 +4,19 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     
     border: 1px solid black;
 }
+footer {
+    display:flex;
+    justify-content:space-evenly;
 
+    text-align: center;
+    padding: 3px;
+
+
+}
+footer p {
+    margin: 2px 2px;
+
+}
 #map {
     height: 100%;
     margin: 0;
@@ -16,4 +28,9 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     max-height: 100%;
 }
 
+#socialmap {
+    display:flex;
+    flex-direction:row-reverse;
+
+}
 
