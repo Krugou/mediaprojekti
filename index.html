@@ -14,7 +14,36 @@
 
     <title>testiympäristö</title>
 </head>
-<body>
+<body> <!-- let websiteCore = document.body.innerHTML = -->
+<header><h1>otsikkopohja</h1></header>
+<nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav>
+<main>
+    <article><p id="demo"></p>
+        <p id="tulos"></p>
+        <button onclick="getLocation()">Hae sijaintisi</button>
+        <p id="sijainti"></p><br>
+        <p id=saatulos></p></article>
+    <section id=socialmap>  <!--let footerEnd = document.getElementById('footerid').innerHTML = -->
+        <p id=twitterbot><!-- let twitterBot = document.getElementById('twitterbot').innerHTML =   -->
+            <a class="twitter-timeline" data-height="400" data-theme="light" data-width="100vw"
+               href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a></p>
+        <div id="map"></div>
+    </section>
+    <aside></aside>
+</main>
+<p id="palaute"></p>
+<footer id="footerid"><!-- let footerEnd = document.getElementById('footerid').innerHTML =-->
+    <div><h3>Tekijät:</h3>
+        <p>Tor-Erik</p>
+        <p>Joonas</p>
+        <p>Aleksi</p></div>
+    <div><h3>social</h3><a href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div>
+    <div><h3>sivukartta</h3>
+        <a class="myButton" href="#">sivu 1</a>
+        <a class="myButton" href="#">sivu 2</a>
+        <button class="myButton" onclick="palauteLomake()">Palautelomake</button>
+    </div>
+</footer>
 
 <script src="js/index.js"></script>
 <script src="js/beachmap.js"></script>

@@ -62,7 +62,10 @@ footer {
 
 
 }
-
+footer div {
+    display:flex;
+    flex-direction: column;
+}
 
 footer p {
     margin: 2px 2px;
@@ -79,5 +82,27 @@ footer p {
     max-height: 100%;
 }
 
-
+.myButton {
+	box-shadow: 3px 3px 13px 0px #899599;
+	background:linear-gradient(to bottom, #fafafa 5%, #868a13 100%);
+	background-color:#fafafa;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#0d1517;
+	font-family:Verdana;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #868a13 5%, #fafafa 100%);
+	background-color:#868a13;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
 
