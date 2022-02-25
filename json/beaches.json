@@ -3,62 +3,86 @@
 		{
 			"name": "Uunisaari",
 			"url": "003C62A8_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.15294",
+			"lon": "24.94991"
 		},
 		{
 			"name":"Kalasatama",
 			"url":"70B3D57050001A97_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.180724",
+			"lon": "24.979968"
 		},
 		{
 			"name":"Pikkukosken uimaranta",
 			"url":"70B3D57050001AB9_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.227704",
+			"lon": "24.983821"
 		},
 		{
 			"name":"Kuusijärvi (Vantaa)",
 			"url":"70B3D57050001ADA_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.313343",
+			"lon": "25.113967"
 		},
 		{
 			"name":"Lauttasaari (Vaskiniemi)",
 			"url":"70B3D57050001AF1_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.1605",
+			"lon": "24.85241"
 		},
 		{
 			"name":"Vetokannas (Vantaa)",
 			"url":"70B3D57050001BA6_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.27026",
+			"lon": "24.88056"
 		},
 		{
 			"name":"Rastilan Uimaranta",
 			"url":"70B3D57050001BBE_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.207977",
+			"lon": "25.114849"
 		},
 		{
 			"name":"Pihlajasaari",
 			"url":"70B3D57050004D86_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.140588",
+			"lon": "24.9157002"
 		},
 		{
 			"name":"Marjaniemen Uimaranta",
 			"url":"70B3D57050004E0E_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.198449",
+			"lon": "25.076416"
 		},
 		{
 			"name":"Hietaniemi (Ourit)",
 			"url":"70B3D57050004FB9_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.1715",
+			"lon": "24.8983"
 		},
 		{
 			"name":"Lauttasaaren Ulkoilupuisto",
 			"url":"70B3D57050004FC2_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.14682",
+			"lon": "24.8907"
 		},
 		{
 			"name":"Herttoniemi (Tuorinniemen uimalaituri)",
 			"url":"70B3D57050004FE1_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.18554",
+			"lon": "25.04012"
 		},
 		{
 			"name":"Hanikan uimaranta (Espoo)",
@@ -68,47 +92,65 @@
 		{
 			"name":"Kattilajärvi (Espoo)",
 			"url":"70B3D5705000516A_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.127797",
+			"lon": "24.691871"
 		},
 		{
 			"name": "Pikku-Huopalahti",
 			"url": "70B3D5705000E653_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.197827",
+			"lon": "24.890244"
 		},
 		{
 			"name": "Töölönlahti",
 			"url": "70B3D5705000E696_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.18021",
+			"lot": "24.9341"
 		},
 		{
 			"name": "Porvarinlahti",
 			"url": "70B3D5705000E6D1_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.228068",
+			"lon": "25.185788"
 		},
 		{
 			"name": "Suomenlinna",
 			"url": "70B3D5705000E6E6_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.141163",
+			"lon": "24.983775"
 		},
 		{
 			"name": "Lauttasaaren Uimaranta",
 			"url": "70B3D5705000E6F2_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.15271",
+			"lon": "24.862529"
 		},
 		{
 			"name": "Arabianranta",
 			"url": "70B3D5705000E6F9_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.202336",
+			"lon": "24.98258"
 		},
 		{
 			"name": "Aurinkolahden uimaranta",
 			"url": "70B3D5705000E70E_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.200447",
+			"lon": "25.156321"
 		},
 		{
 			"name": "Lapinlahti",
 			"url": "70B3D57050004740_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.167735",
+			"lon": "24.908833"
 		}
 
 	]
