@@ -5,10 +5,24 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     border: 1px solid black;
 }
 
+#toimintoKarttaTwitter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#kuvatTekstit {display: flex;justify-content: space-evenly;flex-direction: row;}
+
+article img {border: solid blue;width: 30%;height: 15%;padding: 10px;margin: 10px;}
+
+header {
+    
+}
+
 
 @media only screen and (max-width: 600px) {
     body {
-        /* media query toimii testausväri */
+        /* media query toimii testausvÃ¤ri */
         background-color:silver;
     }
     #map {
@@ -17,6 +31,7 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     }
     #socialmap { 
         display:flex;
+        
         flex-wrap: wrap-reverse;
         
     }
@@ -24,6 +39,7 @@ body,header,h1,main, article, aside,nav,footer,p,a {
 @media only screen and (min-width: 600px) {
     main {
         display:flex;
+        flex-direction: column;
         justify-content:space-between;
     }
     #twitterbot{
@@ -31,6 +47,7 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     }
     #socialmap {
         display:flex;
+        gap:1rem;
         flex-direction: row-reverse;
         /* margin: auto; */
     }
@@ -56,7 +73,10 @@ footer {
 
 
 }
-
+footer div {
+    display:flex;
+    flex-direction: column;
+}
 
 footer p {
     margin: 2px 2px;
@@ -73,5 +93,27 @@ footer p {
     max-height: 100%;
 }
 
-
+.myButton {
+	box-shadow: 3px 3px 13px 0px #899599;
+	background:linear-gradient(to bottom, #fafafa 5%, #868a13 100%);
+	background-color:#fafafa;
+	border-radius:15px;
+	border:1px solid #d6bcd6;
+	display:inline-block;
+	cursor:pointer;
+	color:#0d1517;
+	font-family:Verdana;
+	font-size:17px;
+	padding:7px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e1e2ed;
+}
+.myButton:hover {
+	background:linear-gradient(to bottom, #868a13 5%, #fafafa 100%);
+	background-color:#868a13;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
 
