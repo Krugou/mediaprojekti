@@ -19,14 +19,14 @@ const tweet = async () => {
   let mainilmalampotiladata = [];
   let mainaikajsondata = [];
   let currentdate = new Date();
-  console.log(currentdate.getHours());
+ // console.log(currentdate.getHours());
   for (let i = 0; i < fetchDataJson.beaches.length; i++) { 
     const response = await fetch("https://iot.fvh.fi/opendata/uiras/"+fetchDataJson.beaches[i].url+".json");
     const fetchDataJson2 = await response.json();
     const laskejsondata = fetchDataJson2.data.length - 1;
     const jsonaika = new Date(fetchDataJson2.data[laskejsondata].time)
     //console.log(jsonaika.getHours())
-    if (jsonaika.getHours() === currentdate.getHours() ) {
+    if ( jsonaika.getHours() > (currentdate.getHours() - 2) && jsonaika.getHours() < currentdate.getHours() ) {
     let paikannimi = fetchDataJson2.meta.name;
     let aikajsondata = fetchDataJson2.data[laskejsondata].time;
     let vedenlampotiladata = fetchDataJson2.data[laskejsondata].temp_water;
