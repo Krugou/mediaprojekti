@@ -18,10 +18,15 @@ const tweet = async () => {
   let mainplacedata = [];
   let mainilmalampotiladata = [];
   let mainaikajsondata = [];
-  for (let i = 0; i < fetchDataJson.beaches.length; i++) {
+  let currentdate = new Date();
+  console.log(currentdate.getHours());
+  for (let i = 0; i < fetchDataJson.beaches.length; i++) { 
     const response = await fetch("https://iot.fvh.fi/opendata/uiras/"+fetchDataJson.beaches[i].url+".json");
     const fetchDataJson2 = await response.json();
-    let laskejsondata = fetchDataJson2.data.length - 1;
+    const laskejsondata = fetchDataJson2.data.length - 1;
+    const jsonaika = new Date(fetchDataJson2.data[laskejsondata].time)
+    //console.log(jsonaika.getHours())
+    if (jsonaika.getHours() === currentdate.getHours() ) {
     let paikannimi = fetchDataJson2.meta.name;
     let aikajsondata = fetchDataJson2.data[laskejsondata].time;
     let vedenlampotiladata = fetchDataJson2.data[laskejsondata].temp_water;
@@ -34,6 +39,10 @@ const tweet = async () => {
    // console.log(aikajsondata);
    // console.log(vedenlampotiladata);
    // console.log(ilmalampotiladata);
+  } else {
+    continue;
+    
+  }
   }
   const max = Math.max(...mainTempdata);
   const index = mainTempdata.indexOf(max);
@@ -46,18 +55,18 @@ const tweet = async () => {
  // console.log(ilmalampotila);
  // console.log(aika.toString());
   try {
-    await userClient.v2.tweet(
-        'Kuumin uimaveden lämpötila on paikassa: ' + paikka + ' asteita on ' +
+   await userClient.v2.tweet(
+       'Kuumin uimaveden lämpötila on paikassa: ' + paikka + ' asteita on ' +
         vedenlampotila + ' \xB0C  ja ' + 'Ilman lämpötila on ' + ilmalampotila +
         ' \xB0C ' + 'kello: ' + aika.toLocaleTimeString('fi-FI'));
-   // console.log('tweettaus onnistui ' +
-   //     'twiitti: Kuumin uimaveden lämpötila on paikassa: ' + paikka +
-    //    ' asteita on ' + vedenlampotila + ' \xB0C  ja ' +
-    //    'Ilman lämpötila on ' + ilmalampotila + ' \xB0C ' + 'kello: ' +
-     //   aika.toLocaleTimeString('fi-FI'));
+   console.log('tweettaus onnistui ' +
+       'twiitti: Kuumin uimaveden lämpötila on paikassa: ' + paikka +
+      ' asteita on ' + vedenlampotila + ' \xB0C  ja ' +
+     'Ilman lämpötila on ' + ilmalampotila + ' \xB0C ' + 'kello: ' +
+     aika.toLocaleTimeString('fi-FI'));
   } catch (e) {
     console.error(e);
   }
 };
 tweet();
-setInterval(tweet, 1800000);
+setInterval(tweet, 900000);
