@@ -87,14 +87,16 @@
 		{
 			"name":"Hanikan uimaranta (Espoo)",
 			"url":"70B3D5705000504F_v1",
-			"location": "Helsinki"
+			"location": "Helsinki",
+			"lat": "60.127797",
+			"lon": "24.691871"
 		},
 		{
 			"name":"Kattilajärvi (Espoo)",
 			"url":"70B3D5705000516A_v1",
 			"location": "Helsinki",
-			"lat": "60.127797",
-			"lon": "24.691871"
+			"lat": "60.29904",
+			"lon": "24.61975"
 		},
 		{
 			"name": "Pikku-Huopalahti",

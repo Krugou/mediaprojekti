@@ -18,6 +18,7 @@ let tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}
 }).addTo(map);
 async function addMarkers() {
     try{
+        let tryVar = 0; // Käytetään funktiossa globaalina kierrosmuuttujana
         const vastaus = await fetch(data);              // Käynnistetään haku.
         if (!vastaus.ok) throw new Error('jokin meni pieleen'); // Jos tapahtuu virhe, heitetään ilmoitus
         const beaches = await vastaus.json();// muutetaan ladattu tekstimuotoinen JSON JavaScript-olioksi/taulukoksi
@@ -27,15 +28,14 @@ async function addMarkers() {
     //    console.log(beaches.beaches.length);
     //    console.log(beaches.beaches[0].url);
     //    console.log(beachesData[7]);
-        for (let i=0; i<beachesData.length; i++) {
+        for (let tryVar=0; tryVar<beachesData.length; tryVar++) {
             try {
-                const vastaus2 = await fetch(beachesData[i]);              // Käynnistetään haku
+                const vastaus2 = await fetch(beachesData[tryVar]);              // Käynnistetään haku
                 const beaches2 = await vastaus2.json();
     //            console.log(beaches2.meta.name);
                 let lat = beaches2.meta.lat
                 let lon = beaches2.meta.lon
                 let date = new Date(beaches2.data[beaches2.data.length - 1].time).toLocaleString('fi'); // Muutetaan aika suomalaiseen formaattiin.
-                console.log(date);
                 let marker = L.marker([lat, lon]).addTo(map);
                 if (beaches2.data[beaches2.data.length-1].temp_water >= -50) {
                     marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C<br> Aikana: ${date}`);
@@ -46,6 +46,16 @@ async function addMarkers() {
                 }
             catch (error) {                                          // Otetaan heitetty virheilmoitus kiinni
                 console.log(error)
+                alert(`Rannan ${beaches.beaches[tryVar].name} säätietoja ei löydetty.`);
+                try {
+                    let lat = beaches.beaches[tryVar].lat;
+                    let lon = beaches.beaches[tryVar].lon;
+                    let marker = L.marker([lat, lon]).addTo(map);
+                    marker.bindPopup(`<b>${beaches.beaches[tryVar].name}<br> Ilman lämpötila: Tuntematon <br> Veden lämpötila: Tuntematon`)
+                }
+                catch (error){
+                    alert(`Rannan ${beaches.beaches[tryVar].name} sijaintitietoja ei löydetty.`); // EI PITÄISI KOSKAAN TAPAHTUA
+                }
             }
         }
 
