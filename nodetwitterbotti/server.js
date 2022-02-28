@@ -19,26 +19,29 @@ const tweet = async () => {
   let mainilmalampotiladata = [];
   let mainaikajsondata = [];
   let currentdate = new Date();
- // console.log(currentdate.getHours());
+ // console.log(currentdate.getTime());
   for (let i = 0; i < fetchDataJson.beaches.length; i++) { 
     const response = await fetch("https://iot.fvh.fi/opendata/uiras/"+fetchDataJson.beaches[i].url+".json");
     const fetchDataJson2 = await response.json();
     const laskejsondata = fetchDataJson2.data.length - 1;
     const jsonaika = new Date(fetchDataJson2.data[laskejsondata].time)
-    //console.log(jsonaika.getHours())
-    if ( jsonaika.getHours() > (currentdate.getHours() - 2) && jsonaika.getHours() < currentdate.getHours() ) {
+    console.log("jsonaika: "+jsonaika.getTime())
+    console.log("nykyinen aika - 7200000: "+(currentdate.getTime() - 7200000))
+    console.log("nykyinen aika: "+currentdate.getTime())
+    if ( jsonaika.getTime() > (currentdate.getTime() - 7200000) && jsonaika.getTime() < currentdate.getTime() ) {
     let paikannimi = fetchDataJson2.meta.name;
     let aikajsondata = fetchDataJson2.data[laskejsondata].time;
     let vedenlampotiladata = fetchDataJson2.data[laskejsondata].temp_water;
     let ilmalampotiladata = fetchDataJson2.data[laskejsondata].temp_air;
+   
     mainTempdata.push(vedenlampotiladata);
     mainplacedata.push(paikannimi);
     mainilmalampotiladata.push(ilmalampotiladata);
     mainaikajsondata.push(aikajsondata);
-   // console.log(paikannimi);
-   // console.log(aikajsondata);
-   // console.log(vedenlampotiladata);
-   // console.log(ilmalampotiladata);
+    console.log(paikannimi);
+    console.log(aikajsondata);
+    console.log(vedenlampotiladata);
+    console.log(ilmalampotiladata);
   } else {
     continue;
     
@@ -50,10 +53,10 @@ const tweet = async () => {
   let vedenlampotila = mainTempdata[index];
   let ilmalampotila = mainilmalampotiladata[index];
   let aika = new Date(mainaikajsondata[index]);
- // console.log(paikka);
- // console.log(vedenlampotila);
- // console.log(ilmalampotila);
- // console.log(aika.toString());
+  console.log(paikka);
+  console.log(vedenlampotila);
+  console.log(ilmalampotila);
+  console.log(aika.toString());
   try {
    await userClient.v2.tweet(
        'Kuumin uimaveden lämpötila on paikassa: ' + paikka + ' asteita on ' +
