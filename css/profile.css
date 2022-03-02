@@ -29,7 +29,12 @@ img {
 main {
     display: flex;
     flex-direction: column;
-    align-content: space-around;
+    align-content: center;
     justify-content: space-evenly;
+}
+
+article {
+    align-items: center;
+    /* align-content: center; */
 }
 }
