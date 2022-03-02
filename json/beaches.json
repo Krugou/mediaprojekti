@@ -17,14 +17,14 @@
 		{
 			"name":"Pikkukosken uimaranta",
 			"url":"70B3D57050001AB9_v1",
-			"location": "Helsinki",
+			"location": "Veräjämäki",
 			"lat": "60.227704",
 			"lon": "24.983821"
 		},
 		{
 			"name":"Kuusijärvi (Vantaa)",
 			"url":"70B3D57050001ADA_v1",
-			"location": "Helsinki",
+			"location": "Silvola",
 			"lat": "60.313343",
 			"lon": "25.113967"
 		},
@@ -45,7 +45,7 @@
 		{
 			"name":"Rastilan Uimaranta",
 			"url":"70B3D57050001BBE_v1",
-			"location": "Helsinki",
+			"location": "Rastila",
 			"lat": "60.207977",
 			"lon": "25.114849"
 		},
@@ -59,7 +59,7 @@
 		{
 			"name":"Marjaniemen Uimaranta",
 			"url":"70B3D57050004E0E_v1",
-			"location": "Helsinki",
+			"location": "Vuosaari",
 			"lat": "60.198449",
 			"lon": "25.076416"
 		},
@@ -80,28 +80,28 @@
 		{
 			"name":"Herttoniemi (Tuorinniemen uimalaituri)",
 			"url":"70B3D57050004FE1_v1",
-			"location": "Helsinki",
+			"location": "Herttoniemi",
 			"lat": "60.18554",
 			"lon": "25.04012"
 		},
 		{
 			"name":"Hanikan uimaranta (Espoo)",
 			"url":"70B3D5705000504F_v1",
-			"location": "Helsinki",
+			"location": "hanikka",
 			"lat": "60.127797",
 			"lon": "24.691871"
 		},
 		{
 			"name":"Kattilajärvi (Espoo)",
 			"url":"70B3D5705000516A_v1",
-			"location": "Helsinki",
+			"location": "Nuuksio",
 			"lat": "60.29904",
 			"lon": "24.61975"
 		},
 		{
 			"name": "Pikku-Huopalahti",
 			"url": "70B3D5705000E653_v1",
-			"location": "Helsinki",
+			"location": "Pikku-Huopalahti",
 			"lat": "60.197827",
 			"lon": "24.890244"
 		},
@@ -115,7 +115,7 @@
 		{
 			"name": "Porvarinlahti",
 			"url": "70B3D5705000E6D1_v1",
-			"location": "Helsinki",
+			"location": "Vuosaari",
 			"lat": "60.228068",
 			"lon": "25.185788"
 		},
@@ -136,14 +136,14 @@
 		{
 			"name": "Arabianranta",
 			"url": "70B3D5705000E6F9_v1",
-			"location": "Helsinki",
+			"location": "Arabianranta",
 			"lat": "60.202336",
 			"lon": "24.98258"
 		},
 		{
 			"name": "Aurinkolahden uimaranta",
 			"url": "70B3D5705000E70E_v1",
-			"location": "Helsinki",
+			"location": "vuosaari",
 			"lat": "60.200447",
 			"lon": "25.156321"
 		},
