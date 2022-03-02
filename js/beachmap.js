@@ -1,5 +1,8 @@
 let map = L.map('map').setView([60.247757713113934, 24.833770383021534], 10);
 let beachesData =[];
+let reititysNapit = 0;
+let popupLon=[];
+let popupLat=[];
 /*
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet turpis sed tortor congue euismod. Proin orci leo, rutrum at laoreet vel, finibus at mi. Pellentesque sodales ultrices sem in rutrum. Fusce vel nulla et ipsum pretium sodales vitae nec orci. Nam rhoncus convallis mauris eget efficitur. Aenean vel enim ultrices, pulvinar metus quis, consequat massa.
  Cras varius nulla at varius euismod. Sed ligula arcu, placerat in commodo finibus,
@@ -32,16 +35,17 @@ async function addMarkers() {
                 const vastaus2 = await fetch(beachesData[i]);              // Käynnistetään haku
                 const beaches2 = await vastaus2.json();
     //            console.log(beaches2.meta.name);
+                reititysNapit++;
                 let lat = beaches2.meta.lat;
                 let lon = beaches2.meta.lon;
+                popupLat[i]=lat;
+                popupLon[i]=lon;
                 let date = new Date(beaches2.data[beaches2.data.length - 1].time).toLocaleString('fi'); // Muutetaan aika suomalaiseen formaattiin.
                 let marker = L.marker([lat, lon]).addTo(map);
                 if (beaches2.data[beaches2.data.length-1].temp_water >= -50) {
-                    marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C<br> Aikana: ${date}`);
-                }
+                    marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C<br> Aikana: ${date}<br><button id="route${i}">Hae reitti</button>`);                }
                 else if (beaches2.data[beaches2.data.length-1].temp_water <= -50) {
-                    marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: Tuntematon <br> Aikana: ${date}`);
-                }
+                    marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: Tuntematon <br> Aikana: ${date}<br><button id="route${i}">Hae reitti</button>`);                }
                 }
             catch (error) {                                          // Otetaan heitetty virheilmoitus kiinni
                 console.log(error)
@@ -49,8 +53,10 @@ async function addMarkers() {
                 try {
                     let lat = beaches.beaches[i].lat;
                     let lon = beaches.beaches[i].lon;
+                    popupLat[i]=lat;
+                    popupLon[i]=lon;
                     let marker = L.marker([lat, lon]).addTo(map);
-                    marker.bindPopup(`<b>${beaches.beaches[i].name}<br> Ilman lämpötila: Tuntematon <br> Veden lämpötila: Tuntematon`);
+                    marker.bindPopup(`<b>${beaches.beaches[i].name}<br> Ilman lämpötila: Tuntematon <br> Veden lämpötila: Tuntematon<br><button id="route${i}">Hae reitti</button>`)
                 }
                 catch (error){
                     alert(`Rannan ${beaches.beaches[i].name} sijaintitietoja ei löydetty.`); // EI PITÄISI KOSKAAN TAPAHTUA
@@ -64,3 +70,54 @@ async function addMarkers() {
 }
 addMarkers();
 
+let options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+};
+
+function success(pos) {
+    let crd = pos.coords;
+    posLat=crd.latitude;
+    posLon=crd.longitude;
+}
+
+function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+}
+
+navigator.geolocation.getCurrentPosition(success, error, options);
+let rNum;
+let eventHandlerAssigned = false;
+map.on('popupopen', function(){
+    for (let i = 0; i < reititysNapit; i++) {
+
+        if (!eventHandlerAssigned && document.querySelector('#route' + i)) {
+            const nappi = document.querySelector('#route' + i);
+            console.log(nappi);
+            rNum=i;
+            nappi.addEventListener('click', routing)
+            eventHandlerAssigned = true;
+        }
+    }
+});
+
+map.on('popupclose', function(){
+    eventHandlerAssigned = false;
+})
+function routing() {
+    let dir;
+    dir = MQ.routing.directions()
+
+    dir.route({
+        locations: [
+            {latLng: {lat: posLat, lng: posLon}}
+            ,
+            {latLng: {lat: popupLat[rNum], lng: popupLon[rNum]}}]
+    });
+
+    map.addLayer(MQ.routing.routeLayer({
+        directions: dir,
+        fitBounds: true
+    }));
+}
