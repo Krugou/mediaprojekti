@@ -20,17 +20,20 @@ article {
     align-content: space-around;
     flex-direction: column;
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
     background-color: antiquewhite;
     background-blend-mode: darken;
+    border: solid black;
 }
 
 h1 {
     background-color: aqua;
+    width: 100%;
 }
 
 h2 {
     background-color: aqua;
+    width: 100%;
 }
 
 a {
@@ -38,7 +41,7 @@ a {
 }
 
 img {
-    border: solid black;
+    border: solid white;
 }
 
 img {
