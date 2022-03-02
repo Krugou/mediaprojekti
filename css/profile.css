@@ -3,12 +3,14 @@ body{
 text-align: center;
 
 font-family: monospace;
+
+background-color: cadetblue;
 }
 
 main {
     display: flex;
     flex-direction: row;
-    align-content: space-around;
+    align-content: stretch;
     justify-content: space-evenly;
 }
 
@@ -19,6 +21,24 @@ article {
     flex-direction: column;
     padding: 5px;
     margin: 5px;
+    background-color: antiquewhite;
+    background-blend-mode: darken;
+}
+
+h1 {
+    background-color: aqua;
+}
+
+h2 {
+    background-color: aqua;
+}
+
+a {
+    background-color: aqua;
+}
+
+img {
+    border: solid black;
 }
 
 img {
