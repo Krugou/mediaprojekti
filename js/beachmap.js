@@ -1,16 +1,9 @@
-let map = L.map('map').setView([60.247757713113934, 24.833770383021534], 10);
+let map = L.map('map',{ scrollWheelZoom: true}).setView([60.247757713113934, 24.833770383021534], 10);
 let beachesData =[];
 let reititysNapit = 0;
 let popupLon=[];
 let popupLat=[];
-/*
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet turpis sed tortor congue euismod. Proin orci leo, rutrum at laoreet vel, finibus at mi. Pellentesque sodales ultrices sem in rutrum. Fusce vel nulla et ipsum pretium sodales vitae nec orci. Nam rhoncus convallis mauris eget efficitur. Aenean vel enim ultrices, pulvinar metus quis, consequat massa.
- Cras varius nulla at varius euismod. Sed ligula arcu, placerat in commodo finibus,
- tristique id sapien. Nullam lobortis tortor arcu, cursus efficitur magna pharetra eu. Phasellus mollis, libero ac tempus ultrices, diam quam vestibulum nisi,
- a aliquam augue massa vel elit. Quisque porta justo eleifend ex dapibus ultricies. Duis vestibulum mollis eros ac tristique. In hac habitasse platea dictumst.
-  Maecenas luctus erat ac rutrum dignissim. Nulla a ex libero. Pellentesque vel massa consequat, commodo nisl ut, viverra orci.
 
-*/
 let tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
@@ -87,35 +80,60 @@ function error(err) {
 }
 
 navigator.geolocation.getCurrentPosition(success, error, options);
-let rNum;
+let rNum
 let eventHandlerAssigned = false;
+let dir = 0;
 map.on('popupopen', function(){
     for (let i = 0; i < reititysNapit; i++) {
 
         if (!eventHandlerAssigned && document.querySelector('#route' + i)) {
+            
             const nappi = document.querySelector('#route' + i);
             console.log(nappi);
             rNum=i;
-            nappi.addEventListener('click', routing)
+            nappi.addEventListener('click', newMapRouting)
             eventHandlerAssigned = true;
         }
     }
 });
+function newMapRouting(){
+    
+    if(dir == 0) {
+        routing()
 
+    } else {
+         map.remove()
+         map = L.map('map',{ scrollWheelZoom: true}).setView([60.247757713113934, 24.833770383021534], 10);
+
+ tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1
+}).addTo(map);
+addMarkers();
+    routing()
+}
+}
 map.on('popupclose', function(){
     eventHandlerAssigned = false;
 })
 function routing() {
-    let dir;
+    
+    
+    
     dir = MQ.routing.directions()
-
-    dir.route({
+    
+    dir.optimizedRoute({
         locations: [
             {latLng: {lat: posLat, lng: posLon}}
             ,
             {latLng: {lat: popupLat[rNum], lng: popupLon[rNum]}}]
     });
-
+    
+   
     map.addLayer(MQ.routing.routeLayer({
         directions: dir,
         fitBounds: true
