@@ -104,7 +104,7 @@ function addButtonEvent(){map.on('popupopen', function(){
 }
 function reloadMap (){
     map.remove()
-    map = L.map('map',{ scrollWheelZoom: true}).setView([60.247757713113934, 24.833770383021534], 10);
+    map = L.map('map',{ scrollWheelZoom: true}).setView([popupLat[rNum], popupLon[rNum]], 10);
     eventHandlerAssigned = false;
     addButtonEvent()
     navigator.geolocation.getCurrentPosition(success, error, options);
