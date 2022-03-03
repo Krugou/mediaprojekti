@@ -102,20 +102,13 @@ function addButtonEvent(){map.on('popupopen', function(){
     }
 });
 }
-function newMapRouting(){
-    
-    if(dir == 0) {
-        routing()
-
-    } else {
-         map.remove()
-         map = L.map('map',{ scrollWheelZoom: true}).setView([60.247757713113934, 24.833770383021534], 10);
-         eventHandlerAssigned = false;
-         addButtonEvent()
-         navigator.geolocation.getCurrentPosition(success, error, options);
-         
-         
- tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+function reloadMap (){
+    map.remove()
+    map = L.map('map',{ scrollWheelZoom: true}).setView([60.247757713113934, 24.833770383021534], 10);
+    eventHandlerAssigned = false;
+    addButtonEvent()
+    navigator.geolocation.getCurrentPosition(success, error, options);
+    tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -125,8 +118,15 @@ function newMapRouting(){
 }).addTo(map);
     addMarkers();
     routing()
+}
+function newMapRouting(){
     
-    
+    if(dir == 0) {
+        routing()
+
+    } else {
+        reloadMap()
+         
 }
 }
 map.on('popupclose', function(){
