@@ -20,14 +20,14 @@ async function addMarkers() {
         for (let i=0; i<beaches.beaches.length; i++) { //length =14
             beachesData[i]="https://iot.fvh.fi/opendata/uiras/"+beaches.beaches[i].url+".json";
         }
-    //    console.log(beaches.beaches.length);
-    //    console.log(beaches.beaches[0].url);
-    //    console.log(beachesData[7]);
+       // console.log(beaches.beaches.length);
+       // console.log(beaches.beaches[0].url);
+       // console.log(beachesData[7]);
         for (let i=0; i<beachesData.length; i++) {
             try {
                 const vastaus2 = await fetch(beachesData[i]);              // Käynnistetään haku
                 const beaches2 = await vastaus2.json();
-    //            console.log(beaches2.meta.name);
+                //console.log(beaches2.meta.name);
                 reititysNapit++;
                 let lat = beaches2.meta.lat;
                 let lon = beaches2.meta.lon;
@@ -36,11 +36,13 @@ async function addMarkers() {
                 let date = new Date(beaches2.data[beaches2.data.length - 1].time).toLocaleString('fi'); // Muutetaan aika suomalaiseen formaattiin.
                 let marker = L.marker([lat, lon]).addTo(map);
                 if (beaches2.data[beaches2.data.length-1].temp_water >= -50) {
+                  //  console.log("normaali tulos")
                     marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C<br> Aikana: ${date}<br><button id="route${i}">Hae reitti</button>`);                }
                 else if (beaches2.data[beaches2.data.length-1].temp_water <= -50) {
+                   // console.log("tuntematon")
                     marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: Tuntematon <br> Aikana: ${date}<br><button id="route${i}">Hae reitti</button>`);                }
                 }
-            catch (error) {                                          // Otetaan heitetty virheilmoitus kiinni
+                catch (error) {                                          // Otetaan heitetty virheilmoitus kiinni
                 console.log(error)
                 alert(`Rannan ${beaches.beaches[i].name} säätietoja ei löydetty.`);
                 try {
@@ -80,10 +82,13 @@ function error(err) {
 }
 
 navigator.geolocation.getCurrentPosition(success, error, options);
+
+addButtonEvent()
+
 let rNum
 let eventHandlerAssigned = false;
 let dir = 0;
-map.on('popupopen', function(){
+function addButtonEvent(){map.on('popupopen', function(){
     for (let i = 0; i < reititysNapit; i++) {
 
         if (!eventHandlerAssigned && document.querySelector('#route' + i)) {
@@ -96,6 +101,7 @@ map.on('popupopen', function(){
         }
     }
 });
+}
 function newMapRouting(){
     
     if(dir == 0) {
@@ -104,7 +110,11 @@ function newMapRouting(){
     } else {
          map.remove()
          map = L.map('map',{ scrollWheelZoom: true}).setView([60.247757713113934, 24.833770383021534], 10);
-
+         eventHandlerAssigned = false;
+         addButtonEvent()
+         navigator.geolocation.getCurrentPosition(success, error, options);
+         
+         
  tiles = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
@@ -113,8 +123,10 @@ function newMapRouting(){
     tileSize: 512,
     zoomOffset: -1
 }).addTo(map);
-addMarkers();
+    addMarkers();
     routing()
+    
+    
 }
 }
 map.on('popupclose', function(){
@@ -122,10 +134,7 @@ map.on('popupclose', function(){
 })
 function routing() {
     
-    
-    
     dir = MQ.routing.directions()
-    
     dir.optimizedRoute({
         locations: [
             {latLng: {lat: posLat, lng: posLon}}
