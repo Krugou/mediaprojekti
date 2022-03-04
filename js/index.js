@@ -129,7 +129,7 @@ function showPosition(position) {
 // TORIN KOODI ALKAA //
 
 // Funktio rantojen tietojen hakemiseen
-// Ranta on rannan nimi. Jos ranta on tyhjä, palauttaa beaches.jsonin
+// Ranta on rannan datan sijainti ilman ilman. Jos ranta on tyhjä, palauttaa beaches.jsonin
 async function haeRanta(ranta){
     let vastaus;
     if (ranta === undefined){
@@ -220,13 +220,13 @@ function tyhjenna(){
         console.log("Ruudun siistiminen epäonnistui!");
     }
 }
-
+// Funktio katsoo hakuvalikossa olevan valinnan ja tulostaa sen rannan tiedot
 
 async function haeValittuRanta(evt){
-    //Tyhjennetään vanhat hakutulokset
+    // Tyhjennetään vanhat hakutulokset
     tyhjenna();
 
-    const url = document.getElementById("rannat").value;
+    //const url = document.getElementById("rannat").value;
     let data = await haeRanta(document.getElementById("rannat").value);
 
     //Tarkistetaan onhan rannan lämpötiladata varmasti olemassa
@@ -255,6 +255,12 @@ async function haeValittuRanta(evt){
         document.getElementById("tulostusAlue").innerHTML += "Mitattu ajassa " + data.data[data.data.length - 1].time + "<br>";
     } catch(error) {
         console.log("Valitun rannan aikaa ei löytynyt");
+    }
+    try {
+        document.getElementById("rantakuva").src = "images/beaches/" + document.getElementById("rannat").value + ".png";
+    } catch(error) {
+        console.log("Virhe rannan kuvan kanssa.");
+        document.getElementById("rantakuva").src = "images/placeholder.png";
     }
 }
 window.onload = () => {
