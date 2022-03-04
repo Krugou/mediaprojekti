@@ -420,6 +420,10 @@ function getLocation() {
     sijainti.innerHTML = "Selaimesi ei tue geopaikannusta.";
   }
 }
+function sunriseSunsetTimes(lat,lon){
+  let times = SunCalc.getTimes(new Date(),lat,lon);
+  console.log('aurinko nousee: '+times.sunrise.getHours()+':' + times.sunrise.getMinutes()+':' + times.sunrise.getSeconds()+' aurinko laskee:'+times.sunset.getHours()+':' + times.sunset.getMinutes()+':' + times.sunset.getSeconds())
+}
 // Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle + hakee bounding boxilla lähimmän säähavaintoaseman sen hetken lämpötilan
 function showPosition(position) {
     map.setView([position.coords.latitude, position.coords.longitude], 11);
