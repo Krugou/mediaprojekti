@@ -1,3 +1,5 @@
+const { markAsUntransferable } = require("worker_threads");
+
 // index.js
 let data = './json/beaches.json';
 
@@ -97,31 +99,34 @@ function fetchWeatherHourForecastTemperatureDataBoundingBox(query){
     // console.log(saatulos);
    });
 }
-function fetchWeatherHourForecastTemperatureDataPlace(query){
-  let arvo = `https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::hourly::simple&place=${query}&parameters=TA_PT1H_AVG`
+// sääsymboli haku
+function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
+  let arvo = `https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::hourly::simple&place=${query}&parameters=WS_PT1H_AVG,PRA_PT1H_ACC,WAWA_PT1H_RANK`
   //  console.log(arvo);
   fetch(arvo).then(response => response.text()).then((xml) => {
     // console.log(xml);
      let parser = new DOMParser();
      let xmlDOM = parser.parseFromString(xml, 'application/xml');
-     let timeSeriesMeasurementData = xmlDOM.querySelector('BsWfsElement').
-         querySelectorAll('ParameterValue');
-     let getLatestAnomalyData = timeSeriesMeasurementData[0];
-     let getTimeAnomalyData = xmlDOM.querySelector('BsWfsElement').
-            querySelectorAll('Time');
-     
+    // PRA_PT1H_ACC on sateenmäärä
+     // WAWA_PT1H_RANK on sääsymbolinumero
+     // WS_PT1H_AVG on keskimääräinen tuulennopeus
+     let bsWfsElement = xmlDOM.querySelectorAll('BsWfsElement')
+
+    let WS_PT1H_AVGTime = bsWfsElement[0].querySelector('Time');
+    let WS_PT1H_AVGParameterValue = bsWfsElement[0].querySelector('ParameterValue');
+    let PRA_PT1H_ACCTime = bsWfsElement[1].querySelector('Time');
+    let PRA_PT1H_ACCParameterValue = bsWfsElement[1].querySelector('ParameterValue');
+    let WAWA_PT1H_RANKTime = bsWfsElement[2].querySelector('Time');
+    let WAWA_PT1H_RANKParameterValue = bsWfsElement[2].querySelector('ParameterValue'); 
+
+    console.log(WS_PT1H_AVGParameterValue.textContent+' '+WS_PT1H_AVGTime.textContent)
+    console.log(PRA_PT1H_ACCParameterValue.textContent+' '+PRA_PT1H_ACCTime.textContent)
+    console.log(WAWA_PT1H_RANKParameterValue.textContent+' '+WAWA_PT1H_RANKTime.textContent)
+         
+    
+
   
      
-  // console.log(timeSeriesMeasurementData);
-  //  console.log(getLatestAnomalyData);
-  //  console.log(timeSeriesMeasurementData[0]);
-  //   console.log(getTimeAnomalyData[0]);
-     let saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
-         query + ' on lämpötila ' +
-         timeSeriesMeasurementData[0].textContent + ' celsiusta' +
-         ' kello oli järjestelmän mukaan: ' +
-         getTimeAnomalyData[0].textContent;
-    // console.log(saatulos);
    });
 }
 function fetchWeatherTemperatureData(query) {
@@ -196,6 +201,7 @@ function getLocation() {
 // Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle + hakee bounding boxilla lähimmän säähavaintoaseman sen hetken lämpötilan
 function showPosition(position) {
     map.setView([position.coords.latitude, position.coords.longitude], 11);
+    
     let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
     marker.bindPopup('Oma sijainti');
   sijainti.innerHTML = "Latitude: " + position.coords.latitude + 
@@ -341,7 +347,7 @@ async function haeValittuRanta(evt){
         document.getElementById("tulostusAlue").innerHTML += "Mitattu ajassa " + data.data[data.data.length - 1].time + "<br>";
     } catch(error) {
         console.log("Valitun rannan aikaa ei löytynyt");
-    }
+    } 
     try {
         document.getElementById("rantakuva").src = "images/beaches/" + document.getElementById("rannat").value + ".png";
     } catch(error) {
