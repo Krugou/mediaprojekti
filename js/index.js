@@ -70,7 +70,60 @@ function searchFunctionFmi(data1) {
     console.log('error');
   });
 }
-
+function fetchWeatherHourForecastTemperatureDataBoundingBox(query){
+  let arvo = `https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::hourly::simple&bbox=${query}&parameters=TA_PT1H_AVG`
+  //  console.log(arvo);
+  fetch(arvo).then(response => response.text()).then((xml) => {
+    // console.log(xml);
+     let parser = new DOMParser();
+     let xmlDOM = parser.parseFromString(xml, 'application/xml');
+     let timeSeriesMeasurementData = xmlDOM.querySelector('BsWfsElement').
+         querySelectorAll('ParameterValue');
+     let getLatestAnomalyData = timeSeriesMeasurementData[0];
+     let getTimeAnomalyData = xmlDOM.querySelector('BsWfsElement').
+            querySelectorAll('Time');
+     
+  
+     
+  // console.log(timeSeriesMeasurementData);
+  //  console.log(getLatestAnomalyData);
+  //  console.log(timeSeriesMeasurementData[0]);
+  //   console.log(getTimeAnomalyData[0]);
+     let saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
+         query + ' on lämpötila ' +
+         timeSeriesMeasurementData[0].textContent + ' celsiusta' +
+         ' kello oli järjestelmän mukaan: ' +
+         getTimeAnomalyData[0].textContent;
+    // console.log(saatulos);
+   });
+}
+function fetchWeatherHourForecastTemperatureDataPlace(query){
+  let arvo = `https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::hourly::simple&place=${query}&parameters=TA_PT1H_AVG`
+  //  console.log(arvo);
+  fetch(arvo).then(response => response.text()).then((xml) => {
+    // console.log(xml);
+     let parser = new DOMParser();
+     let xmlDOM = parser.parseFromString(xml, 'application/xml');
+     let timeSeriesMeasurementData = xmlDOM.querySelector('BsWfsElement').
+         querySelectorAll('ParameterValue');
+     let getLatestAnomalyData = timeSeriesMeasurementData[0];
+     let getTimeAnomalyData = xmlDOM.querySelector('BsWfsElement').
+            querySelectorAll('Time');
+     
+  
+     
+  // console.log(timeSeriesMeasurementData);
+  //  console.log(getLatestAnomalyData);
+  //  console.log(timeSeriesMeasurementData[0]);
+  //   console.log(getTimeAnomalyData[0]);
+     let saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
+         query + ' on lämpötila ' +
+         timeSeriesMeasurementData[0].textContent + ' celsiusta' +
+         ' kello oli järjestelmän mukaan: ' +
+         getTimeAnomalyData[0].textContent;
+    // console.log(saatulos);
+   });
+}
 function fetchWeatherTemperatureData(query) {
 
   let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=${query}epsg::4326&parameters=t2m,ws_10min&crs=EPSG::3067&`;
@@ -154,8 +207,9 @@ function showPosition(position) {
   let lonplus = (position.coords.longitude + 0.15);
   let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
         lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
- fetchWeatherTemperatureData(bbox);
- fetchWeatherSymbolData(bbox);
+ //fetchWeatherTemperatureData(bbox);
+ //fetchWeatherSymbolData(bbox);
+ fetchWeatherHourForecastTemperatureDataBoundingBox(bbox)
 } 
 
 // TORIN KOODI ALKAA //
