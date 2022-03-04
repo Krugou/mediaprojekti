@@ -98,7 +98,7 @@ function fetchWeatherHourForecastTemperatureDataBoundingBox(query){
     // console.log(saatulos);
    });
 }
-// sääsymboli haku
+// keskimääräinen tuulennopeus,viimeisen tunnin sateenmäärä ja sääsymboli haku
 function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
   let arvo = `https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::hourly::simple&place=${query}&parameters=WS_PT1H_AVG,PRA_PT1H_ACC,WAWA_PT1H_RANK`
   //  console.log(arvo);
@@ -117,7 +117,15 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      let PRA_PT1H_ACCParameterValue = bsWfsElement[bsWfsElement.length -2].querySelector('ParameterValue');
      let WAWA_PT1H_RANKTime = bsWfsElement[bsWfsElement.length - 1].querySelector('Time');
      let WAWA_PT1H_RANKParameterValue = bsWfsElement[bsWfsElement.length - 1].querySelector('ParameterValue'); 
+     let windSpeed = document.getElementById("tuulenNopeus").innerHTML= 'tuulen nopeus nyt: '+ WS_PT1H_AVGParameterValue.textContent + 'm/s'
+      if (PRA_PT1H_ACCParameterValue.textContent == 0){
+        
+      }else if(PRA_PT1H_ACCParameterValue.textContent >0){
+        document.getElementById("sateenmaara").innerHTML= ' ' + 'sateenmäärä viimeisen tunnin aikana:' +PRA_PT1H_ACCParameterValue.textContent + ' mm' 
+      }
       
+
+
       if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 0){
           let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/sun.png"wi="10px">'
 

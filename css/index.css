@@ -2,7 +2,7 @@
 
 body,header,h1,main, article, aside,nav,footer,p,a {
     
-    border: 1px solid black;
+   /* border: 1px solid black;*/
 }
 
 #toimintoKarttaTwitter {
@@ -11,9 +11,13 @@ body,header,h1,main, article, aside,nav,footer,p,a {
     align-items: center;
 }
 
-#kuvatTekstit {display: flex;justify-content: space-evenly;flex-direction: row;}
+#kuvatTekstit {
+    display: flex;justify-content: space-evenly;flex-direction: row;
+}
 
-article img {border: solid blue;width: 30%;height: 15%;padding: 10px;margin: 10px;}
+article img {
+    border: solid blue;width: 30%;height: 15%;padding: 10px;margin: 10px;
+}
 
 header {
     
