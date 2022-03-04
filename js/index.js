@@ -429,7 +429,7 @@ function showPosition(position) {
     let times = SunCalc.getTimes(new Date(),position.coords.latitude,position.coords.longitude);
   sijainti.innerHTML = "Latitude: " + position.coords.latitude + 
   "<br>Longitude: " + position.coords.longitude+ ' <a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+
-  '/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>' + '<br> aurinko nousee: '+times.sunrise.getHours()+':' + times.sunrise.getMinutes()+' aurinko laskee:'+times.sunset.getHours()+':' + times.sunset.getMinutes();
+  '/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>' + '<br> aurinko nousee: '+times.sunrise.getHours()+':' + times.sunrise.getMinutes()+':' + times.sunrise.getSeconds()+' aurinko laskee:'+times.sunset.getHours()+':' + times.sunset.getMinutes()+':' + times.sunset.getSeconds();
   let minuslat = (position.coords.latitude - 0.15);
   let minuslon = (position.coords.longitude - 0.15);
 
@@ -441,7 +441,7 @@ function showPosition(position) {
  //fetchWeatherSymbolData(bbox);
  fetchWeatherHourForecastTemperatureDataBoundingBox(bbox)
 } 
-let times = SunCalc.getTimes(new Date(),)
+
 // TORIN KOODI ALKAA //
 
 // Funktio rantojen tietojen hakemiseen
