@@ -327,6 +327,10 @@ async function haeValittuRanta(evt){
     } catch (error) {
         !alert ("Rannan lämpötiladatan hakeminen epäonnistui");
     }
+
+    let jsonData = await haeRanta();
+    fetchWeatherHourForecastWeatherSymbolDataPlace(jsonData.beaches[document.getElementById("rannat").selectedIndex].location);
+
     try {
         document.getElementById("tulostusAlue").innerHTML += data.meta.name + " tiedot:<br>";
     } catch(error) {
