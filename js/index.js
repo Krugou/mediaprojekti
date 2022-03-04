@@ -127,7 +127,7 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
 
 
       if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 0){
-          let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/sun.png"wi="10px">'
+          let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/sun.png">'
 
           console.log('Ei merkittäviä sääilmiöitä (minkään alla olevan WaWa-koodin ehdot eivät täyty)')
          }
@@ -261,7 +261,7 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
   console.log('Jäätävää kovaa vesisadetta')
    }
  else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 67){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/snowcloud.eigh>'
+    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/snowcloud.png">'
   console.log('Heikkoa lumensekaista vesisadetta tai tihkua (räntää)')
    }
  else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 68){
