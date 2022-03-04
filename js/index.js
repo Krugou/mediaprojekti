@@ -9,7 +9,8 @@ function palauteLomake () {
 let palauteLomake = document.getElementById("palaute").innerHTML = '<form action=".php"> <fieldset><legend>Palautelomake</legend><label for="fname">Etunimi:</label><br> <input type="text" id="fname" name="fname" placeholder="Matti"><br>  <label for="lname">Sukunimi:</label><br>  <input type="text" id="lname" name="lname" placeholder="Meikäläinen"><br> <label for="email">Sähköposti:</label><br><input type="email" id="email" name="email" placeholder="mattimeikalainen@hel.fi"> <br><br><label for="feedback">Palaute:</label><br><textarea id="feedback" placeholder="Palautteesi"></textarea><br><input type="submit" value="Submit"><input type="reset"></fieldset></form>'
 
 }
-function urlrandomizer(data1) {
+// Sekalaisen rannan hakufunktio
+function urlRandomizer(data1) {
   fetch(data).then(response => {
     if (response.ok) {
       return response.json();
@@ -18,21 +19,21 @@ function urlrandomizer(data1) {
     }
   }).then((jsonData) => {
 
-    let datarandomurl = "https://iot.fvh.fi/opendata/uiras/"+jsonData.beaches[getRandomIntInclusive(0, jsonData.length)].url+".json";
+    let dataRandomUrl = "https://iot.fvh.fi/opendata/uiras/"+jsonData.beaches[getRandomIntInclusive(0, jsonData.length)].url+".json";
 
     function getRandomIntInclusive(min, max) {
       min = Math.ceil(min);
       max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+      return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
-    searchf(datarandomurl);
+    searchFunctionFmi(dataRandomUrl);
   }).catch((error) => {
     console.log('error');
   });
 }
 
-function searchf(data1) {
+function searchFunctionFmi(data1) {
 
   fetch(data1).then(response => {
     if (response.ok) {
@@ -41,7 +42,7 @@ function searchf(data1) {
       throw 'HTTP ERROR';
     }
   }).then((jsonData) => {
-    let laskejsondata = jsonData.beaches.length - 1;
+    let indexOfData = jsonData.beaches.length - 1;
 
     let lat = jsonData.meta.lat;
     let lon = jsonData.meta.lon;
@@ -55,22 +56,22 @@ function searchf(data1) {
 
  //   console.log(bbox);
 
-    let paikannimi = jsonData.meta.name;
-    let aikajsondata = jsonData.data[laskejsondata].time;
-    let vedenlampotiladata = jsonData.data[laskejsondata].temp_water;
-    let ilmalampotiladata = jsonData.data[laskejsondata].temp_air;
+    let placeName = jsonData.meta.name;
+    let timeTaken = jsonData.data[indexOfData].time;
+    let waterTemperatureData = jsonData.data[indexOfData].temp_water;
+    let airTemperatureData = jsonData.data[indexOfData].temp_air;
 
-    let last = document.getElementById('demo').innerHTML = '<h1>' + paikannimi +
-        '</h1>' + '<p>Vedenlämpötila: ' + vedenlampotiladata + '</p>' +
-        '<p> Ilmanlämpötila: ' + ilmalampotiladata + '</p>';
-    nouda(bbox);
+    let last = document.getElementById('demo').innerHTML = '<h1>' + placeName +
+        '</h1>' + '<p>Vedenlämpötila: ' + waterTemperatureData + '</p>' +
+        '<p> Ilmanlämpötila: ' + airTemperatureData + '</p>';
+    fetchWeatherData(bbox);
 
   }).catch((error) => {
     console.log('error');
   });
 }
 
-function nouda(query) {
+function fetchWeatherData(query) {
 
   let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=${query}epsg::4326&parameters=t2m,ws_10min&crs=EPSG::3067&`;
 
@@ -79,24 +80,24 @@ function nouda(query) {
    // console.log(xml);
     let parser = new DOMParser();
     let xmlDOM = parser.parseFromString(xml, 'application/xml');
-    let mittaussarja2 = xmlDOM.querySelector('MeasurementTimeseries').
+    let timeSeriesMeasurementData = xmlDOM.querySelector('MeasurementTimeseries').
         querySelectorAll('value');
-    let vahenna2 = mittaussarja2.length - 1;
-    let aikasarja2 = xmlDOM.querySelector('MeasurementTimeseries').
+    let getLatestAnomalyData = timeSeriesMeasurementData.length - 1;
+    let getTimeAnomalyData = xmlDOM.querySelector('MeasurementTimeseries').
         querySelectorAll('time');
-    let vahennaaika2 = aikasarja2.length - 1;
-    let paikka3 = xmlDOM.querySelectorAll('name');
-  //  console.log(paikka3[1].childNodes[0]);
-  //  console.log(mittaussarja2);
-  // console.log(vahenna2);
-  // console.log(mittaussarja2[vahenna2]);
-  //  console.log(aikasarja2[vahennaaika2]);
+    let getTimeLatestAnomalyData = getTimeAnomalyData.length - 1;
+    let getNameAnomalyData = xmlDOM.querySelectorAll('name');
+  //  console.log(getNameAnomalyData[1].childNodes[0]);
+  //  console.log(timeSeriesMeasurementData);
+  // console.log(getLatestAnomalyData);
+  // console.log(timeSeriesMeasurementData[getLatestAnomalyData]);
+  //  console.log(getTimeAnomalyData[getTimeLatestAnomalyData]);
 
     let saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
-        paikka3[1].childNodes[0].textContent + ' on lämpötila ' +
-        mittaussarja2[vahenna2].textContent + ' celsiusta' +
+        getNameAnomalyData[1].childNodes[0].textContent + ' on lämpötila ' +
+        timeSeriesMeasurementData[getLatestAnomalyData].textContent + ' celsiusta' +
         ' kello oli järjestelmän mukaan: ' +
-        aikasarja2[vahennaaika2].textContent;
+        getTimeAnomalyData[getTimeLatestAnomalyData].textContent;
    // console.log(saatulos);
   });
 }
@@ -123,7 +124,7 @@ function showPosition(position) {
   let lonplus = (position.coords.longitude + 0.15);
   let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
         lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
- nouda(bbox);
+ fetchWeatherData(bbox);
 } 
 
 // TORIN KOODI ALKAA //
