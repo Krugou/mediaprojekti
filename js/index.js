@@ -64,14 +64,14 @@ function searchFunctionFmi(data1) {
     let last = document.getElementById('demo').innerHTML = '<h1>' + placeName +
         '</h1>' + '<p>Vedenlämpötila: ' + waterTemperatureData + '</p>' +
         '<p> Ilmanlämpötila: ' + airTemperatureData + '</p>';
-    fetchWeatherData(bbox);
-
+    fetchWeatherTemperatureData(bbox);
+    fetchWeatherSymbolData(bbox);
   }).catch((error) => {
     console.log('error');
   });
 }
 
-function fetchWeatherData(query) {
+function fetchWeatherTemperatureData(query) {
 
   let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=${query}epsg::4326&parameters=t2m,ws_10min&crs=EPSG::3067&`;
 
@@ -101,6 +101,36 @@ function fetchWeatherData(query) {
    // console.log(saatulos);
   });
 }
+function fetchWeatherSymbolData(query) {
+
+  let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=${query}epsg::4326&parameters=wawa&crs=EPSG::3067&`;
+
+//  console.log(arvo);
+  fetch(arvo).then(response => response.text()).then((xml) => {
+   // console.log(xml);
+    let parser = new DOMParser();
+    let xmlDOM = parser.parseFromString(xml, 'application/xml');
+    let timeSeriesMeasurementData = xmlDOM.querySelector('MeasurementTimeseries').
+        querySelectorAll('value');
+    let getLatestAnomalyData = timeSeriesMeasurementData.length - 1;
+    let getTimeAnomalyData = xmlDOM.querySelector('MeasurementTimeseries').
+        querySelectorAll('time');
+    let getTimeLatestAnomalyData = getTimeAnomalyData.length - 1;
+    let getNameAnomalyData = xmlDOM.querySelectorAll('name');
+  //  console.log(getNameAnomalyData[1].childNodes[0]);
+  //  console.log(timeSeriesMeasurementData);
+  // console.log(getLatestAnomalyData);
+  // console.log(timeSeriesMeasurementData[getLatestAnomalyData]);
+  //  console.log(getTimeAnomalyData[getTimeLatestAnomalyData]);
+
+    let weatherSymbol3 = document.getElementById('saasymboli').innerText = 'sijainnissa: ' +
+        getNameAnomalyData[1].childNodes[0].textContent + ' on sääsymboli ' +
+        timeSeriesMeasurementData[getLatestAnomalyData].textContent + ' tunnus ' +
+        ' kello oli järjestelmän mukaan: ' +
+        getTimeAnomalyData[getTimeLatestAnomalyData].textContent;
+   // console.log(saatulos);
+  });
+}
 //käyttäjän sijainnin hakeminen
 let sijainti = document.getElementById("sijainti");
 function getLocation() {
@@ -124,7 +154,8 @@ function showPosition(position) {
   let lonplus = (position.coords.longitude + 0.15);
   let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
         lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
- fetchWeatherData(bbox);
+ fetchWeatherTemperatureData(bbox);
+ fetchWeatherSymbolData(bbox);
 } 
 
 // TORIN KOODI ALKAA //

@@ -105,7 +105,7 @@ function addButtonEvent(){map.on('popupopen', function(){
         if (!eventHandlerAssigned && document.querySelector('#route' + i)) {
             
             const nappi = document.querySelector('#route' + i);
-            console.log(nappi);
+            //console.log(nappi);
             rNum=i;
             nappi.addEventListener('click', newMapRouting)
             eventHandlerAssigned = true;
