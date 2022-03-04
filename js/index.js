@@ -1,4 +1,3 @@
-const { markAsUntransferable } = require("worker_threads");
 
 // index.js
 let data = './json/beaches.json';
