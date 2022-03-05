@@ -12,13 +12,17 @@
 </head>
 <body> <!-- let websiteCore = document.body.innerHTML = -->
     
-<header><h1>otsikkopohja</h1><p id="nimipaivasankari"></p></header>
-<nav>| <a href="css/">CSS</a> |<a href="js/">JavaScript</a> |<a href="json/beaches.json">json</a> |</nav>
+<header><h1>Rantahahmon tietoisku</h1> <img src="images/logo.png" alt="rantahahmo oy"></header>
+<nav>| <a class="myButton" href="css/">CSS</a> |<a class="myButton" href="js/">JavaScript</a> |<a class="myButton" href="json/beaches.json">json</a> <button class="myButton" onclick="palauteLomake()">Palautelomake</button>|<p id="demo"></p><p id="nimipaivasankari"></p></nav>
 <main>
-    <article id="kuvatTekstit"> <img id="rantakuva" src="images/placeholder.png" alt="placeholderImage"> <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, repudiandae vel sapiente id beatae tempora dolores aperiam assumenda mollitia, pariatur velit nemo! Itaque, dignissimos! Repellat atque porro, facere iure ab consequatur autem fugiat excepturi velit harum accusamus sit commodi modi corrupti quaerat eligendi, molestiae voluptatum incidunt vel debitis explicabo illum nihil necessitatibus. Necessitatibus nostrum recusandae, dignissimos nemo deleniti quidem veritatis esse accusantium error eos beatae tempora at velit, numquam totam sed blanditiis ipsam veniam magnam repellat nulla. Incidunt nobis omnis cum commodi dolor laborum natus non, cumque provident, placeat vero nisi perferendis quis quidem inventore ad voluptate nesciunt accusamus alias?</p></article>
-    <section id="toimintoKarttaTwitter">
-         <article>
-             <p id="demo"></p>
+    <article id="kuvatTekstit"> 
+        <img id="rantakuva" src="images/placeholder.png" alt="placeholderImage">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, repudiandae vel sapiente id beatae tempora dolores aperiam assumenda mollitia, pariatur velit nemo! Itaque, dignissimos! Repellat atque porro, facere iure ab consequatur autem fugiat excepturi velit harum accusamus sit commodi modi corrupti quaerat eligendi, molestiae voluptatum incidunt vel debitis explicabo illum nihil necessitatibus. Necessitatibus nostrum recusandae, dignissimos nemo deleniti quidem veritatis esse accusantium error eos beatae tempora at velit, numquam totam sed blanditiis ipsam veniam magnam repellat nulla. Incidunt nobis omnis cum commodi dolor laborum natus non, cumque provident, placeat vero nisi perferendis quis quidem inventore ad voluptate nesciunt accusamus alias?</p>
+        </article>
+    <section >
+    </section>
+         <article id="toimintoKarttaTwitter">
+        <p id="demo"></p>
         <p id="tulos"></p>
         <p id="saakuva"></p>
         <p id="tuulenNopeus"></p>
@@ -29,12 +33,23 @@
         <p id=saatulos></p> <br>
     </article>
     <section id=socialmap>  <!--let footerEnd = document.getElementById('footerid').innerHTML = -->
-        <p id=twitterbot><!-- let twitterBot = document.getElementById('twitterbot').innerHTML =   -->
-            <a class="twitter-timeline" data-height="400" data-theme="light" data-width="100vw"
-               href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a></p>
+        <div id="leipateksti"><h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, assumenda.</h1>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus obcaecati esse mollitia beatae alias eaque ducimus dolore illo iste corrupti inventore dolores, quaerat et quia.</p>
+    </div>
         <div id="map"></div>
-    </section> </section>
-    <aside></aside>
+    </section> 
+    <aside id="asidestyle">
+        <video controls autoplay >
+
+        
+            <source src="video/pgUSz9b.mp4"
+                    type="video/mp4">
+        
+            Sorry, your browser doesn't support embedded videos.
+        </video>
+        <p id=twitterbot><!-- let twitterBot = document.getElementById('twitterbot').innerHTML =   -->
+        <a class="twitter-timeline" data-height="400" data-theme="light" data-width="100vw"
+           href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a></p></aside>
 </main>
 <p id="palaute"></p>
 <footer id="footerid"><!-- let footerEnd = document.getElementById('footerid').innerHTML =-->
