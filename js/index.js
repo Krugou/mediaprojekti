@@ -7,6 +7,8 @@ let twitterBot = document.getElementById('twitterbot').innerHTML = '<a class="tw
 let footerEnd = document.getElementById('footerid').innerHTML = '<div><h3>Tekijät:</h3><p>Tor-Erik</p><p>Joonas</p><p>Aleksi</p></div><div><h3>social</h3><a href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div><div><h3>sivukartta</h3><p>sivu 2</p><p>sivu 3</p><button onclick="palauteLomake()">palautelomake</button></div>'
 */
 nameDaySearch()
+
+// nimipäivä haku muodossa "P.K"
 function nameDaySearch(){
   fetch(nimipaivat).then(response => {
     if (response.ok) {
