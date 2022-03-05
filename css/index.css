@@ -65,8 +65,16 @@ button {
     background-color: red;
     color: white;
 }
-
-
+#sunrisesunset {
+    display:flex;
+    height: 10%;
+    
+}
+#sunrisesunsetimg {
+    width:10%;
+    height: 10%;
+    
+}
 
 footer a {
     color: rgba(255, 255, 255, 0.746);;

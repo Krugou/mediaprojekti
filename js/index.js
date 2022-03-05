@@ -446,6 +446,7 @@ function getLocation() {
 }
 function sunriseSunsetTimes(lat,lon){
   let times = SunCalc.getTimes(new Date(),lat,lon);
+  let sunriseSunset = document.getElementById("sunrisesunset").innerHTML ='<img id="sunrisesunsetimg" alt="aurinko nousee" src="images/weathersymbols/sunrise.png">'+times.sunrise.getHours()+':' + times.sunrise.getMinutes()+':' + times.sunrise.getSeconds()+' <img id="sunrisesunsetimg" alt="aurinko laskee" src="images/weathersymbols/sundown.png">'+times.sunset.getHours()+':' + times.sunset.getMinutes()+':' + times.sunset.getSeconds()
   console.log('aurinko nousee: '+times.sunrise.getHours()+':' + times.sunrise.getMinutes()+':' + times.sunrise.getSeconds()+' aurinko laskee:'+times.sunset.getHours()+':' + times.sunset.getMinutes()+':' + times.sunset.getSeconds())
 }
 // Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle + hakee bounding boxilla lähimmän säähavaintoaseman sen hetken lämpötilan
