@@ -68,11 +68,23 @@ body {
     }
     
     @media only screen and (max-width: 600px) {
+        nav{
+            /* display:flex; */
+            flex-direction: column-reverse;
+            align-content: center;
+            /* justify-content: center; */
+            flex-wrap: nowrap;
+        }
         video {
-            width:100vw;
+            display: flex;
+            align-items: center;
+            width: 80vw;
+            justify-content: center;
+            align-content: center;
+            flex-wrap: nowrap;
         }
         body {
-            /* media query toimii testausvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¤ri */
+            /* media query toimii testausvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¤ri */
             background-color: yellowgreen;
         }
         #map {
@@ -89,7 +101,13 @@ body {
             display: flex;
             justify-content: center;
             flex-direction: column;
+            align-content: center;
+            align-items: center;
         }
+
+#kuvatTekstit p {
+    width: 80vw;
+}
         #toimintoKarttaTwitter {
         display: flex;
         justify-content: center;
@@ -104,19 +122,40 @@ body {
         #sectionstyle{
             display:flex;
             flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
         }
         #socialmap {
             display:flex;
             flex-wrap: wrap-reverse;
             align-items: center;
+            justify-content: center;
         }
+
+#map {}
+
+section#socialmap {}
+
+#leipateksti {
+    width: 80vw;
+}
+
+#map {
+    width: 80vw;
+}
+
+#map {}
         #twitterbot{
-            width: 100vw;
+            width: 80vw;
         }
     }
     @media only screen and (min-width: 600px) {
         video {
             width:50vw;
+        }
+        #footerid{
+            width: 80vw;
         }
         main {
             display:flex;
@@ -182,6 +221,7 @@ body {
         color: rgba(255, 255, 255, 0.746);;
     }
     footer {
+        display: inline;
         display:flex;
         justify-content: space-evenly;
         background-color: rgba(0, 0, 0, 0.452);
@@ -189,6 +229,8 @@ body {
         text-align: center;
         padding: 3px;
     }
+
+footer#footerid {}
     footer div {
         display:flex;
         flex-direction: column;
