@@ -13,7 +13,7 @@
 <body> <!-- let websiteCore = document.body.innerHTML = -->
     
 <header><h1>Rantahahmon tietoisku</h1> <img src="images/logo.png" alt="rantahahmo oy"></header>
-<nav>| <a class="myButton" href="css/">CSS</a> |<a class="myButton" href="js/">JavaScript</a> |<a class="myButton" href="json/beaches.json">json</a> <button class="myButton" onclick="palauteLomake()">Palautelomake</button>|<p id="rannanTiedot"></p></p><p id="nimipaivasankari"></p></nav>
+<nav>| <a class="myButton" href="css/">CSS</a> |<a class="myButton" href="js/">JavaScript</a> |<a class="myButton" href="json/beaches.json">json</a> <button class="myButton" onclick="palauteLomake()">Palautelomake</button>|<p id="rannanTiedot"></p><button onclick="getLocation()">Hae sijaintisi</button><p id="nimipaivasankari"></p></nav>
 <main>
     <article id="kuvatTekstit"> 
         <img id="rantakuva" src="images/placeholder.png" alt="placeholderImage">
@@ -22,15 +22,13 @@
     <section >
     </section>
          <article id="toimintoKarttaTwitter">
-        
         <p id="tulos"></p>
         <p id="saakuva"></p>
         <p id="tuulenNopeus"></p>
         <p id="sateenmaara"></p>
         <p id="sunrisesunset"></p>
-        <button onclick="getLocation()">Hae sijaintisi</button>
         <p id="sijainti"></p><br>
-        <p id=saatulos></p> <br>
+        
     </article>
     <section id=socialmap>  <!--let footerEnd = document.getElementById('footerid').innerHTML = -->
         <div id="leipateksti"><h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, assumenda.</h1>

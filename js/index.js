@@ -1,7 +1,9 @@
 
 // index.js
 let data = './json/beaches.json';
-let nimipaivat = './json/nimipaivat.json'
+let nimipaivat = './json/nimipaivat.json';
+let saatulos= [];
+
 /*let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav><main ><article ><p id="demo"></p><p id="tulos"></p><button onclick="getLocation()">Hae sijaintisi</button><p id="sijainti"></p><br><p id=saatulos></p></article><section id=socialmap><p id=twitterbot></p><div id="map"></div></section><aside ></aside></main><p id="palaute"></p><footer id="footerid"></footer>'
 let twitterBot = document.getElementById('twitterbot').innerHTML = '<a class="twitter-timeline" data-width="100vw" data-height="400" data-theme="light" href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a> '
 let footerEnd = document.getElementById('footerid').innerHTML = '<div><h3>Tekijät:</h3><p>Tor-Erik</p><p>Joonas</p><p>Aleksi</p></div><div><h3>social</h3><a href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div><div><h3>sivukartta</h3><p>sivu 2</p><p>sivu 3</p><button onclick="palauteLomake()">palautelomake</button></div>'
@@ -102,24 +104,21 @@ function fetchWeatherHourForecastTemperatureDataBoundingBox(query){
     // console.log(xml);
      let parser = new DOMParser();
      let xmlDOM = parser.parseFromString(xml, 'application/xml');
-     let timeSeriesMeasurementData = xmlDOM.querySelector('BsWfsElement').
-         querySelectorAll('ParameterValue');
-     let getLatestAnomalyData = timeSeriesMeasurementData[0];
-     let getTimeAnomalyData = xmlDOM.querySelector('BsWfsElement').
-            querySelectorAll('Time');
-     
+     let bsWfsElement = xmlDOM.querySelectorAll('BsWfsElement')
+     let timeSeriesMeasurementData = bsWfsElement[bsWfsElement.length - 1].querySelector('ParameterValue');
+     let getTimeAnomalyData = bsWfsElement[bsWfsElement.length - 1].querySelector('Time');
   
      
-  // console.log(timeSeriesMeasurementData);
-  //  console.log(getLatestAnomalyData);
-  //  console.log(timeSeriesMeasurementData[0]);
-  //   console.log(getTimeAnomalyData[0]);
-     let saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
-         query + ' on lämpötila ' +
-         timeSeriesMeasurementData[0].textContent + ' celsiusta' +
-         ' kello oli järjestelmän mukaan: ' +
-         getTimeAnomalyData[0].textContent;
+ //console.log(timeSeriesMeasurementData.textContent);
+   // console.log(getTimeAnomalyData);
+    //console.log(timeSeriesMeasurementData[0]);
+  // console.log(getTimeAnomalyData[0]);
+      saatulos=document.getElementById("saatulos") = '<p>Lämpötila ' + timeSeriesMeasurementData.textContent + ' celsiusta' +
+          ' kello oli järjestelmän mukaan: ' +
+          getTimeAnomalyData.textContent + '</p>';
+         //console.log(saatulos)
     // console.log(saatulos);
+    
    });
 }
 // keskimääräinen tuulennopeus,viimeisen tunnin sateenmäärä ja sääsymboli haku
@@ -183,7 +182,7 @@ function fetchWeatherTemperatureData(query) {
   // console.log(timeSeriesMeasurementData[getLatestAnomalyData]);
   //  console.log(getTimeAnomalyData[getTimeLatestAnomalyData]);
 
-    let saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
+     saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
         getNameAnomalyData[1].childNodes[0].textContent + ' on lämpötila ' +
         timeSeriesMeasurementData[getLatestAnomalyData].textContent + ' celsiusta' +
         ' kello oli järjestelmän mukaan: ' +
@@ -230,32 +229,50 @@ function getLocation() {
     sijainti.innerHTML = "Selaimesi ei tue geopaikannusta.";
   }
 }
+// auringon nouse ja lasku ajat funktiolla.
+
 function sunriseSunsetTimes(lat,lon){
   let times = SunCalc.getTimes(new Date(),lat,lon);
-  let sunriseSunset = document.getElementById("sunrisesunset").innerHTML ='<img id="sunrisesunsetimg" alt="aurinko nousee" src="images/weathersymbols/sunrise.png">'+times.sunrise.getHours()+':' + times.sunrise.getMinutes()+':' + times.sunrise.getSeconds()+' <img id="sunrisesunsetimg" alt="aurinko laskee" src="images/weathersymbols/sundown.png">'+times.sunset.getHours()+':' + times.sunset.getMinutes()+':' + times.sunset.getSeconds()
-  console.log('aurinko nousee: '+times.sunrise.getHours()+':' + times.sunrise.getMinutes()+':' + times.sunrise.getSeconds()+' aurinko laskee:'+times.sunset.getHours()+':' + times.sunset.getMinutes()+':' + times.sunset.getSeconds())
+  let sunriseSunset = document.getElementById("sunrisesunset").innerHTML ='<img id="sunrisesunsetimg" alt="aurinko nousee" src="images/weathersymbols/sunrise.png">'+times.sunrise.toLocaleTimeString('fi-FI')+' <img id="sunrisesunsetimg" alt="aurinko laskee" src="images/weathersymbols/sundown.png">'+times.sunset.toLocaleTimeString('fi-FI');
+  console.log('aurinko nousee: '+times.sunrise.toLocaleTimeString('fi-FI')+' aurinko laskee:'+times.sunset.toLocaleTimeString('fi-FI'))
 }
 // Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle + hakee bounding boxilla lähimmän säähavaintoaseman sen hetken lämpötilan
 function showPosition(position) {
     map.setView([position.coords.latitude, position.coords.longitude], 11);
-    
-    let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
-    marker.bindPopup('Oma sijainti');
-    let times = SunCalc.getTimes(new Date(),position.coords.latitude,position.coords.longitude);
-  sijainti.innerHTML = "Latitude: " + position.coords.latitude + 
-  "<br>Longitude: " + position.coords.longitude+ ' <a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+
-  '/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>' + '<br> aurinko nousee: '+times.sunrise.getHours()+':' + times.sunrise.getMinutes()+':' + times.sunrise.getSeconds()+' aurinko laskee:'+times.sunset.getHours()+':' + times.sunset.getMinutes()+':' + times.sunset.getSeconds();
-  let minuslat = (position.coords.latitude - 0.15);
+    let minuslat = (position.coords.latitude - 0.15);
   let minuslon = (position.coords.longitude - 0.15);
 
   let latplus = (position.coords.latitude + 0.15);
   let lonplus = (position.coords.longitude + 0.15);
   let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
         lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
+        let arvo = `https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::hourly::simple&bbox=${bbox}&parameters=TA_PT1H_AVG`
+        //  console.log(arvo);
+        fetch(arvo).then(response => response.text()).then((xml) => {
+          // console.log(xml);
+           let parser = new DOMParser();
+           let xmlDOM = parser.parseFromString(xml, 'application/xml');
+           let bsWfsElement = xmlDOM.querySelectorAll('BsWfsElement')
+           let timeSeriesMeasurementData = bsWfsElement[bsWfsElement.length - 1].querySelector('ParameterValue');
+           let getTimeAnomalyData = bsWfsElement[bsWfsElement.length - 1].querySelector('Time');
+          let correctTimeTaken= new Date(getTimeAnomalyData.textContent)
+          // console.log(correctTimeTaken)
+    let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
+    marker.bindPopup('Oman sijainnin tiedot <br>'+ '<p>Lämpötila: ' + timeSeriesMeasurementData.textContent + '\xB0C<br>' +
+    'Kello:' +
+    correctTimeTaken.toLocaleTimeString('fi-FI') + '</p>'+ '' + "Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude+ ' <a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+
+    '/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>');
+    
+  });
+}
+      
+  
  //fetchWeatherTemperatureData(bbox);
  //fetchWeatherSymbolData(bbox);
- fetchWeatherHourForecastTemperatureDataBoundingBox(bbox)
-} 
+
+ 
+
 
 // TORIN KOODI ALKAA //
 
