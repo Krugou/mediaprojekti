@@ -148,8 +148,6 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
         document.getElementById("sateenmaara").innerHTML= ' ' + 'sateenmäärä viimeisen tunnin aikana:' +PRA_PT1H_ACCParameterValue.textContent + ' mm';
      }
 
-     let saakuva = document.getElementById("saakuva");
-
      // Alla oleva funktio sijaitsee imgPrints.js tiedostussa.
      printSymbols(parseInt(WAWA_PT1H_RANKParameterValue.textContent));
     console.log(WAWA_PT1H_RANKParameterValue.textContent);
