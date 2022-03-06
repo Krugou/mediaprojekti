@@ -51,10 +51,10 @@ function addMap() {
                     // Lisätään karttaan popupit käyttäen Uiraksen API dataa. (nimi, sijainti, lämpötila, mittausaika & nappi reititykselle)
                     if (beaches2.data[beaches2.data.length - 1].temp_water >= -50) {
                         //  console.log("normaali tulos")
-                        marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C<br> Aikana: ${date}<br><button id="route${i}">Hae reitti</button>`);
+                        marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C<br> Aikana: ${date}<br><button class="myButton" id="route${i}">Hae reitti</button>`);
                     } else if (beaches2.data[beaches2.data.length - 1].temp_water <= -50) {
                         // console.log("tuntematon")
-                        marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: Tuntematon <br> Aikana: ${date}<br><button id="route${i}">Hae reitti</button>`);
+                        marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: Tuntematon <br> Aikana: ${date}<br><button class="myButton" id="route${i}">Hae reitti</button>`);
                     }
                 }
                     //Jos Uiraksen API:in ei saada yhteyttä, lisätään popuppeihin (nimi,sijainti, reititys nappi) paikallisesta JSONista
@@ -67,7 +67,7 @@ function addMap() {
                         popupLat[i] = lat; //Syötetään globaaleihin taulukkomuuttujiin rantojen sijainnit
                         popupLon[i] = lon;
                         let marker = L.marker([lat, lon]).addTo(map);
-                        marker.bindPopup(`<b>${beaches.beaches[i].name}<br> Ilman lämpötila: Tuntematon <br> Veden lämpötila: Tuntematon<br><button id="route${i}">Hae reitti</button>`)
+                        marker.bindPopup(`<b>${beaches.beaches[i].name}<br> Ilman lämpötila: Tuntematon <br> Veden lämpötila: Tuntematon<br><button class="myButton" id="route${i}">Hae reitti</button>`)
                     } catch (error) {
                         alert(`Rannan ${beaches.beaches[i].name} sijaintitietoja ei löydetty.`); // EI PITÄISI KOSKAAN TAPAHTUA
                     }

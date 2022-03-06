@@ -161,11 +161,7 @@ body {
         }
         
     }
-    button {
-        padding: 4px;
-        background-color: red;
-        color: white;
-    }
+
     #sunrisesunset {
         display:flex;
         height: 10%;
