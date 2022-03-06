@@ -141,230 +141,18 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      let PRA_PT1H_ACCParameterValue = bsWfsElement[bsWfsElement.length -2].querySelector('ParameterValue');
      let WAWA_PT1H_RANKTime = bsWfsElement[bsWfsElement.length - 1].querySelector('Time');
      let WAWA_PT1H_RANKParameterValue = bsWfsElement[bsWfsElement.length - 1].querySelector('ParameterValue'); 
-     let windSpeed = document.getElementById("tuulenNopeus").innerHTML= 'tuulen nopeus nyt: '+ WS_PT1H_AVGParameterValue.textContent + 'm/s'
-      if (PRA_PT1H_ACCParameterValue.textContent == 0){
+     let windSpeed = document.getElementById("tuulenNopeus").innerHTML= 'tuulen nopeus nyt: '+ WS_PT1H_AVGParameterValue.textContent + 'm/s';
+     if (PRA_PT1H_ACCParameterValue.textContent == 0){
         
-      }else if(PRA_PT1H_ACCParameterValue.textContent >0){
-        document.getElementById("sateenmaara").innerHTML= ' ' + 'sateenmäärä viimeisen tunnin aikana:' +PRA_PT1H_ACCParameterValue.textContent + ' mm' 
-      }
-      
+     }else if(PRA_PT1H_ACCParameterValue.textContent >0){
+        document.getElementById("sateenmaara").innerHTML= ' ' + 'sateenmäärä viimeisen tunnin aikana:' +PRA_PT1H_ACCParameterValue.textContent + ' mm';
+     }
 
+     let saakuva = document.getElementById("saakuva");
 
-      if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 0){
-          let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/sun.png">'
-
-          console.log('Ei merkittäviä sääilmiöitä (minkään alla olevan WaWa-koodin ehdot eivät täyty)')
-         }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 4){ 
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/sun.png">'
- console.log('Auerta, savua tai ilmassa leijuvaa pölyä ja näkyvyys vähintään 1 km')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 5){ 
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
- console.log('Auerta, savua tai ilmassa leijuvaa pölyä ja näkyvyys alle 1 km')
-   }
- 
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 10){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Utua')
-   }
- 
- 
- 
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 20){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Sumua')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 21){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Sadetta (olomuoto on määrittelemätön)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 22){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Tihkusadetta (ei jäätävää) tai lumijyväsiä')
- }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 23){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Vesisadetta (ei jäätävää)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 24){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/snow.png">'
-  console.log('Lumisadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 25){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/snowcloud.png">'
-  console.log('Jäätävää vesisadetta tai jäätävää tihkua')
-   }
- 
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 30){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('– SUMUA')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 31){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Sumua tai jääsumua erillisinä hattaroina')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 32){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Sumua tai jääsumua, joka on ohentunut edellisen tunnin aikana')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 33){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Sumua tai jääsumua, jonka tiheydessä ei ole tapahtunut merkittäviä muutoksia edellisen tunnin aikana')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 34){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Sumua tai jääsumua, joka on muodostunut tai tullut sakeammaksi edellisen tunnin aikana')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 40){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('SADETTA (olomuoto on määrittelemätön)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 41){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Heikkoa tai kohtalaista sadetta (olomuoto on määrittelemätön)') 
-  }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 42){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kovaa sadetta (olomuoto on määrittelemätön)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 50){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('TIHKUSADETTA (heikkoa, ei jäätävää)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 51){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Heikkoa tihkua, joka ei ole jäätävää')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 52){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Kohtalaista tihkua, joka ei ole jäätävää')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 53){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Kovaa tihkua, joka ei ole jäätävää')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 54){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Jäätävää heikkoa tihkua')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 55){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Jäätävää kohtalaista tihkua')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 56){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Jäätävää kovaa tihkua')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 60){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('VESISADETTA (heikkoa, ei jäätävää)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 61){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Heikkoa vesisadetta, joka ei ole jäätävää')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 62){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Kohtalaista vesisadetta, joka ei ole jäätävää')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 63){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Kovaa vesisadetta, joka ei ole jäätävää')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 64){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Jäätävää heikkoa vesisadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 65){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/rain.png">'
-  console.log('Jäätävää kohtalaista vesisadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 66){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Jäätävää kovaa vesisadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 67){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/snowcloud.png">'
-  console.log('Heikkoa lumensekaista vesisadetta tai tihkua (räntää)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 68){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kohtalaista tai kovaa lumensekaista vesisadetta tai tihkua (räntää)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 70){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('LUMISADETTA')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 71){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Heikkoa lumisadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 72){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kohtalaista lumisadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 73){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Tiheää lumisadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 74){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Heikkoa jääjyvässadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 75){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kohtalaista jääjyväsadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 76){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kovaa jääjyväsadetta')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 77){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Lumijyväsiä')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 78){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Jääkiteitä')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 80){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('KUUROJA TAI AJOITTAISTA SADETTA (heikkoja)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 81){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Heikkoja vesikuuroja')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 82){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kohtalaisia vesikuuroja')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 83){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kovia vesikuuroja')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 84){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Ankaria vesikuuroja (>32 mm/h)')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 85){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Heikkoja lumikuuroja')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 86){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kohtalaisia lumikuuroja')
-   }
- else if(parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 87){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Kovia lumikuuroja')
-   }
- else if (parseInt(WAWA_PT1H_RANKParameterValue.textContent) == 89){
-    let saakuva = document.getElementById("saakuva").innerHTML= '<img id="saakuva" alt="sääkuva" src="images/weathersymbols/cloud.png">'
-  console.log('Raekuuroja mahdollisesti yhdessä vesi- tai räntäsateen kanssa')
-   }
-
+     // Alla oleva funktio sijaitsee imgPrints.js tiedostussa.
+     printSymbols(parseInt(WAWA_PT1H_RANKParameterValue.textContent));
+    console.log(WAWA_PT1H_RANKParameterValue.textContent);
     //console.log(WS_PT1H_AVGParameterValue.textContent+' '+WS_PT1H_AVGTime.textContent)
     //console.log(PRA_PT1H_ACCParameterValue.textContent+' '+PRA_PT1H_ACCTime.textContent)
     //console.log(WAWA_PT1H_RANKParameterValue.textContent+' '+WAWA_PT1H_RANKTime.textContent)
@@ -532,13 +320,13 @@ async function haeRantalista() {
     let label = document.createElement("label");
     label.innerHTML = "Valitse rantasi: ";
     label.htmlFor = "rannat";
-    document.getElementById("demo").appendChild(label).appendChild(select);
+    document.getElementById("rannanTiedot").appendChild(label).appendChild(select);
 
     let nappi = document.createElement("button");
     nappi.name = "hakunappi";
     nappi.id = "hakunappi";
     nappi.innerHTML = "Hae rannan tiedot!";
-    document.getElementById("demo").appendChild(nappi);
+    document.getElementById("rannanTiedot").appendChild(nappi);
     nappi.addEventListener('click', haeValittuRanta, false);
 
     let tulostusAlue = document.createElement("div");
