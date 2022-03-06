@@ -57,7 +57,7 @@ flex-wrap: nowrap;
 
 align-items: center;
 
-margin FONT-WEIGHT: 200;
+ 
 }
 
 
@@ -225,7 +225,7 @@ label button {
         gap: 1rem;
     }
 
-    article img {
+    #rantakuva,#yhdistettykuva {
         width: 30%;
         border: solid blue;
         margin: 10px;
