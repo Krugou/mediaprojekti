@@ -140,11 +140,11 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      let PRA_PT1H_ACCParameterValue = bsWfsElement[bsWfsElement.length -2].querySelector('ParameterValue');
      let WAWA_PT1H_RANKTime = bsWfsElement[bsWfsElement.length - 1].querySelector('Time');
      let WAWA_PT1H_RANKParameterValue = bsWfsElement[bsWfsElement.length - 1].querySelector('ParameterValue'); 
-     let windSpeed = document.getElementById("tuulenNopeus").innerHTML= 'tuulen nopeus nyt: '+ WS_PT1H_AVGParameterValue.textContent + 'm/s';
+     let windSpeed = document.getElementById("tulostusAlue").innerHTML += 'tuulen nopeus nyt: '+ WS_PT1H_AVGParameterValue.textContent + 'm/s';
      if (PRA_PT1H_ACCParameterValue.textContent == 0){
         
      }else if(PRA_PT1H_ACCParameterValue.textContent >0){
-        document.getElementById("sateenmaara").innerHTML= ' ' + 'sateenmäärä viimeisen tunnin aikana:' +PRA_PT1H_ACCParameterValue.textContent + ' mm';
+      document.getElementById("tulostusAlue").innerHTML += ' ' + 'sateenmäärä viimeisen tunnin aikana:' +PRA_PT1H_ACCParameterValue.textContent + ' mm';
      }
 
      // Alla oleva funktio sijaitsee imgPrints.js tiedostussa.
@@ -247,7 +247,7 @@ function showPosition(position) {
   let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
         lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
         let arvo = `https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::hourly::simple&bbox=${bbox}&parameters=TA_PT1H_AVG`
-        //  console.log(arvo);
+        console.log(arvo);
         fetch(arvo).then(response => response.text()).then((xml) => {
           // console.log(xml);
            let parser = new DOMParser();
@@ -340,6 +340,7 @@ async function haeRantalista() {
     let nappi = document.createElement("button");
     nappi.name = "hakunappi";
     nappi.id = "hakunappi";
+    
     nappi.innerHTML = "Hae rannan tiedot!";
     document.getElementById("rannanTiedot").appendChild(nappi);
     nappi.addEventListener('click', haeValittuRanta, false);
