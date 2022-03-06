@@ -13,7 +13,7 @@
 <body> <!-- let websiteCore = document.body.innerHTML = -->
     
 <header><h1>Rantahahmon tietoisku</h1> <img src="images/logo.png" alt="rantahahmo oy"></header>
-<nav>| <a class="myButton" href="css/">CSS</a> |<a class="myButton" href="js/">JavaScript</a> |<a class="myButton" href="json/beaches.json">json</a> <button class="myButton" onclick="palauteLomake()">Palautelomake</button>|<p id="rannanTiedot"></p><button class="myButton" onclick="getLocation()">Hae sijaintisi</button><p id="nimipaivasankari"></p></nav>
+<nav> <a class="myButton" href="css/">CSS</a><a class="myButton" href="js/">JavaScript</a><a class="myButton" href="json/beaches.json">json</a> <button class="myButton" onclick="palauteLomake()">Palautelomake</button><p id="rannanTiedot"></p><button class="myButton" onclick="getLocation()">Hae sijaintisi</button><p id="nimipaivasankari"></p></nav>
 <main>
     <article id="kuvatTekstit"> 
         <img id="rantakuva" src="images/placeholder.png" alt="placeholderImage">
@@ -48,7 +48,7 @@
         <a class="twitter-timeline" data-height="400" data-theme="light" data-width="100vw"
            href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a></p></section>
 </main>
-<p id="palaute"></p>
+<section id="palaute"></section>
 <footer id="footerid"><!-- let footerEnd = document.getElementById('footerid').innerHTML =-->
     <div><h3>Tekijät:</h3>
         <a class="myButton" href="tekijat.html">Tor-Erik</a>
@@ -62,12 +62,12 @@
         
     </div>
 </footer>
+<script src="js/index.js"></script>
 <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=PoEDqrLTF81h7hAVu2OPG5nwIhTKfHvA
 "></script>
 <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=PoEDqrLTF81h7hAVu2OPG5nwIhTKfHvA
 "></script>
 <script src="js/imgPrint.js"></script>
-<script src="js/index.js"></script>
 <script src="js/suncalc.js"></script>
 <script src="js/beachmap.js"></script>
 <script async charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
