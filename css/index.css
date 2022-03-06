@@ -1,270 +1,297 @@
 /* index.css */
 
 body {
-    background-color:darkgray;
- 
+    background-color: darkgray;
+
+}
+
+article {
+    border: 1px solid rgb(209, 209, 7);
+    background-color: rgb(169, 169, 230);
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+section {
+    border: 1px solid rgb(209, 209, 7);
+    background-color: rgb(169, 169, 230);
+    margin-left: 2vw;
+    margin-right: 2vw;
+}
+
+#toimintoKarttaTwitter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#sectionstyle {
+
+    display: flex;
+    /* width: 30%; */
+    /* padding-left: 15px; */
+    /* margin-left: 15px; */
+    /* float: right; */
+    /* font-style: italic; */
+    /* background-color: lightgray; */
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-around;
+}
+
+
+header {
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: center;
+
+    flex-wrap: nowrap;
+
+    align-items: center;
+}
+
+
+header h1 {
+    /* align-self: flex-start; */
+    /* display: flex; */
+    /* flex-direction: row-reverse; */
+}
+
+#saakuva {
+    width: 30%;
+    height: 30%;
+
+}
+
+@media only screen and (max-width: 600px) {
+    nav {
+        /* display:flex; */
+        flex-direction: column-reverse;
+        align-content: center;
+        /* justify-content: center; */
+        flex-wrap: nowrap;
     }
-    
-    article{
-        border:1px solid rgb(209, 209, 7);
-        background-color: rgb(169, 169, 230);
-        margin-left: 2vw;
-        margin-right: 2vw;
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-content: center;
+        gap: 1rem;
     }
-    section{
-        border:1px solid rgb(209, 209, 7);
-        background-color: rgb(169, 169, 230);
-        margin-left: 2vw;
-        margin-right: 2vw;
+
+    video {
+        display: flex;
+        align-items: center;
+        width: 80vw;
+        justify-content: center;
+        align-content: center;
+        flex-wrap: nowrap;
     }
-    
+
+    body {
+        /* media query toimii testausvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¤ri */
+        background-color: yellowgreen;
+    }
+
+    #map {
+        height: 100%;
+        width: 100vw;
+    }
+
+    article img {
+        width: 80vw;
+        border: solid blue;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    #kuvatTekstit {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+    }
+
+    #kuvatTekstit p {
+        width: 80vw;
+    }
+
     #toimintoKarttaTwitter {
         display: flex;
         justify-content: center;
-        align-items: center;
+        flex-direction: column;
     }
 
+    #map {
+        height: 400px;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
 
     #sectionstyle {
-        
         display: flex;
-        /* width: 30%; */
-        /* padding-left: 15px; */
-        /* margin-left: 15px; */
-        /* float: right; */
-        /* font-style: italic; */
-        /* background-color: lightgray; */
-        flex-direction: row;
-        align-content: center;
-        justify-content: space-around;
-      }
-    
-    
-    
-    
-    header {
-        
-    display: flex;
-        
-    flex-direction: row;
-        
-    justify-content: center;
-        
-    flex-wrap: nowrap;
-        
-    align-items: center;
-    }
-    
-    
-    header h1 {
-        /* align-self: flex-start; */
-        /* display: flex; */
-        /* flex-direction: row-reverse; */
-    }
-    #saakuva {
-        width:30%;
-        height:30%;
-    
-    }
-    
-    @media only screen and (max-width: 600px) {
-        nav{
-            /* display:flex; */
-            flex-direction: column-reverse;
-            align-content: center;
-            /* justify-content: center; */
-            flex-wrap: nowrap;
-        }
-        video {
-            display: flex;
-            align-items: center;
-            width: 80vw;
-            justify-content: center;
-            align-content: center;
-            flex-wrap: nowrap;
-        }
-        body {
-            /* media query toimii testausvÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â‚¬Å¾Ã‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¾Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã¢â‚¬Â ÃƒÂ¢Ã¢â€šÂ¬Ã¢â€žÂ¢ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡Ãƒâ€šÃ‚Â¬ÃƒÆ’Ã¢â‚¬Â¦Ãƒâ€šÃ‚Â¡ÃƒÆ’Ã†â€™Ãƒâ€ Ã¢â‚¬â„¢ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¦Ã‚Â¡ÃƒÆ’Ã†â€™ÃƒÂ¢Ã¢â€šÂ¬Ã…Â¡ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¤ri */
-            background-color: yellowgreen;
-        }
-        #map {
-            height: 100%;
-            width: 100vw;
-        }
-        article img {
-            width: 80vw;
-            border: solid blue;
-            padding: 10px;
-            margin: 10px;
-        }
-        #kuvatTekstit {
-            display: flex;
-            justify-content: center;
-            flex-direction: column;
-            align-content: center;
-            align-items: center;
-        }
-
-#kuvatTekstit p {
-    width: 80vw;
-}
-        #toimintoKarttaTwitter {
-        display: flex;
-        justify-content: center;
         flex-direction: column;
-        }
-        #map {
-            height: 400px;
-            width: 100%;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        #sectionstyle{
-            display:flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
-        }
-        #socialmap {
-            display:flex;
-            flex-wrap: wrap-reverse;
-            align-items: center;
-            justify-content: center;
-        }
-
-#map {}
-
-section#socialmap {}
-
-#leipateksti {
-    width: 80vw;
-}
-
-#map {
-    width: 80vw;
-}
-
-#map {}
-        #twitterbot{
-            width: 80vw;
-        }
-    }
-    @media only screen and (min-width: 600px) {
-        video {
-            width:50vw;
-        }
-        #footerid{
-            width: 80vw;
-        }
-        main {
-            display:flex;
-            flex-direction: column;
-            justify-content:space-between;
-            align-content: center;
-            gap: 1rem;
-        }
-        article img {
-            width: 30%;
-            border: solid blue;
-            margin: 10px;
-            padding: 10px;
-        }
-        #kuvatTekstit {
-            display: flex;
-            justify-content: center;
-            flex-direction: row;
-        }
-
-        #twitterbot{
-            width: 30vw;
-        }
-        #leipateksti {
-            width: 30vw;
-        }
-        #socialmap {
-            display:flex;
-            /* gap:1rem; */
-            /* flex-direction: row-reverse; */
-            /* margin: auto; */
-        }
-        #map {
-            height: 100%;
-            margin: 0;
-        }
-        #map {
-            height: 400px;
-            width: 80vw;
-            max-width: 100%;
-            max-height: 100%;
-        }
-        
-    }
-
-    #sunrisesunset {
-        display:flex;
-        height: 10%;
-        
-    }
-    #sunrisesunsetimg {
-        width:10%;
-        height: 10%;
-        
-    }
-    nav{
-        display:flex;
         justify-content: center;
         align-items: center;
-    }
-    
-    footer a {
-        color: rgba(255, 255, 255, 0.746);;
-    }
-    footer {
-        display: inline;
-        display:flex;
-        justify-content: space-evenly;
-        background-color: rgba(0, 0, 0, 0.452);
-        color: rgba(255, 255, 255, 0.746);
-        text-align: center;
-        padding: 3px;
+        align-content: center;
     }
 
-footer#footerid {}
-    footer div {
-        display:flex;
+    #socialmap {
+        display: flex;
+        flex-wrap: wrap-reverse;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    #leipateksti {
+        width: 80vw;
+    }
+
+    #map {
+        width: 80vw;
+    }
+
+
+    #twitterbot {
+        width: 80vw;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    video {
+        width: 50vw;
+    }
+
+    #footerid {
+        width: 80vw;
+    }
+
+    main {
+        display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        align-content: center;
+        gap: 1rem;
     }
-    
-    footer p {
-        margin: 2px 2px;
-    
+
+    article img {
+        width: 30%;
+        border: solid blue;
+        margin: 10px;
+        padding: 10px;
     }
-    
-    
-   
-    .myButton ,#hakunappi {
-        box-shadow:inset 0px -17px 0px 0px #bee2f9;
-        background:linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
-        background-color:#63b8ee;
-        border-radius:6px;
-        border:2px solid #3866a3;
-        display:inline-block;
-        cursor:pointer;
-        color:#14396a;
-        font-family:Courier New;
-        font-size:16px;
-        font-weight:bold;
-        padding:6px 24px;
-        text-decoration:none;
-        text-shadow:1px 4px 2px #7cacde;
+
+    #kuvatTekstit {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
     }
-    .myButton:hover,#hakunappi:hover {
-        background:linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
-        background-color:#468ccf;
+
+    #twitterbot {
+        width: 30vw;
     }
-    .myButton:active,#hakunappi:active {
-        position:relative;
-        top:1px;
+
+    #leipateksti {
+        width: 30vw;
     }
+
+    #socialmap {
+        display: flex;
+        /* gap:1rem; */
+        /* flex-direction: row-reverse; */
+        /* margin: auto; */
+    }
+
+    #map {
+        height: 100%;
+        margin: 0;
+    }
+
+    #map {
+        height: 400px;
+        width: 80vw;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+}
+
+#sunrisesunset {
+    display: flex;
+    height: 10%;
+
+}
+
+#sunrisesunsetimg {
+    width: 10%;
+    height: 10%;
+
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.746);;
+}
+
+footer {
+    display: inline;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: rgba(0, 0, 0, 0.452);
+    color: rgba(255, 255, 255, 0.746);
+    text-align: center;
+    padding: 3px;
+}
+
+
+footer div {
+    display: flex;
+    flex-direction: column;
+}
+
+footer p {
+    margin: 2px 2px;
+
+}
+
+
+.myButton, #hakunappi {
+    box-shadow: inset 0px -17px 0px 0px #bee2f9;
+    background: linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
+    background-color: #63b8ee;
+    border-radius: 6px;
+    border: 2px solid #3866a3;
+    display: inline-block;
+    cursor: pointer;
+    color: #14396a;
+    font-family: Courier New;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: 1px 4px 2px #7cacde;
+}
+
+.myButton:hover, #hakunappi:hover {
+    background: linear-gradient(to bottom, #468ccf 5%, #63b8ee 100%);
+    background-color: #468ccf;
+}
+
+.myButton:active, #hakunappi:active {
+    position: relative;
+    top: 1px;
+}
     
