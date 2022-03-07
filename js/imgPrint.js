@@ -2,10 +2,6 @@ function printSymbols(number){
 
     let image = [];
 
-    //image[1] = "Aurinko";
-    //img.id = 'saasymboli';
-
-
     switch (number){
         case 0:
             image[0] = 'images/weathersymbols/sun.png';
@@ -320,11 +316,10 @@ function printSymbols(number){
             break;
 
         default:
-            // image[0] = 'images/weathersymbols/unknown.png';
-            // image[1] = 'tuntematon sää';
-            // image[2] = 'Tuntematon sää';
+            //Tarvitaan unknown symboli
+            image[0] = 'images/weathersymbols/snowcloud.png';
+            image[1] = 'tuntematon sää';
+            image[2] = 'Tuntematon sää';
     }
-        //image[2] = "imgPrint " + image[0] + " " +image[1]);
         return (image);
-//    document.getElementById("tulostusAlue").appendChild(img);
 }
