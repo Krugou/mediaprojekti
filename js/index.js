@@ -2,7 +2,6 @@
 // index.js
 let data = './json/beaches.json';
 let nimipaivat = './json/nimipaivat.json';
-let saatulos= [];
 
 /*let websiteCore = document.body.innerHTML = '<header><h1>otsikkopohja</h1> </header><nav> </a> |<a href="/css/">CSS</a> |<a href="/js/">JavaScript</a> |<a href="/json/">json</a> |</nav><main ><article ><p id="demo"></p><p id="tulos"></p><button onclick="getLocation()">Hae sijaintisi</button><p id="sijainti"></p><br><p id=saatulos></p></article><section id=socialmap><p id=twitterbot></p><div id="map"></div></section><aside ></aside></main><p id="palaute"></p><footer id="footerid"></footer>'
 let twitterBot = document.getElementById('twitterbot').innerHTML = '<a class="twitter-timeline" data-width="100vw" data-height="400" data-theme="light" href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a> '
@@ -25,7 +24,7 @@ function nameDaySearch(){
     for (let i = 0; i < jsonData.suominimipaivat.length; i++){
       if (currentDayMonth == jsonData.suominimipaivat[i].date){ 
         //console.log(jsonData.suominimipaivat[i].name)
-        let nameDayPatron = document.getElementById("nimipaivasankari").innerHTML = ' Nimipäivää juhlii tänään: '+jsonData.suominimipaivat[i].name+' '
+        document.getElementById("nimipaivasankari").innerHTML = ' Nimipäivää juhlii tänään: '+jsonData.suominimipaivat[i].name+' '
       }
     
     
@@ -33,7 +32,7 @@ function nameDaySearch(){
   })
 }
 function palauteLomake () {
-let palauteLomake = document.getElementById("palaute").innerHTML = '<form action=".php"> <fieldset><legend>Palautelomake</legend><label for="fname">Etunimi:</label><br> <input type="text" id="fname" name="fname" placeholder="Matti"><br>  <label for="lname">Sukunimi:</label><br>  <input type="text" id="lname" name="lname" placeholder="Meikäläinen"><br> <label for="email">Sähköposti:</label><br><input type="email" id="email" name="email" placeholder="mattimeikalainen@hel.fi"> <br><br><label for="feedback">Palaute:</label><br><textarea id="feedback" placeholder="Palautteesi"></textarea><br><input type="submit" value="Submit"><input type="reset"></fieldset></form>'
+    document.getElementById("palaute").innerHTML = '<form action=".php"> <fieldset><legend>Palautelomake</legend><label for="fname">Etunimi:</label><br> <input type="text" id="fname" name="fname" placeholder="Matti"><br>  <label for="lname">Sukunimi:</label><br>  <input type="text" id="lname" name="lname" placeholder="Meikäläinen"><br> <label for="email">Sähköposti:</label><br><input type="email" id="email" name="email" placeholder="mattimeikalainen@hel.fi"> <br><br><label for="feedback">Palaute:</label><br><textarea id="feedback" placeholder="Palautteesi"></textarea><br><input type="submit" value="Submit"><input type="reset"></fieldset></form>'
 
 }
 // Sekalaisen rannan hakufunktio
@@ -88,7 +87,7 @@ function searchFunctionFmi(data1) {
     let waterTemperatureData = jsonData.data[indexOfData].temp_water;
     let airTemperatureData = jsonData.data[indexOfData].temp_air;
 
-    let last = document.getElementById('demo').innerHTML = '<h1>' + placeName +
+    document.getElementById('demo').innerHTML = '<h1>' + placeName +
         '</h1>' + '<p>Vedenlämpötila: ' + waterTemperatureData + '</p>' +
         '<p> Ilmanlämpötila: ' + airTemperatureData + '</p>';
     fetchWeatherTemperatureData(bbox);
@@ -113,7 +112,7 @@ function fetchWeatherHourForecastTemperatureDataBoundingBox(query){
    // console.log(getTimeAnomalyData);
     //console.log(timeSeriesMeasurementData[0]);
   // console.log(getTimeAnomalyData[0]);
-      saatulos=document.getElementById("saatulos") = '<p>Lämpötila ' + timeSeriesMeasurementData.textContent + ' celsiusta' +
+       document.getElementById("saatulos").innerText = '<p>Lämpötila ' + timeSeriesMeasurementData.textContent + ' celsiusta' +
           ' kello oli järjestelmän mukaan: ' +
           getTimeAnomalyData.textContent + '</p>';
          //console.log(saatulos)
@@ -140,7 +139,7 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      let PRA_PT1H_ACCParameterValue = bsWfsElement[bsWfsElement.length -2].querySelector('ParameterValue');
      let WAWA_PT1H_RANKTime = bsWfsElement[bsWfsElement.length - 1].querySelector('Time');
      let WAWA_PT1H_RANKParameterValue = bsWfsElement[bsWfsElement.length - 1].querySelector('ParameterValue'); 
-     let windSpeed = document.getElementById("tulostusAlue").innerHTML += 'tuulen nopeus nyt: '+ WS_PT1H_AVGParameterValue.textContent + 'm/s';
+     document.getElementById("tulostusAlue").innerHTML += 'tuulen nopeus nyt: '+ WS_PT1H_AVGParameterValue.textContent + 'm/s';
      if (PRA_PT1H_ACCParameterValue.textContent == 0){
         
      }else if(PRA_PT1H_ACCParameterValue.textContent >0){
@@ -182,7 +181,7 @@ function fetchWeatherTemperatureData(query) {
   // console.log(timeSeriesMeasurementData[getLatestAnomalyData]);
   //  console.log(getTimeAnomalyData[getTimeLatestAnomalyData]);
 
-     saatulos = document.getElementById('saatulos').innerText = 'sijainnissa: ' +
+     document.getElementById('saatulos').innerText = 'sijainnissa: ' +
         getNameAnomalyData[1].childNodes[0].textContent + ' on lämpötila ' +
         timeSeriesMeasurementData[getLatestAnomalyData].textContent + ' celsiusta' +
         ' kello oli järjestelmän mukaan: ' +
@@ -212,7 +211,7 @@ function fetchWeatherSymbolData(query) {
   // console.log(timeSeriesMeasurementData[getLatestAnomalyData]);
   //  console.log(getTimeAnomalyData[getTimeLatestAnomalyData]);
 
-    let weatherSymbol3 = document.getElementById('saasymboli').innerText = 'sijainnissa: ' +
+    document.getElementById('saasymboli').innerText = 'sijainnissa: ' +
         getNameAnomalyData[1].childNodes[0].textContent + ' on sääsymboli ' +
         timeSeriesMeasurementData[getLatestAnomalyData].textContent + ' tunnus ' +
         ' kello oli järjestelmän mukaan: ' +
@@ -233,7 +232,7 @@ function getLocation() {
 
 function sunriseSunsetTimes(lat,lon){
   let times = SunCalc.getTimes(new Date(),lat,lon);
-  let sunriseSunset = document.getElementById("sunrisesunset").innerHTML ='<img id="sunrisesunsetimg" alt="aurinko nousee" src="images/weathersymbols/sunrise.png">'+times.sunrise.toLocaleTimeString('fi-FI')+' <img id="sunrisesunsetimg" alt="aurinko laskee" src="images/weathersymbols/sundown.png">'+times.sunset.toLocaleTimeString('fi-FI');
+  document.getElementById("sunrisesunset").innerHTML ='<img id="sunrisesunsetimg" alt="aurinko nousee" src="images/weathersymbols/sunrise.png">'+times.sunrise.toLocaleTimeString('fi-FI')+' <img id="sunrisesunsetimg" alt="aurinko laskee" src="images/weathersymbols/sundown.png">'+times.sunset.toLocaleTimeString('fi-FI');
   console.log('aurinko nousee: '+times.sunrise.toLocaleTimeString('fi-FI')+' aurinko laskee:'+times.sunset.toLocaleTimeString('fi-FI'))
 }
 // Näytä sijaintikoordinaatit + lisää oman sijainnin kartalle + hakee bounding boxilla lähimmän säähavaintoaseman sen hetken lämpötilan
@@ -389,7 +388,7 @@ async function haeValittuRanta(evt){
     fetchWeatherHourForecastWeatherSymbolDataPlace(jsonData.beaches[document.getElementById("rannat").selectedIndex].location);
 
     try {
-        document.getElementById("tulostusAlue").innerHTML += data.meta.name + " tiedot:<br>";
+        document.getElementById("tulostusAlue").innerHTML += "<h2>" + data.meta.name + " tiedot:</h2>";
     } catch(error) {
         console.log("Valitun rannan nimeä ei löytynyt");
     }
@@ -418,5 +417,7 @@ async function haeValittuRanta(evt){
 }
 window.onload = () => {
     haeRantalista();
-    
+    //const palauteNappi = document.getElementById('palauteLomake'),
+
+
 }
