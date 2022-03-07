@@ -13,26 +13,26 @@ function printSymbols(number){
             break;
 
         case 4:
-            img.src = 'images/weathersymbols/sun.png';
-            img.alt = 'Aurinko';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('Auerta, savua tai ilmassa leijuvaa pölyä ja näkyvyys vähintään 1 km')
             break;
 
         case 5:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('Auerta, savua tai ilmassa leijuvaa pölyä ja näkyvyys alle 1 km');
             break;
 
         case 10:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('Utua')
             break;
 
         case 20:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('sumua');
             break;
 
@@ -67,32 +67,32 @@ function printSymbols(number){
             break;
 
         case 30:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('– SUMUA');
             break;
 
         case 31:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('Sumua tai jääsumua erillisinä hattaroina');
             break;
 
         case 32:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('Sumua tai jääsumua, joka on ohentunut edellisen tunnin aikana');
             break;
 
         case 33:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('Sumua tai jääsumua, jonka tiheydessä ei ole tapahtunut merkittäviä muutoksia edellisen tunnin aikana');
             break;
 
         case 34:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/ufocloud.png';
+            img.alt = 'sumusymboli';
             console.log('Sumua tai jääsumua, joka on muodostunut tai tullut sakeammaksi edellisen tunnin aikana');
             break;
 
@@ -109,14 +109,14 @@ function printSymbols(number){
             break;
 
         case 42:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/rain.png';
+            img.alt = 'Sadepilvi';
             console.log('Kovaa sadetta (olomuoto on määrittelemätön)');
             break;
 
         case 50:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/rain.png';
+            img.alt = 'Sadepilvi';
             console.log('TIHKUSADETTA (heikkoa, ei jäätävää)');
             break;
 
@@ -193,128 +193,128 @@ function printSymbols(number){
             break;
 
         case 66:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/rain.png';
+            img.alt = 'Sadepilvi';
             console.log('Jäätävää kovaa vesisadetta');
             break;
 
         case 67:
-            img.src = 'images/weathersymbols/snowcloud.png';
-            img.alt = 'lumipilvi';
+            img.src = 'images/weathersymbols/coldsnow.png';
+            img.alt = 'Lämmin lumisade';
             console.log('Heikkoa lumensekaista vesisadetta tai tihkua (räntää)');
             break;
 
         case 68:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/coldsnow.png';
+            img.alt = 'Lämmin lumisade';
             console.log('Kohtalaista tai kovaa lumensekaista vesisadetta tai tihkua (räntää)');
             break;
 
         case 70:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
-            console.log('LUMISADETTA');
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
+            console.log('Lumisadetta');
             break;
 
         case 71:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Heikkoa lumisadetta');
             break;
 
         case 72:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Kohtalaista lumisadetta');
             break;
 
         case 73:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Tiheää lumisadetta');
             break;
 
         case 74:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Heikkoa jääjyvässadetta');
             break;
 
         case 75:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Kohtalaista jääjyväsadetta');
             break;
 
         case 76:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Kovaa jääjyväsadetta');
             break;
 
         case 77:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Lumijyväsiä');
             break;
 
         case 78:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Jääkiteitä');
             break;
 
         case 80:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
-            console.log('KUUROJA TAI AJOITTAISTA SADETTA (heikkoja)');
+            img.src = 'images/weathersymbols/rain.png';
+            img.alt = 'Sadepilvi';
+            console.log('Kuuroja tai ajoittaista sadetta (heikkoja)');
             break;
 
         case 81:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/rain.png';
+            img.alt = 'Sadepilvi';
             console.log('Heikkoja vesikuuroja');
             break;
 
         case 82:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/rain.png';
+            img.alt = 'Sadepilvi';
             console.log('Kohtalaisia vesikuuroja');
             break;
 
         case 83:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/rain.png';
+            img.alt = 'Sadepilvi';
             console.log('Kovia vesikuuroja');
             break;
 
         case 84:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/rain.png';
+            img.alt = 'Sadepilvi';
             console.log('Ankaria vesikuuroja (>32 mm/h)');
             break;
 
         case 85:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Heikkoja lumikuuroja');
             break;
 
         case 86:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Kohtalaisia lumikuuroja');
             break;
 
         case 87:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snow.png';
+            img.alt = 'Lumipilvi';
             console.log('Kovia lumikuuroja');
             break;
 
         case 89:
-            img.src = 'images/weathersymbols/cloud.png';
-            img.alt = 'Pilvi';
+            img.src = 'images/weathersymbols/snowcloud.png';
+            img.alt = 'vesilumipilvi';
             console.log('Raekuuroja mahdollisesti yhdessä vesi- tai räntäsateen kanssa');
             break;
 
