@@ -20,20 +20,17 @@
         <img id="rantakuva" src="images/placeholder.png" alt="placeholderImage">
         <article id="rantaArtikkeli">
         <h1 id="rannanNimi"></h1>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit at, rerum voluptatum distinctio enim tempore expedita ab facilis veniam ipsum dolores fuga non ullam, placeat voluptatibus doloremque ex. Quod reiciendis culpa omnis doloribus accusamus maiores hic ab, itaque ea laboriosam voluptate in a aut fugiat rem eligendi rerum. Ex, ea!</p>
-        <br><div id="tulos"></div>
+        <div id="tulos"></div>
         </article>
         </section>
-         <article id="toimintoKarttaTwitter">
-
-
-        <p id="tuulenNopeus"></p>
-        <p id="sateenmaara"></p>
-        <p id="sunrisesunset"></p>
-        <p id="sijainti"></p><br>
+         <section id="toimintoKarttaTwitter">
+            <p id="tuulenNopeus"></p>
+            <p id="sateenmaara"></p>
+            <p id="sunrisesunset"></p>
+            <p id="sijainti"></p><br>
         <img id="yhdistettykuva" src="images/placeholder.png" alt="yhdistettykuva">
         
-    </article>
+    </section>
     <section id=socialmap>  <!--let footerEnd = document.getElementById('footerid').innerHTML = -->
         <div id="leipateksti"><h1>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur, assumenda.</h1>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus obcaecati esse mollitia beatae alias eaque ducimus dolore illo iste corrupti inventore dolores, quaerat et quia.</p>
@@ -53,21 +50,30 @@
         <p id=twitterbot><!-- let twitterBot = document.getElementById('twitterbot').innerHTML =   -->
         <a class="twitter-timeline" data-height="400" data-theme="light" data-width="100vw"
            href="https://twitter.com/rantavahtipksr8?ref_src=twsrc%5Etfw">Meidän twitterbotti</a></p></section>
+        <section id="palaute"></section>
 </main>
-<section id="palaute"></section>
+
 <footer id="footerid"><!-- let footerEnd = document.getElementById('footerid').innerHTML =-->
-    <div><h3>Tekijät:</h3>
+    <div class="flexcontainer">
+        <h3>Tekijät:</h3>
         <a class="myButton" href="tekijat.html">Tor-Erik</a>
         <a class="myButton" href="tekijat.html">Joonas</a>
         <a class="myButton" href="tekijat.html">Aleksi</a></div>
-    <div><h3>social</h3><a class="myButton" href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div>
-    <div><h3>sivukartta</h3>
+    <div class="flexcontainer" id="socialmedia">
+        <h3>Socialmedia:</h3>
+        <a class="myButton" href="https://twitter.com/rantavahtipksr8">Twitterbotti</a>
+       
+    </div>
+    
+    <div class="flexcontainer">
+        <h3>Sivukartta</h3>
         <a class="myButton" href="tekijat.html">Tekijät</a>
         <button class="myButton" id = "palauteLomake" onclick="palauteLomake()">Palautelomake</button>
         <a class="myButton" href="adminpalaute.html">adminpalaute</a>
         
     </div>
-    <div>
+    <div class="flexcontainer">
+        <h3>Source:</h3>
         <a class="myButton" href="css/">CSS</a>
         <a class="myButton" href="js/">JavaScript</a>
         <a class="myButton" href="json/beaches.json">json</a>

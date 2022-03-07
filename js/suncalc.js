@@ -8,7 +8,7 @@
 
 // shortcuts for easier to read formulas
 
-var PI   = Math.PI,
+let PI   = Math.PI,
     sin  = Math.sin,
     cos  = Math.cos,
     tan  = Math.tan,
@@ -22,7 +22,7 @@ var PI   = Math.PI,
 
 // date/time constants and conversions
 
-var dayMs = 1000 * 60 * 60 * 24,
+let dayMs = 1000 * 60 * 60 * 24,
     J1970 = 2440588,
     J2000 = 2451545;
 
@@ -33,7 +33,7 @@ function toDays(date)   { return toJulian(date) - J2000; }
 
 // general calculations for position
 
-var e = rad * 23.4397; // obliquity of the Earth
+let e = rad * 23.4397; // obliquity of the Earth
 
 function rightAscension(l, b) { return atan(sin(l) * cos(e) - tan(b) * sin(e), cos(l)); }
 function declination(l, b)    { return asin(sin(b) * cos(e) + cos(b) * sin(e) * sin(l)); }
@@ -58,7 +58,7 @@ function solarMeanAnomaly(d) { return rad * (357.5291 + 0.98560028 * d); }
 
 function eclipticLongitude(M) {
 
-    var C = rad * (1.9148 * sin(M) + 0.02 * sin(2 * M) + 0.0003 * sin(3 * M)), // equation of center
+    let C = rad * (1.9148 * sin(M) + 0.02 * sin(2 * M) + 0.0003 * sin(3 * M)), // equation of center
         P = rad * 102.9372; // perihelion of the Earth
 
     return M + C + P + PI;
@@ -66,7 +66,7 @@ function eclipticLongitude(M) {
 
 function sunCoords(d) {
 
-    var M = solarMeanAnomaly(d),
+    let M = solarMeanAnomaly(d),
         L = eclipticLongitude(M);
 
     return {
@@ -76,14 +76,14 @@ function sunCoords(d) {
 }
 
 
-var SunCalc = {};
+let SunCalc = {};
 
 
 // calculates sun position for a given date and latitude/longitude
 
 SunCalc.getPosition = function (date, lat, lng) {
 
-    var lw  = rad * -lng,
+    let lw  = rad * -lng,
         phi = rad * lat,
         d   = toDays(date),
 
@@ -99,7 +99,7 @@ SunCalc.getPosition = function (date, lat, lng) {
 
 // sun times configuration (angle, morning name, evening name)
 
-var times = SunCalc.times = [
+let times = SunCalc.times = [
     [-0.833, 'sunrise',       'sunset'      ],
     [  -0.3, 'sunriseEnd',    'sunsetStart' ],
     [    -6, 'dawn',          'dusk'        ],
@@ -117,7 +117,7 @@ SunCalc.addTime = function (angle, riseName, setName) {
 
 // calculations for sun times
 
-var J0 = 0.0009;
+let J0 = 0.0009;
 
 function julianCycle(d, lw) { return Math.round(d - J0 - lw / (2 * PI)); }
 
@@ -130,7 +130,7 @@ function observerAngle(height) { return -2.076 * Math.sqrt(height) / 60; }
 // returns set time for the given sun altitude
 function getSetJ(h, lw, phi, dec, n, M, L) {
 
-    var w = hourAngle(h, phi, dec),
+    let w = hourAngle(h, phi, dec),
         a = approxTransit(w, lw, n);
     return solarTransitJ(a, M, L);
 }
@@ -143,7 +143,7 @@ SunCalc.getTimes = function (date, lat, lng, height) {
 
     height = height || 0;
 
-    var lw = rad * -lng,
+    let lw = rad * -lng,
         phi = rad * lat,
 
         dh = observerAngle(height),
@@ -161,7 +161,7 @@ SunCalc.getTimes = function (date, lat, lng, height) {
         i, len, time, h0, Jset, Jrise;
 
 
-    var result = {
+    let result = {
         solarNoon: fromJulian(Jnoon),
         nadir: fromJulian(Jnoon - 0.5)
     };
@@ -185,7 +185,7 @@ SunCalc.getTimes = function (date, lat, lng, height) {
 
 function moonCoords(d) { // geocentric ecliptic coordinates of the moon
 
-    var L = rad * (218.316 + 13.176396 * d), // ecliptic longitude
+    let L = rad * (218.316 + 13.176396 * d), // ecliptic longitude
         M = rad * (134.963 + 13.064993 * d), // mean anomaly
         F = rad * (93.272 + 13.229350 * d),  // mean distance
 
@@ -202,7 +202,7 @@ function moonCoords(d) { // geocentric ecliptic coordinates of the moon
 
 SunCalc.getMoonPosition = function (date, lat, lng) {
 
-    var lw  = rad * -lng,
+    let lw  = rad * -lng,
         phi = rad * lat,
         d   = toDays(date),
 
@@ -229,7 +229,7 @@ SunCalc.getMoonPosition = function (date, lat, lng) {
 
 SunCalc.getMoonIllumination = function (date) {
 
-    var d = toDays(date || new Date()),
+    let d = toDays(date || new Date()),
         s = sunCoords(d),
         m = moonCoords(d),
 
@@ -255,16 +255,16 @@ function hoursLater(date, h) {
 // calculations for moon rise/set times are based on http://www.stargazing.net/kepler/moonrise.html article
 
 SunCalc.getMoonTimes = function (date, lat, lng, inUTC) {
-    var t = new Date(date);
+    let t = new Date(date);
     if (inUTC) t.setUTCHours(0, 0, 0, 0);
     else t.setHours(0, 0, 0, 0);
 
-    var hc = 0.133 * rad,
+    let hc = 0.133 * rad,
         h0 = SunCalc.getMoonPosition(t, lat, lng).altitude - hc,
         h1, h2, rise, set, a, b, xe, ye, d, roots, x1, x2, dx;
 
     // go in 2-hour chunks, each time seeing if a 3-point quadratic curve crosses zero (which means rise or set)
-    for (var i = 1; i <= 24; i += 2) {
+    for (let i = 1; i <= 24; i += 2) {
         h1 = SunCalc.getMoonPosition(hoursLater(t, i), lat, lng).altitude - hc;
         h2 = SunCalc.getMoonPosition(hoursLater(t, i + 1), lat, lng).altitude - hc;
 
@@ -298,7 +298,7 @@ SunCalc.getMoonTimes = function (date, lat, lng, inUTC) {
         h0 = h2;
     }
 
-    var result = {};
+    let result = {};
 
     if (rise) result.rise = hoursLater(t, rise);
     if (set) result.set = hoursLater(t, set);
