@@ -42,9 +42,9 @@ function addMap() {
                     const beaches2 = await vastaus2.json();
                     //console.log(beaches2.meta.name);
                     popupButtons++;
-                    let lat = beaches2.meta.lat;
-                    let lon = beaches2.meta.lon;
-                    popupLat[i] = lat;
+                    let lat = beaches.beaches[i].lat;
+                    let lon = beaches.beaches[i].lon;
+                    popupLat[i] = lat; //Syötetään globaaleihin taulukkomuuttujiin rantojen sijainnit
                     popupLon[i] = lon;
                     let date = new Date(beaches2.data[beaches2.data.length - 1].time).toLocaleString('fi'); // Muutetaan aika suomalaiseen formaattiin.
                     let marker = L.marker([lat, lon]).addTo(map); // Lisätään Leaflet karttaan markkerit
@@ -62,6 +62,8 @@ function addMap() {
                     console.log(error)
                     alert(`Rannan ${beaches.beaches[i].name} säätietoja ei löydetty.`);
                     try {
+                        popupButtons++;
+                        console.log(beaches.beaches[i].name)
                         let lat = beaches.beaches[i].lat;
                         let lon = beaches.beaches[i].lon;
                         popupLat[i] = lat; //Syötetään globaaleihin taulukkomuuttujiin rantojen sijainnit
@@ -69,7 +71,7 @@ function addMap() {
                         let marker = L.marker([lat, lon]).addTo(map);
                         marker.bindPopup(`<b>${beaches.beaches[i].name}<br> Ilman lämpötila: Tuntematon <br> Veden lämpötila: Tuntematon<br><button class="myButton" id="route${i}">Hae reitti</button>`)
                     } catch (error) {
-                        alert(`Rannan ${beaches.beaches[i].name} sijaintitietoja ei löydetty.`); // EI PITÄISI KOSKAAN TAPAHTUA
+                    //    alert(`Rannan ${beaches.beaches[i].name} sijaintitietoja ei löydetty.`); // EI PITÄISI KOSKAAN TAPAHTUA
                     }
                 }
             }
@@ -108,7 +110,6 @@ function addButtonEvent(){map.on('popupopen', function(){
     for (let i = 0; i < popupButtons; i++) {
         if (document.querySelector('#route' + i)) {
             const nappi = document.querySelector('#route' + i);
-            //console.log(nappi);
             rNum=i; //Rannan numero tallennetaan globaaliin muuttujaan
             nappi.addEventListener('click', newMapRouting) // Nappia painaessa ajetaan funktio: newMapRouting()
         }
@@ -152,7 +153,6 @@ function routing() {
             ,
             {latLng: {lat: popupLat[rNum], lng: popupLon[rNum]}}] //B Pisteenä: Rannan sijainti. Haetaan globaalista taulukkomuuttujasta rannan numeron avulla
     });
-    
    
     map.addLayer(MQ.routing.routeLayer({
         directions: dir,
