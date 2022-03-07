@@ -182,6 +182,7 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      img.src = kuvaData[0];
      img.alt = kuvaData[1];
       document.getElementById('tulostusAlue').appendChild(img);
+      document.getElementById('tulostusAlue').innerHTML += kuvaData[2];
     //console.log(WAWA_PT1H_RANKParameterValue.textContent);
     //console.log(WS_PT1H_AVGParameterValue.textContent+' '+WS_PT1H_AVGTime.textContent)
     //console.log(PRA_PT1H_ACCParameterValue.textContent+' '+PRA_PT1H_ACCTime.textContent)
@@ -193,41 +194,44 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
 // Funktio hakee ja tulostaa 24h päästä olevan lämpötilan. Ehkä käytännöllisempää olisi kertoa huomisen lämpötila klo 12 päivällä, mutta en jaksa säätää
 async function fetchTomorrowWeather(lat, lon) {
     let arvo = 'https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::forecast::hirlam::surface::point::simple&latlon=' + lat + ',' + lon+ '&parameters=temperature,windSpeedMS,WeatherSymbol3';
-    await fetch(arvo).then(response => response.text()).then((xml) => {
+    try {
+        await fetch(arvo).then(response => response.text()).then((xml) => {
 
-        const parser = new DOMParser();
-        const xmlDOM = parser.parseFromString(xml, 'application/xml');
+            const parser = new DOMParser();
+            const xmlDOM = parser.parseFromString(xml, 'application/xml');
 
-        let tomorrowTemp = parseFloat(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.1"]').querySelector('ParameterValue').textContent);
-        let tomorrowWind = parseFloat(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.2"]').querySelector('ParameterValue').textContent);
-        let tomorrowSymb = parseInt(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.3"]').querySelector('ParameterValue').textContent);
+            let tomorrowTemp = parseFloat(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.1"]').querySelector('ParameterValue').textContent);
+            let tomorrowWind = parseFloat(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.2"]').querySelector('ParameterValue').textContent);
+            let tomorrowSymb = parseInt(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.3"]').querySelector('ParameterValue').textContent);
 
-        let article = document.createElement('div');
-        article.id = 'ennuste';
-        article.innerHTML = '<h1>Huomisen sää</h1>';
-        try{
+            let article = document.createElement('div');
+            article.id = 'ennuste';
+            article.innerHTML = '<h1>Huomisen sää</h1>';
+            try {
 
-            article.innerHTML += 'Lämmintä ' + tomorrowTemp + ' °C<br>';
-            article.innerHTML += windDescription(tomorrowWind) + ' ' + tomorrowWind + ' m/s<br>';
+                article.innerHTML += 'Lämmintä ' + tomorrowTemp + ' °C<br>';
+                article.innerHTML += windDescription(tomorrowWind) + ' ' + tomorrowWind + ' m/s<br>';
 
 
-        } catch(error){
-            article.innerText = 'Rannan ennusteen haussa tapahtui tuntematon virhe';
-            console.log('Rannan ennusteen haussa tapahtui virhe');
-        }
-        document.getElementById('tulostusAlue').appendChild(article);
-        let img = document.createElement('img');
-        let kuvaData = printSymbols(tomorrowSymb);
-        img.src = kuvaData[0];
-        img.alt = kuvaData[1];
-        //article.innerHTML += kuvaData[2]+ '<br>';
-        document.getElementById('tulostusAlue').appendChild(article);
-        document.getElementById('ennuste').appendChild(img);
-        article.innerHTML += '<br>' + kuvaData[2]+ '<br>';
+            } catch (error) {
+                article.innerText = 'Rannan ennusteen haussa tapahtui tuntematon virhe';
+                console.log('Rannan ennusteen haussa tapahtui virhe');
+            }
+            document.getElementById('tulostusAlue').appendChild(article);
+            let img = document.createElement('img');
+            let kuvaData = printSymbols(tomorrowSymb);
+            img.src = kuvaData[0];
+            img.alt = kuvaData[1];
+            //article.innerHTML += kuvaData[2]+ '<br>';
+            document.getElementById('tulostusAlue').appendChild(article);
+            document.getElementById('ennuste').appendChild(img);
+            article.innerHTML += '<br>' + kuvaData[2] + '<br>';
 
-        document.getElementById('tulostusAlue').appendChild(article);
-   });
-
+            document.getElementById('tulostusAlue').appendChild(article);
+        });
+    } catch(e){
+        console.log('Tulevan sään hakeminen epäonnistui')
+    }
 }
 
 function fetchWeatherTemperatureData(query) {
