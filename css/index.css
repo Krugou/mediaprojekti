@@ -46,6 +46,9 @@ img {
     object-fit: contain;
   
 }
+video {
+    object-fit: contain;
+}
 /* Mobiili laitteille alkaa */
 @media only screen and (max-width: 650px) {
     #rantaArtikkeli{
