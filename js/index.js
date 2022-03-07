@@ -149,18 +149,60 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      }
 
      // Alla oleva funktio sijaitsee imgPrints.js tiedostussa.
-     printSymbols(parseInt(WAWA_PT1H_RANKParameterValue.textContent));
-    console.log(WAWA_PT1H_RANKParameterValue.textContent);
+      let img = document.createElement('img');
+     let kuvaData = [];
+     kuvaData = printSymbols(parseInt(WAWA_PT1H_RANKParameterValue.textContent));
+     img.src = kuvaData[0];
+     img.alt = kuvaData[1];
+      document.getElementById("tulostusAlue").appendChild(img);
+    //console.log(WAWA_PT1H_RANKParameterValue.textContent);
     //console.log(WS_PT1H_AVGParameterValue.textContent+' '+WS_PT1H_AVGTime.textContent)
     //console.log(PRA_PT1H_ACCParameterValue.textContent+' '+PRA_PT1H_ACCTime.textContent)
     //console.log(WAWA_PT1H_RANKParameterValue.textContent+' '+WAWA_PT1H_RANKTime.textContent)
-         
-    
 
-  
-     
    });
 }
+//Torin funktio
+// Funktio hakee ja tulostaa 24h päästä olevan lämpötilan. Ehkä käytännöllisempää olisi kertoa huomisen lämpötila klo 12 päivällä, mutta en jaksa säätää
+async function fetchTomorrowWeather(lat, lon) {
+    let arvo = 'https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::forecast::hirlam::surface::point::simple&latlon=' + lat + ',' + lon+ '&parameters=temperature,windSpeedMS,WeatherSymbol3';
+    await fetch(arvo).then(response => response.text()).then((xml) => {
+
+        const parser = new DOMParser();
+        const xmlDOM = parser.parseFromString(xml, 'application/xml');
+
+        let tomorrowTemp = parseFloat(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.1"]').querySelector('ParameterValue').textContent);
+        let tomorrowWind = parseFloat(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.2"]').querySelector('ParameterValue').textContent);
+        let tomorrowSymb = parseInt(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.3"]').querySelector('ParameterValue').textContent);
+
+        let article = document.createElement('div');
+        article.id = 'ennuste';
+        article.innerHTML = '<h1>Huomisen sää</h1>';
+        try{
+
+            article.innerHTML += "Huomenna lämpöä on " + tomorrowTemp + " °C<br>";
+            article.innerHTML += "Huomenna tuulta on " + tomorrowWind + " m/s<br>";
+
+        } catch(error){
+            article.innerText = 'Rannan ennusteen haussa tapahtui tuntematon virhe';
+            console.log('Rannan ennusteen haussa tapahtui virhe');
+        }
+        document.getElementById("tulostusAlue").appendChild(article);
+        let img = document.createElement('img');
+        let kuvaData = [];
+        kuvaData = printSymbols(tomorrowSymb);
+        img.src = kuvaData[0];
+        img.alt = kuvaData[1];
+        document.getElementById('ennuste').appendChild(img);
+
+
+
+
+
+   });
+
+}
+
 function fetchWeatherTemperatureData(query) {
 
   let arvo = `https://opendata.fmi.fi/wfs/fin?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=${query}epsg::4326&parameters=t2m,ws_10min&crs=EPSG::3067&`;
@@ -371,8 +413,8 @@ function tyhjenna(){
         console.log("Ruudun siistiminen epäonnistui!");
     }
 }
-// Funktio katsoo hakuvalikossa olevan valinnan ja tulostaa sen rannan tiedot
 
+// Funktio katsoo hakuvalikossa olevan valinnan ja tulostaa sen rannan tiedot
 async function haeValittuRanta(evt){
     // Tyhjennetään vanhat hakutulokset
     tyhjenna();
@@ -426,6 +468,8 @@ async function haeValittuRanta(evt){
         console.log("Virhe rannan kuvan kanssa.");
         document.getElementById("rantakuva").src = "images/placeholder.png";
     }
+    fetchTomorrowWeather(jsonData.beaches[document.getElementById('rannat').selectedIndex].lat, jsonData.beaches[document.getElementById('rannat').selectedIndex].lon);
+
 }
 window.onload = () => {
     haeRantalista();
