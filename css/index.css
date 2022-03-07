@@ -12,7 +12,11 @@ article {
     margin-left: 2vw;
     margin-right: 2vw;
     padding:1vh;
+    
+}
 
+article p {
+    /* align-items: ; */
 }
 
 #rantaArtikkeli {width: 60%;}
@@ -49,17 +53,17 @@ section {
 
 header {
 
-    display: flex;
+display: flex;
 
-    flex-direction: row;
+flex-direction: row;
 
-    justify-content: center;
+justify-content: center;
 
-    flex-wrap: nowrap;
+flex-wrap: nowrap;
 
-    align-items: center;
+align-items: center;
 
-
+ 
 }
 
 
@@ -85,20 +89,20 @@ header h1 {
         flex-wrap: nowrap;
     }
 
-    #rannanTiedot {
-        display: flex;
-        align-content: center;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
+#rannanTiedot {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-    label button {
-        display: flex;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
-    }
+label button {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
     p label{
         display: flex;
     }
@@ -106,7 +110,7 @@ header h1 {
         display: flex;
         justify-content: center;
         /* flex-direction: column; */
-    }
+    } 
 
     main {
         display: flex;
@@ -211,13 +215,13 @@ header h1 {
     }
     #palaute form {
         width:80vw;
-
-
+        
+        
     }
     #palaute {
         display: flex;
         justify-content: center;
-    }
+    }   
 
     main {
         display: flex;
@@ -247,7 +251,16 @@ header h1 {
 
     #leipateksti {
         width: 30vw;
+        padding: 5px;
+        margin: 14px;
     }
+
+#leipateksti {
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+    flex-direction: column;
+}
 
     #socialmap {
         display: flex;
@@ -286,7 +299,29 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
+    align-content: space-around;
 }
+
+nav p {
+    padding: 5px;
+    margin:5px;
+}
+
+nav p label {
+    padding: 8px;
+   
+    margin: 8px;
+}
+
+
+
+#nimipaivasankari {
+    border: solid blue;
+    background-blend-mode: darken;
+    border-style: dotted;
+}
+
+
 
 footer a {
     color: rgba(255, 255, 255, 0.746);;
@@ -324,14 +359,14 @@ footer p {
     background: linear-gradient(to bottom, #63b8ee 5%, #468ccf 100%);
     background-color: #63b8ee;
     border-radius: 6px;
-    border: 2px solid #3866a3;
+    border: 1px solid #3866a3;
     display: inline-block;
     cursor: pointer;
     color: #14396a;
     font-family: Courier New;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
-    padding: 6px 24px;
+    padding: 6px 10px;
     text-decoration: none;
     text-shadow: 1px 4px 2px #7cacde;
 }
