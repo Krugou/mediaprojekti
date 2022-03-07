@@ -47,7 +47,7 @@ img {
   
 }
 /* Mobiili laitteille alkaa */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 650px) {
     #rantaArtikkeli{
         width:80vw;
     }
@@ -108,7 +108,6 @@ label button {
     flex-direction: column;
     }
 
-footer {}
     body {
 
         
@@ -183,9 +182,12 @@ footer {}
     }
 }
 /* Mobiili laitteille loppuu */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 650px) {
     video {
         width: 50vw;
+        min-width:400px;
+        max-width:600px;
+        margin:5px;
     }
     #rantaArtikkeli {
         width: 50vw;
