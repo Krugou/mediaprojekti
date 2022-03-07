@@ -15,13 +15,17 @@
 <header><h1>Rantahahmon tietoisku</h1> <img src="images/logo.png" alt="rantahahmo oy"></header>
 <nav> <p id="rannanTiedot"></p><p id="nimipaivasankari"></p></nav>
 <main>
-    <article id="kuvatTekstit"> 
+    <section id="kuvatTekstit">
         <img id="rantakuva" src="images/placeholder.png" alt="placeholderImage">
+        <article id="rantaArtikkeli">
+        <h1 id="rannanNimi"></h1>
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit at, rerum voluptatum distinctio enim tempore expedita ab facilis veniam ipsum dolores fuga non ullam, placeat voluptatibus doloremque ex. Quod reiciendis culpa omnis doloribus accusamus maiores hic ab, itaque ea laboriosam voluptate in a aut fugiat rem eligendi rerum. Ex, ea!</p>
+        <br><div id="tulos"></div>
         </article>
+        </section>
          <article id="toimintoKarttaTwitter">
-        <p id="tulos"></p>
-        <p id="saakuva"></p>
+
+
         <p id="tuulenNopeus"></p>
         <p id="sateenmaara"></p>
         <p id="sunrisesunset"></p>
@@ -58,12 +62,14 @@
     <div><h3>social</h3><a class="myButton" href="https://twitter.com/rantavahtipksr8">Twitterbotti</a></div>
     <div><h3>sivukartta</h3>
         <a class="myButton" href="tekijat.html">Tekijät</a>
-        <button class="myButton" onclick="palauteLomake()">Palautelomake</button>
-        <a class="myButton" href="css/">CSS</a>
-        <a class="myButton" href="js/">JavaScript</a>
-        <a class="myButton" href="json/beaches.json">json</a> 
+        <button class="myButton" id = "palauteLomake" onclick="palauteLomake()">Palautelomake</button>
         <a class="myButton" href="adminpalaute.html">adminpalaute</a>
         
+    </div>
+    <div>
+        <a class="myButton" href="css/">CSS</a>
+        <a class="myButton" href="js/">JavaScript</a>
+        <a class="myButton" href="json/beaches.json">json</a>
     </div>
 </footer>
 <script src="js/index.js"></script>
@@ -74,6 +80,6 @@
 <script src="js/imgPrint.js"></script>
 <script src="js/suncalc.js"></script>
 <script src="js/beachmap.js"></script>
-<script async charset="utf-8" src="https://platform.twitter.com/widgets.js"></script>
+<script async src="https://platform.twitter.com/widgets.js"></script>
 </body>
 </html>

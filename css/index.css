@@ -1,13 +1,14 @@
 /* index.css */
 
 body {
-    background-color: darkgray;
+    background-color: #F6E3D4;
 
 }
 
 article {
     border: 1px solid rgb(209, 209, 7);
-    background-color: rgb(169, 169, 230);
+    border-radius: 15px;
+    background-color: #BBDBF7;
     margin-left: 2vw;
     margin-right: 2vw;
     padding:1vh;
@@ -16,6 +17,7 @@ article {
 
 section {
     border: 1px solid rgb(209, 209, 7);
+
     background-color: rgb(169, 169, 230);
     margin-left: 2vw;
     margin-right: 2vw;
