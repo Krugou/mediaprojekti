@@ -276,8 +276,9 @@ label button {
 
     #map {
         height: 400px;
-        width: 80vw;
+        width: 60vw;
         max-width: 100%;
+        margin: 10px;
         max-height: 100%;
     }
 
