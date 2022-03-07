@@ -9,6 +9,18 @@ function printSymbols(number){
             image[2] = 'Luultavasti aurinkoista';
             break;
 
+        case 2:
+            image[0] = 'images/weathersymbols/semicloud.png';
+            image[1] = 'Puolipilvistä';
+            image[2] = 'Puolipilvistä';
+            break;
+
+        case 3:
+            image[0] = 'images/weathersymbols/cloud.png';
+            image[1] = 'Pilvistä';
+            image[2] = 'Pilvistä';
+            break;
+
         case 4:
             image[0] = 'images/weathersymbols/ufocloud.png';
             image[1] = 'sumusymboli';
@@ -317,9 +329,9 @@ function printSymbols(number){
 
         default:
             //Tarvitaan unknown symboli
-            image[0] = 'images/weathersymbols/snowcloud.png';
+            image[0] = 'images/weathersymbols/unknown.png';
             image[1] = 'tuntematon sää';
-            image[2] = 'Tuntematon sää';
+            image[2] = 'Sää tuntematon, Rantahahmo suosittelee';
     }
         return (image);
 }
