@@ -45,7 +45,7 @@
 		{
 			"name":"Rastilan Uimaranta",
 			"url":"70B3D57050001BBE_v1",
-			"location": "Rastila",
+			"location": "Uutela",
 			"lat": "60.207977",
 			"lon": "25.114849"
 		},
@@ -59,7 +59,7 @@
 		{
 			"name":"Marjaniemen Uimaranta",
 			"url":"70B3D57050004E0E_v1",
-			"location": "Vuosaari",
+			"location": "Uutela",
 			"lat": "60.198449",
 			"lon": "25.076416"
 		},
@@ -115,7 +115,7 @@
 		{
 			"name": "Porvarinlahti",
 			"url": "70B3D5705000E6D1_v1",
-			"location": "Vuosaari",
+			"location": "Uutela",
 			"lat": "60.228068",
 			"lon": "25.185788"
 		},
@@ -143,7 +143,7 @@
 		{
 			"name": "Aurinkolahden uimaranta",
 			"url": "70B3D5705000E70E_v1",
-			"location": "vuosaari",
+			"location": "Uutela",
 			"lat": "60.200447",
 			"lon": "25.156321"
 		},
