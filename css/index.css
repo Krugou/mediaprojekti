@@ -304,28 +304,28 @@ nav p {
     
 
 }
-@media only screen and  (min-width:1555px){
+@media only screen and  (min-width:1570px){
     .floatingmonster{
         margin:10px
     }
     #float{
         position:fixed;
-        top:50px;
+        top:5vh;
         left:0;
     }
     #float2{
         position:fixed;
-        top:50px;
+        top:5vh;
         right:0;
     }
 }
-@media only screen and  (max-width:1555px){
+@media only screen and  (max-width:1570px){
     #float{
         visibility: hidden;
         position:fixed;
         display: none;
     overflow: hidden;
-        top:50px;
+        top:5vh;
         left:0;
     }
     #float2{
@@ -333,7 +333,7 @@ nav p {
         display: none;
     overflow: hidden;
         position:fixed;
-        top:50px;
+        top:5vh;
         right:0;
     }
 }
@@ -364,7 +364,7 @@ nav p {
     overflow: hidden;
         
 }
-
+}
 @media only screen and (min-width:600px) and (max-width:1000px){
     #rantaArtikkeli {
         
