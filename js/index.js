@@ -504,14 +504,18 @@ async function haeValittuRanta(evt){
         console.log('Valitun rannan aikaa ei löytynyt');
     } 
     try {
-        document.getElementById('rantakuva').src = 'images/beaches/' + document.getElementById('rannat').value + '.png';
+        document.getElementById('rantakuva').src = 'images/beaches/' + document.getElementById('rannat').value + '.jpg';
+        document.getElementById('rantakuva').onerror = function() {
+            document.getElementById('rantakuva').src = 'images/beaches/' + document.getElementById('rannat').value + '.png';
+        }
     } catch(error) {
         console.log('Virhe rannan kuvan kanssa.');
-        document.getElementById('rantakuva').src = 'images/placeholder.png';
-    }
+        }
+
     fetchTomorrowWeather(jsonData.beaches[document.getElementById('rannat').selectedIndex].lat, jsonData.beaches[document.getElementById('rannat').selectedIndex].lon);
 
 }
+
 window.onload = () => {
     haeRantalista();
     //const palauteNappi = document.getElementById('palauteLomake'),
