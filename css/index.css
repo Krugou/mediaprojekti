@@ -42,8 +42,7 @@ align-items: center;
 
 
 
-img {
-    
+img {    
     max-width: 600px;
     object-fit: contain;
   
@@ -56,6 +55,11 @@ video {
     #rantaArtikkeli{
         width:80vw;
     }
+    #rantahahmooy{
+       width:80vw
+    }
+        
+    
     nav {
         margin: 2px;
         /* display:flex; */
@@ -294,12 +298,9 @@ nav p {
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;
-
-    
-padding: 5px;
-    
-margin:5px;
+    align-content: center;  
+    padding: 5px;
+    margin:5px;
     
 
 }
@@ -322,15 +323,46 @@ margin:5px;
     #float{
         visibility: hidden;
         position:fixed;
+        display: none;
+    overflow: hidden;
         top:50px;
         left:0;
     }
     #float2{
         visibility: hidden;
+        display: none;
+    overflow: hidden;
         position:fixed;
         top:50px;
         right:0;
     }
+}
+@media only screen and  (min-width:800px)and  (max-width:850px){
+   
+    #float3{
+        margin:15px;
+        
+        max-width: 900px;
+
+        
+        
+        
+    }
+}
+@media only screen and  (max-width:800px) {
+    #float3{
+        visibility: hidden;
+        display: none;
+  overflow: hidden;
+        
+}
+}
+@media only screen and  (min-width:851px){
+    #float3{
+        visibility: hidden;
+        display: none;
+    overflow: hidden;
+        
 }
 
 @media only screen and (min-width:600px) and (max-width:1000px){
