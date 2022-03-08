@@ -476,12 +476,15 @@ async function haeValittuRanta(evt){
     let jsonData = await haeRanta();
 
     try{
-        document.getElementById('rannanNimi').innerHTML = data.meta.name;
+        document.getElementById('tulos').innerHTML = data.meta.name;
+
+        //document.getElementById('rannanNimi').innerText = 'lol';
     } catch(error){
-        document.getElementById('rannanNimi').innerText = "Tuntematon Ranta";
+        console.log(error);
+        //document.getElementById('rannanNimi').innerHTML = 'Tuntematon Ranta';
         console.log('Rannan nimen haku epäonnistui.');
     }
-        document.getElementById('tulos').innerHTML = '<h2>Rannan tiedot:</h2>';
+        document.getElementById('tulos').innerHTML += '<h2>Rannan tiedot:</h2>';
 
     try {
         document.getElementById('tulos').innerHTML += 'Veden lämpötila: ' + data.data[data.data.length - 1].temp_water +
