@@ -332,7 +332,7 @@ margin:5px;
         right:0;
     }
 }
-visibility: hidden;
+
 @media only screen and (min-width:600px) and (max-width:1000px){
     #rantaArtikkeli {
         
@@ -448,11 +448,5 @@ footer p {
 body,header,.leaflet-popup-content,p{
     font-family:'Epilogue', sans-serif;
 }
-aside{
-    display:hidden;
-    float: right;
-    right:0;
-    padding: 0px;
 
-}
     
