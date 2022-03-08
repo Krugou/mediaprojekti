@@ -24,7 +24,7 @@
     <title>Rantahahmon Rantasovellus</title>
 </head>
 <body> <!-- let websiteCore = document.body.innerHTML = -->
-    
+
 <header><img src="images/rantasovellus.png" alt="rantahahmo oy" id="rantahahmooy"></header>
 <nav> <p id="rannanTiedot"></p><p id="nimipaivasankari"></p></nav>
 <!--
@@ -32,19 +32,22 @@
     <img src="/images/sideanimation.webp" alt="sivuanimaatio">
 </aside>-->
 <main>
-    
+
     <section id="kuvatTekstit">
         <article id="rantaKuvaus">
-        <img id="rantakuva" src="images/placeholder.png" alt="placeholderImage">
+            <img id="rantakuva" src="images/placeholder.png" alt="placeholderImage">
             <h2>Kuvankaunis ranta</h2>
-            <p>Tämä kuvankaunis ranta on todellinen rantaleijonan unelmakohde. Sen kauniit hiekat ja aina lämmin aurinko miellyttää takuulla jokaista rantojen sankaria.</p>
+            <p>Tämä kuvankaunis ranta on todellinen rantaleijonan unelmakohde. Sen kauniit hiekat ja aina lämmin aurinko miellyttää takuulla jokaista uimamaisteria ja rantojen sankaria. Rannan hiekat ovat silkkisimmät ja vesi mitä lämpimin. Tässä maisemassa sielu lepää, mieliala kohenee ja rusketus on takuuvarma. Soveltuu myös uimiseen.</p>
             <a id="rannanOsoite" href="">Linkki rannan nettisivuille</a>
         </article>
         <article id="rantaArtikkeli">
-        <h1 id="rannanNimi"></h1>
-        <div id="tulos"></div>
+            <div id="tulos"></div>
+            <div id="saaTiedot">
+                <h2 id="rannanNimi">Ranta</h2>
+            </div>
         </article>
-        </section>
+    </section>
+
         <img class="floatingmonster" alt="floatingmonster" id="float3" src="images/verticalanimation.webp">
     <section id=socialmap>  <!--let footerEnd = document.getElementById('footerid').innerHTML = -->
         <div id="leipateksti"><h1>Löytääksesi ajo-ohjeita paina kartan nuolia</h1>
@@ -54,11 +57,11 @@
         <button class="myButton" onclick="getLocation()">Hae sijaintisi</button>
     </div>
         <div id="map"></div>
-    </section> 
+    </section>
     <section id="sectionstyle">
         <video controls autoplay >
             <source src="video/pgUSz9b.mp4"
-                    type="video/mp4">       
+                    type="video/mp4">
             Sorry, your browser doesn't support embedded videos.
         </video>
         <p id=twitterbot><!-- let twitterBot = document.getElementById('twitterbot').innerHTML =   -->
@@ -84,7 +87,7 @@
         <h3>Sivukartta</h3>
         <a class="myButton" href="tekijat.html">Tekijät</a>
         <button class="myButton" id = "palauteLomake" onclick="palauteLomake()">Palautelomake</button>
-        <a class="myButton" href="adminpalaute.html">adminpalaute</a>  
+        <a class="myButton" href="adminpalaute.html">adminpalaute</a>
     </div>
     <div class="flexcontainer">
         <h3>Source:</h3>
