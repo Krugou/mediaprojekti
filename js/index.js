@@ -172,7 +172,7 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      let WAWA_PT1H_RANKParameterValue = bsWfsElement[bsWfsElement.length - 1].querySelector('ParameterValue');
 
      let wind = windDescription(parseInt(WS_PT1H_AVGParameterValue.textContent));
-     document.getElementById('tulostusAlue').innerHTML += wind + ' ' + WS_PT1H_AVGParameterValue.textContent + 'm/s';
+     document.getElementById('tulos').innerHTML += wind + ' ' + WS_PT1H_AVGParameterValue.textContent + 'm/s<br>';
 
 
 
@@ -182,17 +182,19 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      if (PRA_PT1H_ACCParameterValue.textContent === 0){
 
      }else if(PRA_PT1H_ACCParameterValue.textContent >0){
-      document.getElementById('tulostusAlue').innerHTML += ' ' + 'sateenmäärä viimeisen tunnin aikana:' +PRA_PT1H_ACCParameterValue.textContent + ' mm';
+      document.getElementById('tulos').innerHTML += ' ' + 'sadetta:' +PRA_PT1H_ACCParameterValue.textContent + ' mm';
 
      }
 
      // Alla oleva funktio sijaitsee imgPrints.js tiedostussa.
       let img = document.createElement('img');
+
      let kuvaData = printSymbols(parseInt(WAWA_PT1H_RANKParameterValue.textContent));
      img.src = kuvaData[0];
      img.alt = kuvaData[1];
-      document.getElementById('tulostusAlue').appendChild(img);
-      document.getElementById('tulostusAlue').innerHTML += kuvaData[2];
+      document.getElementById('tulos').appendChild(img);
+      document.getElementById('tulos').innerHTML += '<br>';
+      document.getElementById('tulos').innerHTML += kuvaData[2];
     //console.log(WAWA_PT1H_RANKParameterValue.textContent);
     //console.log(WS_PT1H_AVGParameterValue.textContent+' '+WS_PT1H_AVGTime.textContent)
     //console.log(PRA_PT1H_ACCParameterValue.textContent+' '+PRA_PT1H_ACCTime.textContent)
@@ -214,33 +216,34 @@ async function fetchTomorrowWeather(lat, lon) {
             let tomorrowWind = parseFloat(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.2"]').querySelector('ParameterValue').textContent);
             let tomorrowSymb = parseInt(xmlDOM.querySelector('[*|id="BsWfsElement.1.25.3"]').querySelector('ParameterValue').textContent);
 
-            let article = document.createElement('div');
-            article.id = 'ennuste';
-            article.innerHTML = '<h1>Huomisen sää</h1>';
-            try {
+            let article = document.getElementById('saaTiedot');
 
-                article.innerHTML += 'Lämmintä ' + tomorrowTemp + ' °C<br>';
-                article.innerHTML += windDescription(tomorrowWind) + ' ' + tomorrowWind + ' m/s<br>';
+            document.getElementById('saaTiedot').innerHTML = '<h2>Huomisen sää</h2>';
+            try {
+                console.log(tomorrowTemp + ' ' + tomorrowWind +' '+ tomorrowSymb);
+                document.getElementById('saaTiedot').innerHTML += 'Lämmintä ' + tomorrowTemp + ' °C<br>';
+                document.getElementById('saaTiedot').innerHTML += windDescription(tomorrowWind) + ' ' + tomorrowWind + ' m/s<br>';
 
 
             } catch (error) {
-                article.innerText = 'Rannan ennusteen haussa tapahtui tuntematon virhe';
+                article.innerHTML = 'Rannan ennusteen haussa tapahtui tuntematon virhe';
                 console.log('Rannan ennusteen haussa tapahtui virhe');
             }
-            document.getElementById('tulostusAlue').appendChild(article);
+            //document.getElementById('saaTiedot').appendChild(article);
             let img = document.createElement('img');
             let kuvaData = printSymbols(tomorrowSymb);
             img.src = kuvaData[0];
             img.alt = kuvaData[1];
-            //article.innerHTML += kuvaData[2]+ '<br>';
-            document.getElementById('tulostusAlue').appendChild(article);
-            document.getElementById('ennuste').appendChild(img);
-            article.innerHTML += '<br>' + kuvaData[2] + '<br>';
+            article.innerHTML += kuvaData[2]+ '<br>';
 
-            document.getElementById('tulostusAlue').appendChild(article);
+
+            document.getElementById('saaTiedot').appendChild(img);
+            document.getElementById('saaTiedot').innerHTML += '<br>' + kuvaData[2] + '<br>';
+
+            //document.getElementById('saaTiedot').appendChild(article);
         });
     } catch(e){
-        console.log('Tulevan sään hakeminen epäonnistui')
+        console.log('Tulevan sään hakeminen epäonnistui '+e)
     }
 }
 
@@ -309,7 +312,7 @@ let sijainti = document.getElementById('sijainti');
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
+  } else {
     sijainti.innerHTML = 'Selaimesi ei tue geopaikannusta.';
   }
 }
@@ -344,18 +347,18 @@ function showPosition(position) {
     let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
     marker.bindPopup('Oman sijainnin tiedot <br>'+ '<p>Lämpötila: ' + timeSeriesMeasurementData.textContent + '\xB0C<br>' +
     'Kello:' +
-    correctTimeTaken.toLocaleTimeString('fi-FI') + '</p>'+ '' + "Latitude: " + position.coords.latitude + 
+    correctTimeTaken.toLocaleTimeString('fi-FI') + '</p>'+ '' + "Latitude: " + position.coords.latitude +
     "<br>Longitude: " + position.coords.longitude+ ' <a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+
     '/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>');
-    
+
   });
 }
-      
-  
+
+
  //fetchWeatherTemperatureData(bbox);
  //fetchWeatherSymbolData(bbox);
 
- 
+
 
 
 // TORIN KOODI ALKAA //
@@ -424,16 +427,16 @@ async function haeRantalista() {
     let nappi = document.createElement('button');
     nappi.name = 'hakunappi';
     nappi.id = 'hakunappi';
-    
+
     nappi.innerHTML = 'Hae rannan tiedot!';
     document.getElementById("rannanTiedot").appendChild(nappi);
     nappi.addEventListener('click', haeValittuRanta, false);
-
+/*
     let tulostusAlue = document.createElement('div');
     tulostusAlue.name = 'tulostusAlue';
     tulostusAlue.id = 'tulostusAlue';
-    document.getElementById('tulos').appendChild(tulostusAlue);
-
+    document.getElementById('saaTiedot').appendChild(tulostusAlue);
+*/
     haeValittuRanta();
     //console.log(Math.floor(Math.random() * data.beaches.length));
 }
@@ -442,12 +445,13 @@ async function haeRantalista() {
 function tyhjenna(){
     try{
         // Poistetaan rantadatan elementti, eli tyhjennetään sivu vanhoista rantadatan hakutuloksista
-        document.getElementById('tulostusAlue').remove();
+        document.getElementById('tulos').remove();
         // Luodaan uusi elementti rantadatan uudelle olemassaololle
         let uusiElementti = document.createElement('div');
-        uusiElementti.id += 'tulostusAlue';
-        uusiElementti.className += 'tulostusAlue';
-        document.getElementById('tulos').appendChild(uusiElementti);
+        uusiElementti.id += 'tulos';
+        uusiElementti.className += 'tulos';
+        document.getElementById('rantaArtikkeli').appendChild(uusiElementti);
+        document.getElementById('tulos').innerHTML = '<h2 id="rannanNimi">Ranta</h2>';
 
     }catch (error){
         // Tämän errorin ei pitäisi koskaan tapahtua
@@ -458,7 +462,7 @@ function tyhjenna(){
 // Funktio katsoo hakuvalikossa olevan valinnan ja tulostaa sen rannan tiedot
 async function haeValittuRanta(evt){
     // Tyhjennetään vanhat hakutulokset
-    tyhjenna();
+    //tyhjenna();
 
     //const url = document.getElementById("rannat").value;
     let data = await haeRanta(document.getElementById('rannat').value);
@@ -482,25 +486,26 @@ async function haeValittuRanta(evt){
         document.getElementById('rannanNimi').innerText = "Tuntematon Ranta";
         console.log('Rannan nimen haku epäonnistui.');
     }
-        document.getElementById('tulostusAlue').innerHTML += '<h2>Rannan tiedot:</h2>';
+        document.getElementById('tulos').innerHTML = '<h2>Rannan tiedot:</h2>';
 
     try {
-        document.getElementById('tulostusAlue').innerHTML += 'Veden lämpötila: ' + data.data[data.data.length - 1].temp_water +
+        document.getElementById('tulos').innerHTML += 'Veden lämpötila: ' + data.data[data.data.length - 1].temp_water +
             '°C<br>';
     } catch (error) {
-        document.getElementById('tulostusAlue').innerHTML += 'Veden lämpötila: tuntematon <br>';
+        document.getElementById('tulos').innerHTML += 'Veden lämpötila: tuntematon <br>';
         console.log('Valitun rannan veden lämpötilaa ei löytynyt');
     }
     try {
-        document.getElementById('tulostusAlue').innerHTML += 'Ilman lämpötila: ' + data.data[data.data.length - 1].temp_air + '°C<br>';
+        document.getElementById('tulos').innerHTML += 'Ilman lämpötila: ' + data.data[data.data.length - 1].temp_air + '°C<br>';
     } catch (error) {
-        document.getElementById('tulostusAlue').innerHTML += 'Ilman lämpötila: tuntematon';
+        document.getElementById('tulos').innerHTML += 'Ilman lämpötila: tuntematon';
         console.log('Valitun rannan ilman lämpötilaa ei löytynyt');
     }
     try {
-        document.getElementById('tulostusAlue').innerHTML += 'Mitattu ajassa ' + data.data[data.data.length - 1].time + '<br>';
+        let date = new Date(data.data[data.data.length - 1].time).toLocaleString('fi');
+        document.getElementById('tulos').innerHTML += 'Mitattu ' + date + '<br>';
     } catch(error) {
-        document.getElementById('tulostusAlue').innerHTML += 'Mitattu ajassa tuntematon aika<br>';
+        document.getElementById('tulos').innerHTML += 'Mitattu ajassa tuntematon aika<br>';
         console.log('Valitun rannan aikaa ei löytynyt');
     } 
     try {
