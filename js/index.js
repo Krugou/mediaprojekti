@@ -363,7 +363,7 @@ function showPosition(position) {
 // TORIN KOODI ALKAA //
 
 // Funktio rantojen tietojen hakemiseen
-// Ranta on rannan datan sijainti ilman ilman. Jos ranta on tyhjä, palauttaa beaches.jsonin
+// Ranta on rannan datan sijainti(beaches.url). Jos ranta on tyhjä, palauttaa beaches.jsonin
 async function haeRanta(ranta){
     let vastaus;
     if (ranta === undefined){
