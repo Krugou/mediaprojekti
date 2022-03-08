@@ -511,6 +511,24 @@ async function haeValittuRanta(evt){
     } catch(error) {
         console.log('Virhe rannan kuvan kanssa.');
         }
+    try{
+        document.getElementById('rannanOsoite').remove();
+        if(data.meta.site_url === ""){
+            let beachLink = document.createElement('p');
+            beachLink.id = 'rannanOsoite';
+            beachLink.innerHTML = 'Rannalla ' + data.meta.name + ' ei ole kotisivuja.';
+            document.getElementById('rantaKuvaus').appendChild(beachLink);
+        }else {
+            let beachLink = document.createElement('a');
+            beachLink.href = data.meta.site_url;
+            beachLink.id = 'rannanOsoite';
+            beachLink.innerText = 'Linkki rannan kotisivuille'
+            document.getElementById('rantaKuvaus').appendChild(beachLink);
+        }
+
+        } catch(error) {
+        console.log('Virhe rannan linkin kanssa.');
+    }
 
     fetchTomorrowWeather(jsonData.beaches[document.getElementById('rannat').selectedIndex].lat, jsonData.beaches[document.getElementById('rannat').selectedIndex].lon);
 
