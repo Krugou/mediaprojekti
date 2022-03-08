@@ -1,7 +1,9 @@
 body{
 text-align: center;
 font-family: monospace;
-background-color: cadetblue;
+background-color: #F6E3D4;
+max-width: 800px;
+margin:auto;
 }
 
 main {
@@ -23,19 +25,7 @@ article {
     border: solid black;
 }
 
-h1 {
-    background-color: aqua;
-    width: 100%;
-}
 
-h2 {
-    background-color: aqua;
-    width: 100%;
-}
-
-a {
-    background-color: aqua;
-}
 
 img {
     border: solid white;
@@ -45,14 +35,18 @@ img {
     height: 300px;
     width: 300px;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
 main {
     display: flex;
     flex-direction: column;
     align-content: center;
     justify-content: space-evenly;
 }
-
+img {
+    
+    height: auto;
+    width:80vw;
+}
 article {
     align-items: center;
     /* align-content: center; */
