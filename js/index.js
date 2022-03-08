@@ -345,11 +345,10 @@ function showPosition(position) {
           let correctTimeTaken= new Date(getTimeAnomalyData.textContent);
           // console.log(correctTimeTaken)
     let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
-    marker.bindPopup('Oman sijainnin tiedot <br>'+ '<p>Lämpötila: ' + timeSeriesMeasurementData.textContent + '\xB0C<br>' +
-    'Kello:' +
-    correctTimeTaken.toLocaleTimeString('fi-FI') + '</p>'+ '' + "Latitude: " + position.coords.latitude +
-    "<br>Longitude: " + position.coords.longitude+ ' <a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+
-    '/">https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+'/</a>');
+    marker.bindPopup('<div id="positioninfo"><p>Oman sijainnin tiedot: '+  " Latitude: " + position.coords.latitude +
+    " Longitude: " + position.coords.longitude+  ' Lämpötila: ' + timeSeriesMeasurementData.textContent + '\xB0C' +
+    ' Kello: ' +  correctTimeTaken.toLocaleTimeString('fi-FI')  +' </p><a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+
+    '/">google maps</a></div>');
 
   });
 }
