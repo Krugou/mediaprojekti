@@ -172,7 +172,7 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
      let WAWA_PT1H_RANKParameterValue = bsWfsElement[bsWfsElement.length - 1].querySelector('ParameterValue');
 
      let wind = windDescription(parseInt(WS_PT1H_AVGParameterValue.textContent));
-     document.getElementById('tulos').innerHTML += wind + ' ' + WS_PT1H_AVGParameterValue.textContent + 'm/s<br>';
+
 
 
 
@@ -185,7 +185,7 @@ function fetchWeatherHourForecastWeatherSymbolDataPlace(query){
       document.getElementById('tulos').innerHTML += ' ' + 'sadetta:' +PRA_PT1H_ACCParameterValue.textContent + ' mm';
 
      }
-
+      document.getElementById('tulos').innerHTML += wind + ' ' + WS_PT1H_AVGParameterValue.textContent + 'm/s<br>';
      // Alla oleva funktio sijaitsee imgPrints.js tiedostussa.
       let img = document.createElement('img');
 
@@ -238,7 +238,7 @@ async function fetchTomorrowWeather(lat, lon) {
 
 
             document.getElementById('saaTiedot').appendChild(img);
-            document.getElementById('saaTiedot').innerHTML += '<br>' + kuvaData[2] + '<br>';
+            //document.getElementById('saaTiedot').innerHTML += '<br>' + kuvaData[2] + '<br>';
 
             //document.getElementById('saaTiedot').appendChild(article);
         });
@@ -475,11 +475,7 @@ async function haeValittuRanta(evt){
     }
 
     let jsonData = await haeRanta();
-    try {
-        fetchWeatherHourForecastWeatherSymbolDataPlace(jsonData.beaches[document.getElementById("rannat").selectedIndex].location);
-    } catch(error){
-        console.log('Rannan lämpötilasymbolin haku epäonnistui');
-    }
+
     try{
         document.getElementById('rannanNimi').innerHTML = data.meta.name;
     } catch(error){
@@ -533,6 +529,11 @@ async function haeValittuRanta(evt){
 
         } catch(error) {
         console.log('Virhe rannan linkin kanssa.');
+    }
+    try {
+        fetchWeatherHourForecastWeatherSymbolDataPlace(jsonData.beaches[document.getElementById("rannat").selectedIndex].location);
+    } catch(error){
+        console.log('Rannan lämpötilasymbolin haku epäonnistui');
     }
 
     fetchTomorrowWeather(jsonData.beaches[document.getElementById('rannat').selectedIndex].lat, jsonData.beaches[document.getElementById('rannat').selectedIndex].lon);
