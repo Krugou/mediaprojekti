@@ -31,14 +31,10 @@ async function addMarkers() {
         for (let i = 0; i < beaches.beaches.length; i++) { // JSONIN URL:it lisätään taulukkoon
             beachesData[i] = "https://iot.fvh.fi/opendata/uiras/" + beaches.beaches[i].url + ".json";
         }
-        // console.log(beaches.beaches.length);
-        // console.log(beaches.beaches[0].url);
-        // console.log(beachesData[7]);
         for (let i = 0; i < beachesData.length; i++) {
             try {
                 const vastaus2 = await fetch(beachesData[i]); // Käynnistetään Haku Uiraksen API:sta.
                 const beaches2 = await vastaus2.json();
-                //console.log(beaches2.meta.name);
                 popupButtons++;
                 let lat = beaches.beaches[i].lat;
                 let lon = beaches.beaches[i].lon;
@@ -48,10 +44,8 @@ async function addMarkers() {
                 let marker = L.marker([lat, lon]).addTo(map); // Lisätään Leaflet karttaan markkerit
                 // Lisätään karttaan popupit käyttäen Uiraksen API dataa. (nimi, sijainti, lämpötila, mittausaika & nappi reititykselle)
                 if (beaches2.data[beaches2.data.length - 1].temp_water >= -50) {
-                    //  console.log("normaali tulos")
                     marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C<br> Aikana: ${date}<br><button class="myButton" id="route${i}">Hae reitti</button>`);
                 } else if (beaches2.data[beaches2.data.length - 1].temp_water <= -50) {
-                    // console.log("tuntematon")
                     marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: Tuntematon <br> Aikana: ${date}<br><button class="myButton" id="route${i}">Hae reitti</button>`);
                 }
             }
@@ -69,7 +63,7 @@ async function addMarkers() {
                     let marker = L.marker([lat, lon]).addTo(map);
                     marker.bindPopup(`<b>${beaches.beaches[i].name}<br> Ilman lämpötila: Tuntematon <br> Veden lämpötila: Tuntematon<br><button class="myButton" id="route${i}">Hae reitti</button>`)
                 } catch (error) {
-                    //    alert(`Rannan ${beaches.beaches[i].name} sijaintitietoja ei löydetty.`); // EI PITÄISI KOSKAAN TAPAHTUA
+                       alert(`Rannan ${beaches.beaches[i].name} sijaintitietoja ei löydetty.`); // EI PITÄISI KOSKAAN TAPAHTUA
                 }
             }
         }
@@ -99,9 +93,9 @@ function error(err) {
 //Haetaan käyttäjän sijainti, vaihtoehdollisesti ajetaan 3 funktiota
 navigator.geolocation.getCurrentPosition(success, error, options);
 
-addButtonEvent()
+addButtonEvent();
 
-let rNum
+let rNum;
 let dir = 0;
 //Kun jokin popup avataan, tarkistetan, minkä rannan nappi on olemassa nappien Idllä: route+napin numero
 function addButtonEvent(){map.on('popupopen', function(){
