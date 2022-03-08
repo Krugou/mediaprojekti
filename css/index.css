@@ -40,6 +40,8 @@ align-items: center;
 
 }
 
+
+
 img {
     
     max-width: 600px;
@@ -301,7 +303,33 @@ margin:5px;
     
 
 }
-
+@media only screen and  (min-width:1531px){
+    #float{
+        position:fixed;
+        top:50px;
+        left:0;
+    }
+    #float2{
+        position:fixed;
+        top:50px;
+        right:0;
+    }
+}
+@media only screen and  (max-width:1531px){
+    #float{
+        visibility: hidden;
+        position:fixed;
+        top:50px;
+        left:0;
+    }
+    #float2{
+        visibility: hidden;
+        position:fixed;
+        top:50px;
+        right:0;
+    }
+}
+visibility: hidden;
 @media only screen and (min-width:600px) and (max-width:1000px){
     #rantaArtikkeli {
         
