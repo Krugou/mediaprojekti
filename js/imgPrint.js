@@ -1,3 +1,4 @@
+// Tätä funktiota kutsutaan tulkitsemaan ilmatieteenlaitoksen sääsymbolien numeroita.
 function printSymbols(number){
 
     let image = [];
@@ -328,10 +329,9 @@ function printSymbols(number){
             break;
 
         default:
-            //Tarvitaan unknown symboli
             image[0] = 'images/weathersymbols/unknown.png';
             image[1] = 'tuntematon sää';
-            image[2] = 'Sää tuntematon, Rantahahmo suosittelee kurkkaan ikkunasta ulos';
+            image[2] = 'Sää muuten tuntematon';
     }
         return (image);
 }

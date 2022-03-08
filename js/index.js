@@ -234,10 +234,11 @@ async function fetchTomorrowWeather(lat, lon) {
             let kuvaData = printSymbols(tomorrowSymb);
             img.src = kuvaData[0];
             img.alt = kuvaData[1];
-            article.innerHTML += kuvaData[2]+ '<br>';
-
-
             document.getElementById('saaTiedot').appendChild(img);
+            article.innerHTML += '<br>' + kuvaData[2]+ '<br>';
+
+
+            //document.getElementById('saaTiedot').appendChild(img);
             //document.getElementById('saaTiedot').innerHTML += '<br>' + kuvaData[2] + '<br>';
 
             //document.getElementById('saaTiedot').appendChild(article);
