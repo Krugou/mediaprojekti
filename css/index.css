@@ -303,7 +303,10 @@ margin:5px;
     
 
 }
-@media only screen and  (min-width:1531px){
+@media only screen and  (min-width:1555px){
+    .floatingmonster{
+        margin:10px
+    }
     #float{
         position:fixed;
         top:50px;
@@ -315,7 +318,7 @@ margin:5px;
         right:0;
     }
 }
-@media only screen and  (max-width:1531px){
+@media only screen and  (max-width:1555px){
     #float{
         visibility: hidden;
         position:fixed;
