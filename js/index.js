@@ -220,7 +220,6 @@ async function fetchTomorrowWeather(lat, lon) {
 
             document.getElementById('saaTiedot').innerHTML = '<h2>Huomisen sää</h2>';
             try {
-                console.log(tomorrowTemp + ' ' + tomorrowWind +' '+ tomorrowSymb);
                 document.getElementById('saaTiedot').innerHTML += 'Lämmintä ' + tomorrowTemp + ' °C<br>';
                 document.getElementById('saaTiedot').innerHTML += windDescription(tomorrowWind) + ' ' + tomorrowWind + ' m/s<br>';
 
@@ -335,7 +334,7 @@ function showPosition(position) {
   let bbox = minuslon.toFixed(3) + ',' + minuslat.toFixed(3) + ',' +
         lonplus.toFixed(3) + ',' + latplus.toFixed(3) + ',';
         let arvo = `https://opendata.fmi.fi/wfs?service=WFS&version=2.0.0&request=getFeature&storedquery_id=fmi::observations::weather::hourly::simple&bbox=${bbox}&parameters=TA_PT1H_AVG`;
-        console.log(arvo);
+        //console.log(arvo);
         fetch(arvo).then(response => response.text()).then((xml) => {
           // console.log(xml);
            let parser = new DOMParser();
@@ -346,9 +345,9 @@ function showPosition(position) {
           let correctTimeTaken= new Date(getTimeAnomalyData.textContent);
           // console.log(correctTimeTaken)
     let marker =L.marker([position.coords.latitude, position.coords.longitude]).addTo(map);
-    marker.bindPopup('<div id="positioninfo"><p>Oman sijainnin tiedot: '+  " Latitude: " + position.coords.latitude +
-    " Longitude: " + position.coords.longitude+  ' Lämpötila: ' + timeSeriesMeasurementData.textContent + '\xB0C' +
-    ' Kello: ' +  correctTimeTaken.toLocaleTimeString('fi-FI')  +' </p><a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+
+    marker.bindPopup('<div id="positioninfo"><p>Oman sijainnin tiedot: '+  ' <br>Latitude: ' + position.coords.latitude +
+    ' <br>Longitude: ' + position.coords.longitude+  ' <br>Lämpötila: ' + timeSeriesMeasurementData.textContent + '\xB0C' +
+    ' <br>Mitattu kello: ' +  correctTimeTaken.toLocaleTimeString('fi-FI')  +' </p><a href="https://www.google.fi/maps/search/'+position.coords.latitude+','+position.coords.longitude+
     '/">google maps</a></div>');
 
   });
@@ -385,7 +384,7 @@ async function haeRanta(ranta){
     try{
         parseFloat(data[0]);
     } catch (error) {
-        !alert ('Rannan lämpötiladatan hakeminen epäonnistui');
+        console.log('Rannan lämpötiladatan hakeminen epäonnistui');
     }
 
     return data;
@@ -471,7 +470,7 @@ async function haeValittuRanta(evt){
     try{
         parseFloat(data[0]);
     } catch (error) {
-        !alert ('Rannan lämpötiladatan hakeminen epäonnistui');
+        console.log('Rannan lämpötiladatan hakeminen epäonnistui');
     }
 
     let jsonData = await haeRanta();
