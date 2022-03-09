@@ -9,10 +9,7 @@ body {
 article {
     background-color: #3998EA;   
     padding:5px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
     border-radius: 15px;
     box-shadow: 5px 10px #336473;
 }
@@ -369,6 +366,13 @@ nav p {
 @media only screen and (min-width:600px) and (max-width:1000px){
     #rantaArtikkeli {
         width:80vw
+    }    #kuvatTekstit {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+
+
     }
 }
 @media only screen and (max-width: 1000px) {
