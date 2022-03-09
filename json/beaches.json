@@ -1,6 +1,13 @@
 {
 	"beaches": [
 		{
+			"name":"Vetokannas (Vantaa)",
+			"url":"70B3D57050001BA6_v1",
+			"location": "Helsinki",
+			"lat": "60.27026",
+			"lon": "24.88056"
+		},
+		{
 			"name": "Uunisaari",
 			"url": "003C62A8_v1",
 			"location": "Helsinki",
@@ -34,13 +41,6 @@
 			"location": "Helsinki",
 			"lat": "60.1605",
 			"lon": "24.85241"
-		},
-		{
-			"name":"Vetokannas (Vantaa)",
-			"url":"70B3D57050001BA6_v1",
-			"location": "Helsinki",
-			"lat": "60.27026",
-			"lon": "24.88056"
 		},
 		{
 			"name":"Rastilan Uimaranta",

@@ -451,7 +451,7 @@ function tyhjenna(){
         uusiElementti.id += 'tulos';
         uusiElementti.className += 'tulos';
         document.getElementById('rantaArtikkeli').appendChild(uusiElementti);
-        document.getElementById('tulos').innerHTML = '<h2 id="rannanNimi">Ranta</h2>';
+        document.getElementById('tulos').innerHTML = '<h1 id="rannanNimi">Ranta</h1>';
 
     }catch (error){
         // Tämän errorin ei pitäisi koskaan tapahtua
@@ -477,7 +477,7 @@ async function haeValittuRanta(evt){
     let jsonData = await haeRanta();
 
     try{
-        document.getElementById('tulos').innerHTML = data.meta.name;
+        document.getElementById('tulos').innerHTML = '<h2>' + data.meta.name + '</h2>';
 
         //document.getElementById('rannanNimi').innerText = 'lol';
     } catch(error){

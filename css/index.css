@@ -9,9 +9,14 @@ body {
 article {
     background-color: #3998EA;   
     padding:5px;
-    margin-left: 2vw;
-    margin-right: 2vw;
-} 
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    box-shadow: 5px 10px #336473;
+}
+
 section {
     border: 1px solid rgb(209, 209, 7);
     background-color: #60A4B9;
@@ -228,8 +233,8 @@ video {
     #kuvatTekstit {
         display: flex;
         flex-direction: row;
-        align-items: center;
-        justify-content: center;
+
+
     }
 
     #twitterbot {
