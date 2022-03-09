@@ -42,7 +42,7 @@ async function addMarkers() {
                 popupLon[i] = lon;
                 let date = new Date(beaches2.data[beaches2.data.length - 1].time).toLocaleString('fi'); // Muutetaan aika suomalaiseen formaattiin.
                 let marker = L.marker([lat, lon]).addTo(map); // Lisätään Leaflet karttaan markkerit
-                // Lisätään karttaan popupit käyttäen Uiraksen API dataa. (nimi, sijainti, lämpötila, mittausaika & nappi reititykselle)
+                // Lisätään karttaan popupit käyttäen Uiraksen API dataa (sijainti otetaan omasta JSONISTA). (nimi, lämpötila, mittausaika & nappi reititykselle)
                 if (beaches2.data[beaches2.data.length - 1].temp_water >= -50) {
                     marker.bindPopup(`<b>${beaches2.meta.name}<br>Ilman lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_air}\xB0C<br>Veden lämpotila: ${beaches2.data[beaches2.data.length - 1].temp_water}\xB0C<br> Aikana: ${date}<br><button class="myButton" id="route${i}">Hae reitti</button>`);
                 } else if (beaches2.data[beaches2.data.length - 1].temp_water <= -50) {
