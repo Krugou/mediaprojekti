@@ -7,12 +7,9 @@ body {
     max-width: 1080px;
 }
 article {
-    background-color: #3998EA;   
+    background-color: #3998EA;
     padding:5px;
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 10px;
     border-radius: 15px;
     box-shadow: 5px 10px #336473;
 }
@@ -38,14 +35,14 @@ section {
     justify-content: space-around;
 }
 header {
-display: flex;
-flex-direction: row;
-justify-content: center;
-flex-wrap: nowrap;
-align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: center;
 
 }
-img {    
+img {
     max-width: 600px;
     object-fit: contain;
 }
@@ -58,10 +55,10 @@ video {
         width:80vw;
     }
     #rantahahmooy{
-       width:80vw
+        width:80vw
     }
-        
-    
+
+
     nav {
         margin: 2px;
         /* display:flex; */
@@ -72,18 +69,18 @@ video {
     }
 
     #rannanTiedot {
-    display: flex;
-    align-content: center;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 
     label button {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: center;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: center;
     }
     p label{
         display: flex;
@@ -92,7 +89,7 @@ video {
         display: flex;
         flex-direction: column;
         justify-content: stretch;
-    } 
+    }
 
     main {
         display: flex;
@@ -100,7 +97,7 @@ video {
         justify-content: space-between;
         align-content: center;
         gap: 1rem;
-        
+
     }
 
     video {
@@ -112,12 +109,12 @@ video {
         flex-wrap: nowrap;
     }
     footer {
-        
-    display: flex;
-        
-    flex-wrap: wrap;
-        
-    flex-direction: column;
+
+        display: flex;
+
+        flex-wrap: wrap;
+
+        flex-direction: column;
     }
 
     body {
@@ -134,7 +131,7 @@ video {
         border: solid blue;
         margin: 10px;
         padding: 10px;
-        
+
     }
 
     #kuvatTekstit {
@@ -203,16 +200,16 @@ video {
         width: 50vw;
     }
 
-   
+
     #palaute form {
         width:80vw;
-        
-        
+
+
     }
     #palaute {
         display: flex;
         justify-content: center;
-    }   
+    }
 
     main {
         display: flex;
@@ -247,12 +244,12 @@ video {
         margin: 14px;
     }
 
-#leipateksti {
-    display: flex;
-    justify-content: flex-start;
-    align-content: center;
-    flex-direction: column;
-}
+    #leipateksti {
+        display: flex;
+        justify-content: flex-start;
+        align-content: center;
+        flex-direction: column;
+    }
 
     #socialmap {
         display: flex;
@@ -299,10 +296,10 @@ nav p {
     display: flex;
     justify-content: center;
     align-items: center;
-    align-content: center;  
+    align-content: center;
     padding: 5px;
     margin:5px;
-    
+
 
 }
 @media only screen and  (min-width:1570px){
@@ -325,51 +322,58 @@ nav p {
         visibility: hidden;
         position:fixed;
         display: none;
-    overflow: hidden;
+        overflow: hidden;
         top:5vh;
         left:0;
     }
     #float2{
         visibility: hidden;
         display: none;
-    overflow: hidden;
+        overflow: hidden;
         position:fixed;
         top:5vh;
         right:0;
     }
 }
 @media only screen and  (min-width:800px)and  (max-width:850px){
-   
+
     #float3{
         margin:15px;
-        
+
         max-width: 900px;
 
-        
-        
-        
+
+
+
     }
 }
 @media only screen and  (max-width:800px) {
     #float3{
         visibility: hidden;
         display: none;
-  overflow: hidden;
-        
-}
+        overflow: hidden;
+
+    }
 }
 @media only screen and  (min-width:851px){
     #float3{
         visibility: hidden;
         display: none;
-    overflow: hidden;
-        
-}
+        overflow: hidden;
+
+    }
 }
 @media only screen and (min-width:600px) and (max-width:1000px){
     #rantaArtikkeli {
         width:80vw
-    }
+    }    #kuvatTekstit {
+             display: flex;
+             flex-direction: row;
+             align-items: center;
+             justify-content: center;
+
+
+         }
 }
 @media only screen and (max-width: 1000px) {
     nav p label {
@@ -395,7 +399,7 @@ nav p {
 
 nav p label {
     padding: 8px;
-    
+
     margin: 8px;
 }
 
@@ -466,7 +470,7 @@ footer p {
     text-decoration:none;
     text-shadow:0px 1px 0px #528ecc;
     margin:5px
-    
+
 }
 .myButton:hover, #hakunappi:hover {
     background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
