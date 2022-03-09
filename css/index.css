@@ -40,7 +40,6 @@ flex-direction: row;
 justify-content: center;
 flex-wrap: nowrap;
 align-items: center;
-
 }
 img {    
     max-width: 600px;
@@ -307,6 +306,7 @@ nav p {
         margin:10px
     }
     #float{
+        visibility: hidden;
         position:fixed;
         top:5vh;
         left:0;
