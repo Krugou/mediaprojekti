@@ -8,36 +8,46 @@
     <link href="css/profile.css" rel="stylesheet">
 </head>
 <body>
-    <header>
+<header>
     <h1>Tekijöiden profiilit</h1>
-    </header>
-    <main>
-        
-        <article>
-            <h2>Tor-Erik</h2>
-            <h1>.</h1>
-            <br>
-            <img alt="Tor-Erik" src="profileimages/Tor-Erik.jpg"><h1>.</h1><br>
-            <br>
-            <h2><a href="mailto:webmaster@example.com">Sähköposti</a></><h1>.</h1><br><h1>.</h1><br>
-        </article>
-        <article>
-                <h2>Joonas</h2>
-                <h1>.</h1>
-                <br>
-                <img alt="Joonas" src="profileimages/Joonas.jpg"><h1>.</h1><br>
-                <br>
-                <h2><a href="mailto:webmaster@example.com">Sähköposti</a></h2><h1>.</h1><br><h1>.</h1><br>
-        </article>
-            <br>
-        <article>
-                <h2>Aleksi</h2>
-                <h1>.</h1>
-                <br>
-                <img alt="Aleksi" src="profileimages/Aleksi.jpg"><h1>.</h1><br>
-                <br>
-                <h2><a href="mailto:webmaster@example.com">Sähköposti</a></h2><h1>.</h1><br><h1>.</h1><br>
-        </article>
+</header>
+<main>
+
+    <article>
+        <h2>Tor-Erik</h2>
+        <h3>Koodivelho</h3>
+        <br>
+        <img alt="Tor-Erik" src="profileimages/Tor.jpg" id="tor"><h3>.</h3><br>
+        <br>
+        <h2><a href="mailto:torerikn@metropolia.fi">Sähköposti</a></h2><h3>.</h3><br><h3>.</h3><br>
+    </article>
+    <article>
+        <h2>Joonas</h2>
+        <h3>Ohjelmointimestari</h3>
+        <br>
+        <img alt="Joonas" src="profileimages/Joonas.jpg"><h3>.</h3><br>
+        <br>
+        <h2><a href="mailto:joonalam@metropolia.fi">Sähköposti</a></h2><h3>.</h3><br><h3>.</h3><br>
+    </article>
+    <br>
+    <article>
+        <h2>Aleksi</h2>
+        <h3>Todellinen hakkeri</h3>
+        <br>
+        <img alt="Aleksi" src="profileimages/Aleksi.jpg"><h3>.</h3><br>
+        <br>
+        <h2><a href="mailto:aleksino@metropolia.fi">Sähköposti</a></h2><h3>.</h3><br><h3>.</h3><br>
+    </article>
+
+    <script>
+        let kuva = document.getElementById('tor');
+        kuva.addEventListener('mouseenter', function() {
+            kuva.src = 'profileimages/Tor-Erik.jpg';
+        });
+        kuva.addEventListener('mouseleave', function() {
+            kuva.src = 'profileimages/Tor.jpg';
+        });
+    </script>
 </main>
 </body>
 </html>
