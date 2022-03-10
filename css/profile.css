@@ -1,4 +1,14 @@
-body{text-align: center;font-family: monospace;background-color: #F6E3D4;max-width: 800px;margin:auto;display: flex;flex-direction: column;justify-content: center;align-items: center;align-content: center;}
+body{
+    text-align: center;
+    font-family: monospace;
+    background-color: #F6E3D4;
+    max-width: 1000px;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;}
 
 main {
     display: flex;
@@ -20,18 +30,21 @@ article {
     flex-wrap: nowrap;
     align-items: center;
 }
+@media only screen and (min-width: 1075px) {
+.videosivu {
+    display:flex;  
 
-
-
+}
+}
 img {
     border: solid white;
-}
-
-img {
     height: 300px;
     width: auto;
+    margin:5px;
+    padding:1px;
 }
-@media only screen and (max-width: 900px) {
+
+@media only screen and (max-width: 1075px) {
     main {
         display: flex;
         flex-direction: column;
@@ -39,7 +52,6 @@ img {
         justify-content: space-evenly;
     }
     img {
-
         height: auto;
         width:80vw;
     }
