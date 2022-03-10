@@ -32,19 +32,19 @@ img {
     width: 300px;
 }
 @media only screen and (max-width: 900px) {
-main {
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-evenly;
-}
-img {
-    
-    height: auto;
-    width:80vw;
-}
-article {
-    align-items: center;
-    /* align-content: center; */
-}
+    main {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-evenly;
+    }
+    img {
+
+        height: auto;
+        width:80vw;
+    }
+    article {
+        align-items: center;
+        /* align-content: center; */
+    }
 }
