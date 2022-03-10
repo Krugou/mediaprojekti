@@ -14,16 +14,16 @@
     <main>
         
         <article>
-            <h2>Tor-Erik</h2>
-            <h1>.</h1>
+            <h1>Tor-Erik</h1>
+            <h2>Koodivelho</h2>
             <br>
-            <img alt="Tor-Erik" src="profileimages/Tor-Erik.jpg"><h1>.</h1><br>
+            <img alt="Tor-Erik" src="profileimages/Tor.jpg" id="tor"><h1>.</h1><br>
             <br>
-            <h2><a href="mailto:webmaster@example.com">Sähköposti</a></><h1>.</h1><br><h1>.</h1><br>
+            <h2><a href="mailto:torerikn@metropolia.fi">Sähköposti</a></h2><h1>.</h1><br><h1>.</h1><br>
         </article>
         <article>
-                <h2>Joonas</h2>
-                <h1>.</h1>
+                <h1>Joonas</h1>
+                <h2>Ohjelmointimestari</h2>
                 <br>
                 <img alt="Joonas" src="profileimages/Joonas.jpg"><h1>.</h1><br>
                 <br>
@@ -31,13 +31,23 @@
         </article>
             <br>
         <article>
-                <h2>Aleksi</h2>
-                <h1>.</h1>
+                <h1>Aleksi</h1>
+                <h2>Todellinen hakkeri</h2>
                 <br>
                 <img alt="Aleksi" src="profileimages/Aleksi.jpg"><h1>.</h1><br>
                 <br>
                 <h2><a href="mailto:webmaster@example.com">Sähköposti</a></h2><h1>.</h1><br><h1>.</h1><br>
         </article>
+
+        <script>
+            let kuva = document.getElementById('tor');
+            kuva.addEventListener('mouseenter', function() {
+                kuva.src = 'profileimages/Tor-Erik.jpg';
+            });
+            kuva.addEventListener('mouseleave', function() {
+                kuva.src = 'profileimages/Tor.jpg';
+            });
+        </script>
 </main>
 </body>
 </html>
