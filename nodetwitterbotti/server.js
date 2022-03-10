@@ -19,7 +19,6 @@ const tweet = async () => {
   let mainilmalampotiladata = [];
   let mainaikajsondata = [];
   let currentdate = new Date();
- // console.log(currentdate.getTime());
   for (let i = 0; i < fetchDataJson.beaches.length; i++) { 
     const response = await fetch("https://iot.fvh.fi/opendata/uiras/"+fetchDataJson.beaches[i].url+".json");
     const fetchDataJson2 = await response.json();
