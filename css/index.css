@@ -27,21 +27,22 @@ section {
     justify-content: center;
     align-items: center;
 }
-#sectionstyle {
 
+#sectionstyle {
     display: flex;
     flex-direction: row;
     align-content: center;
     justify-content: space-around;
 }
+
 header {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: nowrap;
     align-items: center;
-
 }
+
 img {
     max-width: 600px;
     object-fit: contain;
@@ -49,6 +50,7 @@ img {
 video {
     object-fit: contain;
 }
+
 /* Mobiili laitteille alkaa */
 @media only screen and (max-width: 650px) {
     #rantaArtikkeli{
@@ -58,13 +60,10 @@ video {
         width:80vw
     }
 
-
     nav {
         margin: 2px;
-        /* display:flex; */
         flex-direction: column;
         align-content: center;
-        /* justify-content: center; */
         flex-wrap: nowrap;
     }
 
@@ -82,9 +81,11 @@ video {
         align-items: center;
         justify-content: center;
     }
+
     p label{
         display: flex;
     }
+
     #palaute {
         display: flex;
         flex-direction: column;
@@ -97,7 +98,6 @@ video {
         justify-content: space-between;
         align-content: center;
         gap: 1rem;
-
     }
 
     video {
@@ -108,12 +108,10 @@ video {
         align-content: center;
         flex-wrap: nowrap;
     }
+
     footer {
-
         display: flex;
-
         flex-wrap: wrap;
-
         flex-direction: column;
     }
 
@@ -131,7 +129,6 @@ video {
         border: solid blue;
         margin: 10px;
         padding: 10px;
-
     }
 
     #kuvatTekstit {
@@ -174,7 +171,6 @@ video {
         justify-content: center;
     }
 
-
     #leipateksti {
         width: 80vw;
     }
@@ -183,11 +179,11 @@ video {
         width: 80vw;
     }
 
-
     #twitterbot {
         width: 80vw;
     }
 }
+
 /* Mobiili laitteille loppuu */
 @media only screen and (min-width: 650px) {
     video {
@@ -200,11 +196,8 @@ video {
         width: 50vw;
     }
 
-
     #palaute form {
         width:80vw;
-
-
     }
     #palaute {
         display: flex;
@@ -230,8 +223,6 @@ video {
     #kuvatTekstit {
         display: flex;
         flex-direction: row;
-
-
     }
 
     #twitterbot {
@@ -253,9 +244,6 @@ video {
 
     #socialmap {
         display: flex;
-        /* gap:1rem; */
-        /* flex-direction: row-reverse; */
-        /* margin: auto; */
     }
 
     #map {
@@ -270,19 +258,16 @@ video {
         margin: 10px;
         max-height: 100%;
     }
-
 }
 
 #sunrisesunset {
     display: flex;
     height: 10%;
-
 }
 
 #sunrisesunsetimg {
     width: 10%;
     height: 10%;
-
 }
 
 nav {
@@ -299,8 +284,6 @@ nav p {
     align-content: center;
     padding: 5px;
     margin:5px;
-
-
 }
 @media only screen and  (min-width:1570px){
     .floatingmonster{
@@ -339,12 +322,7 @@ nav p {
 
     #float3{
         margin:15px;
-
         max-width: 900px;
-
-
-
-
     }
 }
 @media only screen and  (max-width:800px) {
@@ -352,7 +330,6 @@ nav p {
         visibility: hidden;
         display: none;
         overflow: hidden;
-
     }
 }
 @media only screen and  (min-width:851px){
@@ -360,7 +337,6 @@ nav p {
         visibility: hidden;
         display: none;
         overflow: hidden;
-
     }
 }
 @media only screen and (min-width:600px) and (max-width:1000px){
@@ -371,8 +347,6 @@ nav p {
              flex-direction: row;
              align-items: center;
              justify-content: center;
-
-
          }
 }
 @media only screen and (max-width: 1000px) {
@@ -395,15 +369,10 @@ nav p {
     }
 }
 
-
-
 nav p label {
     padding: 8px;
-
     margin: 8px;
 }
-
-
 
 #nimipaivasankari {
     border: solid blue;
@@ -411,48 +380,29 @@ nav p label {
     border-style: dashed solid;;
 }
 
-
-
 footer a {
     color: rgba(255, 255, 255, 0.746);;
 }
 
 footer {
-    /* display: inline; */
     display: flex;
     justify-content: space-evenly;
     background-color: rgba(0, 0, 0, 0.452);
     color: rgba(255, 255, 255, 0.746);
     text-align: center;
     padding: 6px;
-    /* margin-left: 2vw; */
     margin: 5px;
-    /* margin-right: 2vw; */
-    /* align-items: center; */
     flex-direction: row;
-    /* align-content: center; */
-    /* justify-items: flex-start; */
 }
-
 
 footer div {
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-start; */
-    /* flex-grow: 1; */
-    /* flex-wrap: wrap; */
-    /* align-items: center; */
-    /* top: auto; */
 }
-
-
 
 footer p {
     margin: 2px 2px;
-
 }
-
-
 
 .myButton, #hakunappi {
     box-shadow: 3px 4px 0px 0px #1564ad;
@@ -470,7 +420,6 @@ footer p {
     text-decoration:none;
     text-shadow:0px 1px 0px #528ecc;
     margin:5px
-
 }
 .myButton:hover, #hakunappi:hover {
     background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
@@ -480,7 +429,7 @@ footer p {
     position:relative;
     top:1px;
 }
-/* fontti perhe*/
+/* iloinen fonttiperhe*/
 body,header,.leaflet-popup-content,p{
     font-family:'Epilogue', sans-serif;
 }
