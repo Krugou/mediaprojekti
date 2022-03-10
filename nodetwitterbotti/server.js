@@ -69,7 +69,7 @@ const tweet = async () => {
        'twiitti: Kuumin uimaveden lämpötila on paikassa: ' + placeName +
       ' asteita on ' + waterTemperature + ' \xB0C  ja ' +
      'Ilman lämpötila on ' + airTemperature + ' \xB0C ' + 'kello: ' +
-     aika.toLocaleTimeString('fi-FI'));
+     timeTaken.toLocaleTimeString('fi-FI'));
   } catch (e) {
     console.error(e);
   }
