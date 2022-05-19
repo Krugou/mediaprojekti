@@ -1,8 +1,9 @@
-import 'dotenv/config';
-import {TwitterApi} from 'twitter-api-v2';
-import fetch from 'node-fetch';
+import "dotenv/config";
+import { TwitterApi } from "twitter-api-v2";
+import fetch from "node-fetch";
 
-let data = 'https://users.metropolia.fi/~aleksino/mediaprojekti/json/beaches.json';
+let data =
+  "https://users.metropolia.fi/~aleksino/mediaprojekti/json/beaches.json";
 // .env tiedostosta haetaan avaimet twitteriin
 const userClient = new TwitterApi({
   appKey: process.env.TWITTER_API_KEY,
@@ -12,7 +13,6 @@ const userClient = new TwitterApi({
 });
 // tweettaus Funktio
 const tweet = async () => {
-
   const response = await fetch(data);
   const fetchDataJson = await response.json();
   let temperatureData = [];
@@ -23,14 +23,23 @@ const tweet = async () => {
   // console.log(currentDate.getTime());
   // säädatan haku
   for (let i = 0; i < fetchDataJson.beaches.length; i++) {
-    const response = await fetch("https://iot.fvh.fi/opendata/uiras/"+fetchDataJson.beaches[i].url+".json");
+    const response = await fetch(
+      "https://iot.fvh.fi/opendata/uiras/" +
+        fetchDataJson.beaches[i].url +
+        ".json"
+    );
     const fetchDataJson2 = await response.json();
     const laskejsondata = fetchDataJson2.data.length - 1;
-    const jsonaika = new Date(fetchDataJson2.data[laskejsondata].time)
-    console.log("jsonaika: "+jsonaika.getTime())
-    console.log("nykyinen aika - 7200000: "+(currentDate.getTime() - 7200000))
-    console.log("nykyinen aika: "+currentDate.getTime())
-    if ( jsonaika.getTime() > (currentDate.getTime() - 7200000) && jsonaika.getTime() < currentDate.getTime() ) {
+    const jsonaika = new Date(fetchDataJson2.data[laskejsondata].time);
+    console.log("jsonaika: " + jsonaika.getTime());
+    console.log(
+      "nykyinen aika - 7200000: " + (currentDate.getTime() - 7200000)
+    );
+    console.log("nykyinen aika: " + currentDate.getTime());
+    if (
+      jsonaika.getTime() > currentDate.getTime() - 7200000 &&
+      jsonaika.getTime() < currentDate.getTime()
+    ) {
       let paikannimi = fetchDataJson2.meta.name;
       let aikajsondata = fetchDataJson2.data[laskejsondata].time;
       let waterTemperaturedata = fetchDataJson2.data[laskejsondata].temp_water;
@@ -46,7 +55,6 @@ const tweet = async () => {
       console.log(airTemperaturedata);
     } else {
       continue;
-
     }
   }
   const max = Math.max(...temperatureData);
@@ -58,18 +66,22 @@ const tweet = async () => {
   console.log(placeName);
   console.log(waterTemperature);
   console.log(airTemperature);
-  console.log(timeTaken.toLocaleTimeString('fi-FI'));
+  console.log(timeTaken.toLocaleTimeString("fi-FI"));
   //tweetataan
+  let tweetinglist =
+    "Kello: " +
+    timeTaken.toLocaleTimeString("fi-FI") +
+    " korkein uimaveden lämpötila on paikassa: " +
+    placeName +
+    " asteita on " +
+    waterTemperature +
+    " \xB0C  ja " +
+    "Ilman lämpötila on " +
+    airTemperature +
+    " \xB0C ";
   try {
-    await userClient.v2.tweet(
-        'Kuumin uimaveden lämpötila on paikassa: ' + placeName + ' asteita on ' +
-        waterTemperature + ' \xB0C  ja ' + 'Ilman lämpötila on ' + airTemperature +
-        ' \xB0C ' + 'kello: ' + timeTaken.toLocaleTimeString('fi-FI'));
-    console.log('tweettaus onnistui ' +
-        'twiitti: Kuumin uimaveden lämpötila on paikassa: ' + placeName +
-        ' asteita on ' + waterTemperature + ' \xB0C  ja ' +
-        'Ilman lämpötila on ' + airTemperature + ' \xB0C ' + 'kello: ' +
-        timeTaken.toLocaleTimeString('fi-FI'));
+    await userClient.v2.tweet(tweetinglist);
+    console.log(tweetinglist);
   } catch (e) {
     console.error(e);
   }
